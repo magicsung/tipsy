@@ -1,0 +1,2 @@
+module TipsyHelper
+end
