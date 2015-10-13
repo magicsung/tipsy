@@ -6,4 +6,10 @@ class User < ActiveRecord::Base
 
   validates_presence_of :name
 
+
+  def admin?
+    self.role == 1
+  end
+
+
 end
