@@ -2,6 +2,12 @@ source 'https://rubygems.org'
 
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'owlcarousel-rails'
+gem 'omniauth-facebook'
+gem 'paperclip'
+gem "select2-rails"
+gem 'devise'
+gem "kaminari"
+gem 'bootstrap-kaminari-views'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
