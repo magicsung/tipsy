@@ -5,6 +5,9 @@ class ApplicationController < ActionController::Base
 
   layout :layout_by_resource
 
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+
   protected
 
   def layout_by_resource
@@ -14,5 +17,11 @@ class ApplicationController < ActionController::Base
       "application"
     end
   end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) << :name
+    devise_parameter_sanitizer.for(:account_update) << :name
+  end
+
 
 end
