@@ -8,5 +8,46 @@
   <div class="empty300px"></div>
 </div>
 <div class="container">
-  
+  <div class="owl-carousel">
+    <div> <%= image_tag("img1.jpg") %> </div>
+    <div> <%= image_tag("img2.jpg") %> </div>
+    <div> <%= image_tag("img3.jpg") %> </div>
+    <div> <%= image_tag("img4.jpg") %> </div>
+    <div> <%= image_tag("img5.jpg") %> </div>
+  </div>
 </div>
+<div class="container">
+  <ul>
+    <li>
+      <%= image_tag("DJ/Hardwell414x414.jpg") %>
+    </li>
+    <li>
+      <%= image_tag("DJ/DVLM623x623.jpg") %>
+    </li>
+    <li>
+      <%= image_tag("DJ/AVB414x414.jpg") %>
+    </li>
+    <li>
+      <%= image_tag("DJ/MartinGarrix414x414.jpg") %>
+    </li>
+    <li>
+      <%= image_tag("DJ/Tiesto414x414.jpg") %>
+    </li>
+  </ul>
+</div>
+
+
+
+
+<script>
+  $(document).on("page:change", function(){
+
+    $(".owl-carousel").owlCarousel({
+      autoPlay: 3000,
+      items : 3,
+      itemsDesktop : [1199,3],
+      itemsDesktopSmall : [979,3]
+    });
+
+  })
+</script>
