@@ -12,7 +12,7 @@
   <% Dj.all.each do |x| %>
   <tr>
     <td>
-      <%= image_tag x.photo.url(:thumb), :class => "img-rounded" %>
+      <%= image_tag x.photo.url(:thumb), :class => "img-rounded dj-list-img" %>
     </td>
     <td><%= link_to x.name, admin_dj_path(x) %></td>
     <td>
