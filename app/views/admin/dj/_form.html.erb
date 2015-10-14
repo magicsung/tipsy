@@ -9,6 +9,14 @@
   <%= n.text_area :description, :class => "form-control" %>    
 </div>
 
+<% if @dj.photo.exists? %>
+  <%= image_tag @dj.photo.url(:medium) %>
+  <br>
+    Delete file: <%= check_box_tag "destroy_photo", "1" %>
+  <br><br>
+<% end %>
+
+
 <div class="form-group">
   <%= n.file_field :photo %>
 </div> 

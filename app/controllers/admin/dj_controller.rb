@@ -35,6 +35,11 @@ class Admin::DjController < ApplicationController
   end
 
   def update
+
+    if params[:destroy_photo] == "1"
+      @dj.photo = nil
+    end
+
     if @dj.update( dj_params )
       flash[:notice] = "Post was updated!"
     end

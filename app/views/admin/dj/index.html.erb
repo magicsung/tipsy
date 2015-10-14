@@ -1,5 +1,6 @@
-<h1>DJ console</h1>
-
+<div class="page-header">
+  <h1>DJ console <%= link_to 'New DJ', new_admin_dj_path, :class => 'btn btn-default' %></h1>
+</div>
 
 <table class="table table-hover table-striped">
   
@@ -12,7 +13,11 @@
   <% Dj.all.each do |x| %>
   <tr>
     <td>
-      <%= image_tag x.photo.url(:thumb), :class => "img-rounded dj-list-img" %>
+      <% if x.photo.exists? == false %>
+        <%= image_tag("dj_img.png", :class => "img-rounded dj-list-img") %>
+      <% else %>
+        <%= image_tag x.photo.url(:thumb), :class => "img-rounded dj-list-img" %>
+      <% end %>
     </td>
     <td><%= link_to x.name, admin_dj_path(x) %></td>
     <td>
