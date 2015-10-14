@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151014074251) do
+ActiveRecord::Schema.define(version: 20151014100212) do
 
   create_table "djs", force: :cascade do |t|
     t.string   "name",               limit: 255, null: false
@@ -26,19 +26,23 @@ ActiveRecord::Schema.define(version: 20151014074251) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.string   "title",       limit: 255
-    t.string   "status",      limit: 255
-    t.string   "description", limit: 255
-    t.string   "contact",     limit: 255
-    t.string   "phone",       limit: 255
-    t.string   "city",        limit: 255
-    t.string   "address",     limit: 255
+    t.string   "title",            limit: 255
+    t.string   "status",           limit: 255
+    t.text     "description",      limit: 65535
+    t.string   "contact",          limit: 255
+    t.string   "phone",            limit: 255
+    t.string   "city",             limit: 255
+    t.string   "address",          limit: 255
     t.date     "start_date"
     t.time     "start_time"
     t.date     "due_date"
     t.time     "due_time"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "edm_file_name",    limit: 255
+    t.string   "edm_content_type", limit: 255
+    t.integer  "edm_file_size",    limit: 4
+    t.datetime "edm_updated_at"
   end
 
   create_table "stores", force: :cascade do |t|

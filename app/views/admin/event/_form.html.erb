@@ -11,7 +11,22 @@
 
     <div class="form-group">
       <%= n.label :description, "Description" %>
-      <%= n.text_area :description, :class => "form-control" %>    
+      <%= n.text_area :description, :class => "form-control", :rows => 8 %>    
+    </div>
+    
+    <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <%= n.label :city, "City" %>
+        <%= n.text_field :city, :class => "form-control" %>    
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="form-group">
+        <%= n.label :address, "Address" %>
+        <%= n.text_field :address, :class => "form-control" %>    
+      </div>
+    </div>
     </div>
 
     <div class="row">
@@ -23,7 +38,6 @@
     </div>
     </div>
 
-
     <div class="col-md-6">
     <div class="form-group">
       <%= n.label :due_date, "Due_to:" %>
@@ -33,11 +47,25 @@
     </div>
     </div>
 
+    <br>
 
-
+    <div class="form-group">
       <%= n.label :status, "Status" %>
       <%= n.select :status, ["Public","Private"] %> 
+    </div>
+    
+    
+    <% if @event.edm.exists? %>
+      <%= image_tag @event.edm.url(:medium) %>
+      <br>
+        Delete file: <%= check_box_tag "destroy_edm", "1" %>
+      <br><br>
+    <% end %>
 
+    <div class="form-group">
+      <%= n.label :edm, "Event_EDM" %>
+      <%= n.file_field :edm %>
+    </div>
   </div>
 </div>
 
@@ -61,29 +89,8 @@
         <%= n.text_field :phone, :class => "form-control" %>    
       </div>
     </div>
-    
-    <div class="col-md-3">
-      <div class="form-group">
-        <%= n.label :city, "City" %>
-        <%= n.text_field :city, :class => "form-control" %>    
-      </div>
-    </div>
-    <div class="col-md-9">
-      <div class="form-group">
-        <%= n.label :address, "Address" %>
-        <%= n.text_field :address, :class => "form-control" %>    
-      </div>
-    </div>
 
   </div>
 </div>
-
-
 </div>
-
-
-
-
-
-
 

@@ -17,7 +17,7 @@
   <tr>
     <td><%= x.status %></td>
     <td><%= link_to x.title, admin_event_path(x) %></td>
-    <td><%= x.description %></td>
+    <td><%= simple_format(x.description) %></td>
     <td>
       <%= x.start_date %> |
       <%= x.start_time.strftime("%H:%M") %>

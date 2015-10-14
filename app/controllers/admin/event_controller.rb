@@ -36,6 +36,10 @@ class Admin::EventController < ApplicationController
 
   def update
 
+    if params[:destroy_edm] == "1"
+      @event.edm = nil
+    end
+
     if @event.update( event_params )
       flash[:notice] = "Event was updated!"
     end
@@ -54,7 +58,7 @@ class Admin::EventController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :status, :description, :contact, :phone, :city, :address, :start_date, :start_time, :due_date, :due_time,:photo)
+    params.require(:event).permit(:title, :status, :description, :contact, :phone, :city, :address, :start_date, :start_time, :due_date, :due_time, :edm)
   end
 
   def find_event

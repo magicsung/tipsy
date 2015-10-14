@@ -1,22 +1,56 @@
 <h1><%= @event.title %></h1>
 
-<table class="table table-striped">
 
-<tr>
-  <th>Description</th>
-  <td><%= @event.description %></td>
-</tr>
 
-<tr>
-  <th>Start_at</th>
-  <td><%= @event.start_date %></td>
-</tr>
+<div class="row">
+<div class="col-md-8">
+  <table class="table table-striped">
+  <tr>
+    <th>Start_at:</th>
+    <td>
+      <%= @event.start_date %> |
+      <%= @event.start_time.strftime("%H:%M") %>
+    </td>
+  </tr>
+  <tr>
+    <th>Due_at:</th>
+    <td>
+      <%= @event.due_date %> |
+      <%= @event.due_time.strftime("%H:%M") %>
+    </td>
+  </tr>  
+  <tr>
+    <th>Status:</th>
+    <td><%= @event.status %></td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td><%= raw(@event.description) %></td>
+  </tr>
+  <tr>
+    <th>City</th>
+    <td><%= @event.city %></td>
+  </tr>
+  <tr>
+    <th>Address</th>
+    <td><%= @event.address %></td>
+  </tr>
+  <tr>
+    <th>Contact</th>
+    <td><%= @event.contact %></td>
+  </tr>
+  <tr>
+    <th>Phone</th>
+    <td><%= @event.phone %></td>
+  </tr>
+    
+  </table>
+</div>
 
-<tr>
-  <th>Due_at</th>
-  <td><%= @event.due_date %></td>
-</tr>
-  
-</table>
+<div class="col-md-4">
+  <%= image_tag(@event.edm.url(:medium)) %>
+</div>
+</div>
+
 
 <%= link_to 'Back', admin_event_index_path, :class => "btn btn-default" %>

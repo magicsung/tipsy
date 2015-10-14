@@ -1,15 +1,22 @@
-<h1><%= @event.title %></h1>
 
-<%= form_for @event, :url => admin_event_path do |n|  %>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
 
-<%= render :partial => 'form', :locals => { :n => n } %>
+    <h1><%= @event.title %></h1>
 
-<%= n.submit "Update", :class => "btn btn-primary" %>
-<%= link_to "Cancel", admin_event_index_path, :class => "btn btn-info pull-right" %>
+    <%= form_for @event, :url => admin_event_path do |n|  %>
 
-<div class="clearfix"></div>
+    <%= render :partial => 'form', :locals => { :n => n } %>
 
-<% end %>
+    <%= n.submit "Update", :class => "btn btn-primary" %>
+    <%= link_to "Cancel", admin_event_index_path, :class => "btn btn-info pull-right" %>
+
+    <div class="clearfix"></div>
+
+    <% end %>
+
+  </div>  
+</div>
 
 <script>
 
