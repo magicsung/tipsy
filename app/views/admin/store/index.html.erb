@@ -1,19 +1,29 @@
 <div class="page-header">
-  <h1>Admin console</h1>
+  <h1>Store console</h1>
 </div>
 
 
-<div class="col-md-6">
+<div class="col-md-12">
+  
+  <ul class="nav nav-tabs">
+    <li role="presentation" class="active"><%= link_to 'Store', admin_root_path %></li>
+    <li role="presentation"><%= link_to 'User', admin_user_index_path %></li>
+    <li role="presentation"><a href="#">Event</a></li>
+    <li role="presentation"><a href="#">DJ</a></li>
+  </ul>
+
   <table class="table table-hover">
-    <tr class="info">
-      <td>User name</td>
-      <td>Email</td>
-    </tr>
     <tr>
-      <% User.all.each do |x| %>
+      <th>Store name</th>
+      <th>description</th>
+    </tr>
+      <% Store.all.each do |x| %>
+      <tr>
         <td><%= x.name %></td>
-        <td><%= x.email %></td>
+        <td><%= x.description %></td>
       <% end %>
     </tr>
   </table>
+
+  <%= link_to 'New store', new_admin_store_path, :class => "btn btn-primary" %>
 </div>
