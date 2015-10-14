@@ -1,0 +1,36 @@
+<div class="page-header">
+  <h1>Event console <%= link_to 'New Event', new_admin_event_path, :class => 'btn btn-default' %></h1>
+</div>
+
+
+<table class="table table-hover table-striped">
+
+<tr>
+  <th>Title</th>
+  <th>Description</th>
+  <th>Start_at</th>
+  <th>Due_at</th>
+  <th></th>
+</tr>
+<% Event.all.each do |x| %>
+  <tr>
+    <td><%= link_to x.title, admin_event_path(x) %></td>
+    <td><%= x.description %></td>
+    <td>
+      <%= x.start_date %> |
+      <%= x.start_time.strftime("%H:%M") %>
+    </td>
+    <td>
+      <%= x.due_date %> |
+      <%= x.due_time.strftime("%H:%M") %>
+    </td>
+    <td>
+      <%= link_to 'Edit', edit_admin_event_path(x), :class => "btn btn-default btn-xs" %>
+      <%= link_to 'Delete', admin_event_path(x), :method => "delete", :data => { :confirm => "Are you sure?" }, :class => "btn btn-danger btn-xs" %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+
+<%= link_to 'New Event', new_admin_event_path, :class => 'btn btn-default' %>

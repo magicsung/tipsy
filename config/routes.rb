@@ -5,12 +5,14 @@ Rails.application.routes.draw do
 
   resources :store
   resources :dj
+  resources :event
 
   namespace :admin do
     root "store#index"
     resources :store
     resources :user
     resources :dj
+    resources :event
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

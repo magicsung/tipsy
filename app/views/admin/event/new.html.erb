@@ -1,0 +1,25 @@
+<h1>NEW EVENT</h1>
+
+<%= form_for @event, :url => admin_event_index_path do |n|  %>
+
+<%= render :partial => 'form', :locals => { :n => n } %>
+
+<%= n.submit "Create", :class => "btn btn-primary" %>
+<%= link_to "Cancel", admin_event_index_path, :class => "btn btn-info pull-right" %>
+
+<div class="clearfix"></div>
+
+<% end %>
+
+
+<script>
+
+  $(document).ready(function(){
+    $('.datepicker').datepicker({
+      format: 'yyyy-mm-dd',
+      todayHighlight: true,
+      language: "zh-TW"
+    });
+  })
+
+</script>

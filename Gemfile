@@ -30,6 +30,7 @@ gem "select2-rails"
 gem 'devise'
 gem "kaminari"
 gem 'bootstrap-kaminari-views'
+gem 'bootstrap-datepicker-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
