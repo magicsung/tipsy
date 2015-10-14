@@ -27,8 +27,12 @@
       <%= x.due_time.strftime("%H:%M") %>
     </td>
     <td>
-      <%= link_to 'Edit', edit_admin_event_path(x), :class => "btn btn-default btn-xs" %>
-      <%= link_to 'Delete', admin_event_path(x), :method => "delete", :data => { :confirm => "Are you sure?" }, :class => "btn btn-danger btn-xs" %>
+      <%= link_to edit_admin_event_path(x), :class => "btn btn-xs" do %>
+        <i class="glyphicon glyphicon-pencil"></i>
+      <% end %>
+      <%= link_to admin_event_path(x), :method => "delete", :data => { :confirm => "Are you sure?" }, :class => "btn btn-xs" do %>
+        <i class="glyphicon glyphicon-trash"></i>
+      <% end %>
     </td>
   </tr>
 <% end %>
