@@ -6,6 +6,7 @@
 <table class="table table-hover table-striped">
 
 <tr>
+  <th>Status</th>
   <th>Title</th>
   <th>Description</th>
   <th>Start_at</th>
@@ -14,6 +15,7 @@
 </tr>
 <% Event.all.each do |x| %>
   <tr>
+    <td><%= x.status %></td>
     <td><%= link_to x.title, admin_event_path(x) %></td>
     <td><%= x.description %></td>
     <td>
