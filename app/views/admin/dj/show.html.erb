@@ -1,7 +1,10 @@
+
 <h1><%= @dj.name %></h1>
+<%= image_tag @dj.photo.url %>
 
 <table class="table">
   <tr>
+    <th>Description</th>
     <td><%= @dj.description %></td>
   </tr>
 </table>

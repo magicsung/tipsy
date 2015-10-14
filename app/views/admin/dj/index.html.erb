@@ -11,7 +11,9 @@
   </tr>
   <% Dj.all.each do |x| %>
   <tr>
-    <td></td>
+    <td>
+      <%= image_tag x.photo.url(:thumb) %>
+    </td>
     <td><%= link_to x.name, admin_dj_path(x) %></td>
     <td>
       <% if x.description.length >100 %>
