@@ -31,6 +31,8 @@ gem 'devise'
 gem "kaminari"
 gem 'bootstrap-kaminari-views'
 gem 'bootstrap-datepicker-rails'
+gem 'rest-client'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
