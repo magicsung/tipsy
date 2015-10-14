@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
 
   def admin?
-    self.role == 1
+    self.role == "admin"
   end
 
 

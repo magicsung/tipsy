@@ -8,8 +8,24 @@
 </head>
 <body>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<!-- Flash message -->
+  <% if flash[:notice].present? %>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:notice] %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  <% end %>
+  <% if flash[:alert].present? %>
+    <div class="alert alert-danger" role="alert">
+      <%= flash[:alert] %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button> 
+    </div>
+  <% end %>
+  <!-- Flash message -->
 
 <!-- User message -->
 <div class="pull-right">
@@ -21,7 +37,7 @@
     <%= link_to('Log in', new_session_path(:user)) %>
   <% end %>
   <% if current_user %>
-    <% if current_user.role == 1 %>
+    <% if current_user.admin? %>
       | <%= link_to 'Admin', admin_root_path %>
     <% end %>
   <% end %>
