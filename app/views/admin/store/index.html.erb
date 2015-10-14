@@ -12,16 +12,33 @@
     <li role="presentation"><a href="#">DJ</a></li>
   </ul>
 
-  <table class="table table-hover">
+  <table class="table table-hover table-striped">
     <tr>
-      <th>Store name</th>
-      <th>description</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>City</th>
+      <th>Address</th>
+      <th>Description</th>
+      <th></th>
     </tr>
       <% Store.all.each do |x| %>
       <tr>
-        <td><%= x.name %></td>
-        <td><%= x.description %></td>
-      <% end %>
+        <td><%= link_to x.name,admin_store_path(x) %></td>
+        <td><%= x.phone %></td>
+        <td><%= x.location_city %></td>
+        <td><%= x.location_address %></td>
+        <td>
+          <% if x.description.length > 30 %>
+            <%= x.description.first(30) %>...
+          <% else %>
+            <%= x.description %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to 'Edit', edit_admin_store_path(x), :class => "btn btn-default btn-xs" %>
+          <%= link_to 'Delete', admin_store_path(x), :method => 'delete', :data => { :confirm => "Are you sure?" }, :class => "btn btn-danger btn-xs" %>
+        </td>
+        <% end %>
     </tr>
   </table>
 

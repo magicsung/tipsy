@@ -1,0 +1,27 @@
+<h1><%= @store.name %></h1>
+
+<table class="table table-striped">
+  <tr>
+    <td>Phone:</td>
+    <td><%= @store.phone %></td>
+  </tr>
+  <tr>
+    <td>City:</td>
+    <td><%= @store.location_city %></td>
+  </tr>
+  <tr>
+    <td>Address:</td>
+    <td><%= @store.location_address %></td>
+  </tr>
+  <tr>
+    <td>Description</td>
+    <td><%= simple_format(@store.description) %></td>
+  </tr>
+  <tr>
+    <td>Hours</td>
+    <td><%= simple_format(@store.hours) %></td>
+  </tr>
+</table>
+
+
+<%= link_to "Back", admin_store_index_path, :class => "btn btn-info" %>

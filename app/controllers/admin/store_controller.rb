@@ -2,6 +2,7 @@ class Admin::StoreController < ApplicationController
   layout "admin"
 
   before_action :authenticate_admin
+  before_action :find_store, :only => [:show, :edit, :update, :destroy]
 
   def index
     
@@ -34,18 +35,26 @@ class Admin::StoreController < ApplicationController
   end
 
   def update
-    
+    @store.update( store_params )
+
+    flash[:notice] = "Post was updated!"
+    redirect_to :action => :index  
   end
 
   def destroy
-    
+    @store.destroy
+    redirect_to :action => :index
   end
 
 
   private
 
   def store_params
-    params.require(:store).permit(:name, :description)
+    params.require(:store).permit(:name, :description, :phone, :location_city, :location_address, :hours)
+  end
+
+  def find_store
+    @store = Store.find(params[:id])
   end
 
 end

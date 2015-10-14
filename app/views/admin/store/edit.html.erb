@@ -1,0 +1,11 @@
+<h3>EDIT STORE</h3>
+
+
+<%= form_for @store, :url => admin_store_path do |n|  %>
+
+<%= render :partial => 'form', :locals => { :n => n } %>
+
+<%= n.submit "Update", :class => "btn btn-primary" %>
+<%= link_to "Cancel", admin_store_index_path, :class => "btn btn-info" %>
+
+<% end %>

@@ -14,38 +14,38 @@
 ActiveRecord::Schema.define(version: 20151013100835) do
 
   create_table "stores", force: :cascade do |t|
-    t.string   "name"
-    t.string   "image_url"
-    t.string   "phone"
-    t.integer  "rating"
-    t.string   "description"
-    t.string   "hours"
-    t.string   "location_address"
-    t.string   "location_city"
-    t.float    "coordinate_lat"
-    t.float    "coordinate_lon"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.string   "name",             limit: 255
+    t.string   "image_url",        limit: 255
+    t.string   "phone",            limit: 255
+    t.integer  "rating",           limit: 4
+    t.string   "description",      limit: 255
+    t.string   "hours",            limit: 255
+    t.string   "location_address", limit: 255
+    t.string   "location_city",    limit: 255
+    t.float    "coordinate_lat",   limit: 24
+    t.float    "coordinate_lon",   limit: 24
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",                                    null: false
-    t.string   "email",                  default: "",     null: false
-    t.string   "encrypted_password",     default: "",     null: false
-    t.string   "role",                   default: "user"
-    t.string   "reset_password_token"
+    t.string   "name",                   limit: 255,                  null: false
+    t.string   "email",                  limit: 255, default: "",     null: false
+    t.string   "encrypted_password",     limit: 255, default: "",     null: false
+    t.string   "role",                   limit: 255, default: "user"
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,      null: false
+    t.integer  "sign_in_count",          limit: 4,   default: 0,      null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
