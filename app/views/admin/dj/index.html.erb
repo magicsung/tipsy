@@ -1,0 +1,34 @@
+<h1>DJ console</h1>
+
+
+<table class="table table-hover table-striped">
+  
+  <tr>
+    <th>Photo</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th></th>
+  </tr>
+  <% Dj.all.each do |x| %>
+  <tr>
+    <td></td>
+    <td><%= link_to x.name, admin_dj_path(x) %></td>
+    <td>
+      <% if x.description.length >100 %>
+        <%= x.description.first(100) %>...
+      <% else %>
+        <%= x.description %>
+      <% end %>
+    </td>
+    <td>
+      <%= link_to 'Edit', edit_admin_dj_path(x), :class => "btn btn-default btn-xs" %>
+      <%= link_to 'Delete', admin_dj_path(x), :method => 'delete', :data => { :confirm => "Are you sure?" }, :class => "btn btn-danger btn-xs" %>
+    </td>
+  </tr>
+  <% end %>
+
+</table>
+
+
+
+<%= link_to 'New DJ', new_admin_dj_path, :class => 'btn btn-default' %>

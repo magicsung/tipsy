@@ -46,6 +46,15 @@
 <div class="clearfix"></div>
 <!-- User message -->
 
+<% @where = params[:controller] %>
+<ul class="nav nav-tabs">
+  <li role="presentation" class="<%= @where == "admin/store" ? "active" : "" %>"><%= link_to 'Store', admin_root_path %></li>
+  <li role="presentation" class="<%= @where == "admin/user" ? "active" : "" %>" ><%= link_to 'User', admin_user_index_path %></li>
+  <li role="presentation" class="<%= @where == "admin/event" ? "active" : "" %>" ><a href="#">Event</a></li>
+  <li role="presentation" class="<%= @where == "admin/dj" ? "active" : "" %>" ><%= link_to 'DJ', admin_dj_index_path %></li>
+</ul>
+
+
 <%= yield %>
 
 </body>

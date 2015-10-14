@@ -35,9 +35,9 @@ class Admin::StoreController < ApplicationController
   end
 
   def update
-    @store.update( store_params )
-
-    flash[:notice] = "Post was updated!"
+    if @store.update( store_params )
+      flash[:notice] = "Post was updated!"
+    end
     redirect_to :action => :index  
   end
 
