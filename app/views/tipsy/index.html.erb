@@ -17,23 +17,13 @@
   </div>
 </div>
 <div class="container">
-  <ul>
-    <li>
-      <%= image_tag("DJ/Hardwell414x414.jpg") %>
-    </li>
-    <li>
-      <%= image_tag("DJ/DVLM623x623.jpg") %>
-    </li>
-    <li>
-      <%= image_tag("DJ/AVB414x414.jpg") %>
-    </li>
-    <li>
-      <%= image_tag("DJ/MartinGarrix414x414.jpg") %>
-    </li>
-    <li>
-      <%= image_tag("DJ/Tiesto414x414.jpg") %>
-    </li>
-  </ul>
+
+  <% Dj.all.limit(5).each do |x| %>
+    <div>
+      <%= image_tag x.photo.url(:medium), :class => "img-circle" %> 
+    </div>
+  <% end %>
+
 </div>
 
 
