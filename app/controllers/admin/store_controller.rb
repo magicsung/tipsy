@@ -1,11 +1,13 @@
 class Admin::StoreController < ApplicationController
+
   layout "admin"
 
   before_action :authenticate_admin
   before_action :find_store, :only => [:show, :edit, :update, :destroy]
 
   def index
-    
+    @store = Store.all
+    @store = @store.page(params[:page]).per(10)
   end
 
   def show

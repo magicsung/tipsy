@@ -2,6 +2,7 @@
   <h1>Store console <%= link_to 'New store', new_admin_store_path, :class => "btn btn-default" %></h1>
 </div>
 
+<%= paginate @store, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-sm" %>
 
 <div class="col-md-12">
 
@@ -14,7 +15,7 @@
       <th>Description</th>
       <th></th>
     </tr>
-      <% Store.all.each do |x| %>
+      <% @store.each do |x| %>
       <tr>
         <td><%= link_to x.name,admin_store_path(x) %></td>
         <td><%= x.phone %></td>
@@ -41,5 +42,9 @@
     </tr>
   </table>
 
+  
+  <%= paginate @store, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-sm" %>
+  
+  <br>
   <%= link_to 'New store', new_admin_store_path, :class => "btn btn-default" %>
 </div>
