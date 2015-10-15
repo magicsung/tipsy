@@ -1,0 +1,54 @@
+
+<div class="page-header">
+  <h1>Categories console <%= link_to 'New category', new_admin_category_path, :class => "btn btn-default" %></h1>
+</div>
+
+
+<div class="row">
+  <div class="col-md-8">
+    <table class="table table-hover table-striped">
+      <tr>
+        <th>Name</th>
+        <th>Image</th>
+        <th></th>
+      </tr>
+
+      <% Category.all.each do |x| %>
+      <tr>
+        <td>
+          <%= link_to x.name, admin_category_path(x) %>  
+        </td>  
+        <td>
+          <%= image_tag(x.image.url(:thumb)) %> 
+        </td>
+        <td>
+          <%= link_to edit_admin_category_path(x), :class => "btn btn-xs" do %>
+            <i class="glyphicon glyphicon-pencil"></i>
+          <% end %>
+          <%= link_to admin_category_path(x), :method => "delete", :data => { :confirm => "Are you sure?" }, :class => "btn btn-xs" do %>
+            <i class="glyphicon glyphicon-trash"></i>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+    <%= link_to 'New category', new_admin_category_path, :class => "btn btn-default" %>
+  </div>
+
+
+<!-- DEMO categories list -->
+
+<div class="col-md-4">
+  <% Category.all.each do |y| %>
+     <div class="category-showbox-content">
+       <%= image_tag(y.image.url) %>
+       <div class="description">
+        <p><%= y.name %></p>
+       </div>
+     </div>
+  <% end %>
+</div>
+
+
+
+

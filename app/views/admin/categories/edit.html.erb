@@ -1,0 +1,12 @@
+<h1><%= @category.name %></h1>
+
+<%= form_for @category, :url => admin_category_path do |n|  %>
+
+<%= render :partial => 'form', :locals => { :n => n } %>
+
+<%= n.submit "Update", :class => "btn btn-primary" %>
+<%= link_to "Cancel", admin_categories_path, :class => "btn btn-info pull-right" %>
+
+<div class="clearfix"></div>
+
+<% end %>
