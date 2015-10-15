@@ -26,6 +26,7 @@
     </tr>
       <% @store.each do |x| %>
       <tr>
+        <td><%= image_tag(x.try(:yelp_image)) %></td>
         <td><%= link_to x.name,admin_store_path(x) %></td>
         <td><%= x.phone %></td>
         <td><%= x.location_city %></td>
