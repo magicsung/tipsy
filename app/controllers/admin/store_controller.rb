@@ -6,7 +6,13 @@ class Admin::StoreController < ApplicationController
   before_action :find_store, :only => [:show, :edit, :update, :destroy]
 
   def index
-    @store = Store.all
+
+    if params[:keyword] 
+      @store = Store.where( [ "name like ?", "%#{params[:keyword]}%" ] )
+    else
+      @store = Store.all
+    end
+
     @store = @store.page(params[:page]).per(10)
   end
 

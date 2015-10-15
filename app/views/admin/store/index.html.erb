@@ -2,12 +2,21 @@
   <h1>Store console <%= link_to 'New store', new_admin_store_path, :class => "btn btn-default" %></h1>
 </div>
 
-<%= paginate @store, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-sm" %>
+
+<%= form_tag admin_store_index_path, :method => :get, :class => "pull-right search-store" do %>
+  <%= text_field_tag "keyword" %>
+  <%= submit_tag "Search", :class => "btn btn-xs btn-default" %>
+<% end %>
+
+
+<%= paginate @store, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-sm", :calss => "pull-left" %>
+<div class="clearfix"></div>
 
 <div class="col-md-12">
 
   <table class="table table-hover table-striped">
     <tr>
+      <th>image</th>
       <th>Name</th>
       <th>Phone</th>
       <th>City</th>
