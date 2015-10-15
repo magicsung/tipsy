@@ -21,11 +21,13 @@
         <td><%= x.location_city %></td>
         <td><%= x.location_address %></td>
         <td>
+        <% if false %>
           <% if x.description.length > 30 %>
             <%= x.description.first(30) %>...
           <% else %>
             <%= x.description %>
           <% end %>
+        <% end %>
         </td>
         <td>
           <%= link_to edit_admin_store_path(x), :class => "btn btn-xs" do %>

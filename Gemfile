@@ -32,6 +32,7 @@ gem "kaminari"
 gem 'bootstrap-kaminari-views'
 gem 'bootstrap-datepicker-rails'
 gem 'rest-client'
+gem 'yelp', require: 'yelp'
 
 
 # Use ActiveModel has_secure_password
