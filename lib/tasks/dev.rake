@@ -23,9 +23,12 @@ namespace :dev do
     round = kk.total / 20 + 1
     puts "Total round: #{round}"
 
+
     # business api
-    # data = Yelp.client.business('urban-curry-san-francisco')
+
+    # data = Yelp.client.business( URI.escape( 'relax-jazz-pub-台北市大安區' ) )
     # puts data.inspect
+
 
     # get data
 
