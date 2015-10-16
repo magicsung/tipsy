@@ -1,21 +1,24 @@
 Rails.application.routes.draw do
 
-  root "tipsy#index"
+  root "categories#index"
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
-  resources :store
+  resources :stores
   resources :dj
   resources :event
   resources :categories
+  resources :comments
+  resources :tipsy
 
   namespace :admin do
     root "store#index"
-    resources :store
     resources :user
+    resources :store
     resources :dj
     resources :event
     resources :categories
+    resources :comments
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
