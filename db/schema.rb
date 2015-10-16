@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151015114316) do
+ActiveRecord::Schema.define(version: 20151016011033) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",               limit: 255, null: false
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 20151015114316) do
     t.integer  "image_file_size",    limit: 4
     t.datetime "image_updated_at"
   end
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "content",    limit: 255,             null: false
+    t.string   "user_id",    limit: 255,             null: false
+    t.integer  "rating",     limit: 4,   default: 0
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "djs", force: :cascade do |t|
     t.string   "name",               limit: 255, null: false
