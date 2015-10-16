@@ -1,7 +1,8 @@
 class Store < ActiveRecord::Base
 
-  validates_presence_of :name
-
   belongs_to :category
+  has_many :comments, :dependent => :destroy
+
+  validates_presence_of :name
 
 end

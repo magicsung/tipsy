@@ -1,7 +1,9 @@
 class StoresController < ApplicationController
 
-  has_many :comments, :dependent => :destroy
+  def index
+    
+    
 
-  validates_presence_of :name
+  end
 
 end
