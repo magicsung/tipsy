@@ -27,11 +27,13 @@ ActiveRecord::Schema.define(version: 20151016011033) do
   create_table "comments", force: :cascade do |t|
     t.string   "content",    limit: 255,             null: false
     t.string   "user_id",    limit: 255,             null: false
+    t.string   "store_id",   limit: 255,             null: false
     t.integer  "rating",     limit: 4,   default: 0
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
   end
 
+  add_index "comments", ["store_id"], name: "index_comments_on_store_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "djs", force: :cascade do |t|
@@ -82,6 +84,7 @@ ActiveRecord::Schema.define(version: 20151016011033) do
     t.integer  "category_id",      limit: 4
     t.string   "yelp_id",          limit: 255
     t.string   "yelp_image",       limit: 255
+    t.integer  "comments_count",   limit: 4
   end
 
   create_table "users", force: :cascade do |t|
