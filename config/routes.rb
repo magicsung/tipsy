@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :comments
   resources :tipsy
   resources :meetups
+  resources :meetup_messages
 
   namespace :admin do
     root "store#index"
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :comments
     resources :meetups
+    resources :meetup_messages
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
