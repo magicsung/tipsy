@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :tipsy
   resources :stores
   resources :dj
-  resources :event
+  resources :events
   resources :categories
   resources :comments
   resources :meetups

@@ -1,0 +1,22 @@
+
+<div class="container">
+  <div class="owl-carousel">
+    <% Event.all.each do |x| %>
+    <div> <%= image_tag(x.edm.url) %> </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+<script>
+  $(document).on("page:change", function(){
+
+    $(".owl-carousel").owlCarousel({
+      slideSpeed : 300,
+      paginationSpeed : 400,
+      singleItem:true
+    });
+
+  })
+</script>
