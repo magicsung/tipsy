@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151017054626) do
+ActiveRecord::Schema.define(version: 20151017060954) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",               limit: 255, null: false
@@ -68,6 +68,14 @@ ActiveRecord::Schema.define(version: 20151017054626) do
     t.datetime "edm_updated_at"
   end
 
+  create_table "meetup_messages", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4,   null: false
+    t.integer  "meetup_id",  limit: 4,   null: false
+    t.string   "content",    limit: 255, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "meetups", force: :cascade do |t|
     t.integer  "user_id",        limit: 4,     null: false
     t.string   "title",          limit: 255,   null: false
@@ -83,6 +91,13 @@ ActiveRecord::Schema.define(version: 20151017054626) do
   end
 
   add_index "meetups", ["user_id"], name: "index_meetups_on_user_id", using: :btree
+
+  create_table "participates", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4, null: false
+    t.integer  "meetup_id",  limit: 4, null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
 
   create_table "stores", force: :cascade do |t|
     t.string   "name",             limit: 255

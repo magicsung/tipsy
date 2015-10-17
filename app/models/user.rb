@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
 
   validates_presence_of :name
 
+  has_many :meetup_messages
+  has_many :meetup, :through => :participates
+  has_many :participates
+
 
   def admin?
     self.role == "admin"
