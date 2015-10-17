@@ -5,3 +5,33 @@
 @import "owl.theme";
 @import 'bootstrap-datepicker';
 @import 'categories';
+
+
+#user-status {
+  display: none;
+}
+
+#menu {
+  color: #fff;
+}
+
+.navbar {
+  margin-bottom: 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.5);
+
+  .navbar-brand {
+    color: #fff;
+  }
+
+  .nav li a{
+    color: #ddd;
+  }
+
+  .collapse .open .dropdown-menu li a {
+    color: #ddd;
+  }
+}

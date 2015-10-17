@@ -8,24 +8,60 @@
 </head>
 <body>
 
-<!-- User message -->
-<div class="pull-right">
-  <% if current_user %>
-    <%= link_to('Log out', destroy_user_session_path, :method => :delete) %> |
-    <%= link_to('Edit', edit_registration_path(:user)) %> 
-  <% else %>
-    <%= link_to('Sign up', new_registration_path(:user)) %> |
-    <%= link_to('Log in', new_session_path(:user)) %> |
-    <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-  <% end %>
-  <% if current_user %>
-    <% if current_user.admin? %>
-      | <%= link_to 'Admin', admin_root_path %>
+<div id="user-status">
+  <div class="">
+    <% if current_user %>
+      <%= link_to('Log out', destroy_user_session_path, :method => :delete) %> |
+      <%= link_to('Edit', edit_registration_path(:user)) %> 
+    <% else %>
+      <%= link_to('Sign up', new_registration_path(:user)) %> |
+      <%= link_to('Log in', new_session_path(:user)) %> |
+      <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
     <% end %>
-  <% end %>
+    <% if current_user %>
+      <% if current_user.admin? %>
+        | <%= link_to 'Admin', admin_root_path %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="clearfix"></div>
 </div>
-<div class="clearfix"></div>
-<!-- User message -->
+ 
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Tipsy</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="nav navbar-nav">
+        <li class=""></li>
+        <li class="dropdown active">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">All</a></li>
+            <li><a href="#">Pub</a></li>
+            <li><a href="#">Club</a></li>
+            <li><a href="#">Bar</a></li>
+            <li><a href="#">Other</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Event</a></li>
+        <li><a href="#">Meetup</a></li>
+        <li><a href="#">Taxi</a></li>
+        <li><a href="#">Setting</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 
 <%= yield %>
 

@@ -1,15 +1,13 @@
 
-<div class="row">
-  <div class="col-xs-12">
-    <% Category.all.each do |y| %>
-       <div class="category-showbox-content">
-          <%= link_to stores_path(:category => y) do %>
-            <%= image_tag(y.image.url) %>
-            <div class="description">
-              <p><%= y.name %></p>
-            </div>
-          <% end %>
-       </div>
-    <% end %>
-  </div>
+<div class="col-xs-12">
+  <% Category.all.each do |y| %>
+     <div class="category-showbox-content">
+        <%= link_to stores_path(:category => y) do %>
+          <%= image_tag(y.image.url) %>
+          <div class="description">
+            <p><%= y.name %></p>
+          </div>
+        <% end %>
+     </div>
+  <% end %>
 </div>
