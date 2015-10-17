@@ -5,10 +5,11 @@
 @import "owl.theme";
 @import 'bootstrap-datepicker';
 @import 'categories';
+@import 'profile';
 
-
-#user-status {
-  display: none;
+.col-xs-12 {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 #menu {
@@ -29,6 +30,13 @@
 
   .nav li a{
     color: #ddd;
+  }
+
+  .divider {
+    background: rgba(255,255,255,0.3);
+    width: 96%;
+    height: 1px;
+    margin-left: 2%;
   }
 
   .collapse .open .dropdown-menu li a {

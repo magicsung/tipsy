@@ -1,0 +1,30 @@
+
+<div class="profile col-xs-12">
+  
+  <div class="wrapper">
+    <table class="table">
+
+    <tr>
+      <th>Photo:</th>
+      <td><%= image_tag(current_user.image, :class => "img-circle", :id => "user-photo") %></td>
+    </tr>
+    <tr>
+      <th>Name:</th>
+      <td><%= current_user.name %></td>
+    </tr>
+    <tr>
+      <th>Email:</th>
+      <td><%= current_user.email %></td>
+    </tr>
+    
+    </table>
+  </div>
+  
+  
+  <div class="user-logout">
+    <% if current_user %>
+      <%= button_to('Log out', destroy_user_session_path, :method => :delete, :class => 'btn logout') %>
+    <% end %>
+  </div>
+
+</div>

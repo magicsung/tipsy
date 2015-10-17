@@ -1,0 +1,32 @@
+body {
+  color: #fff;
+}
+
+
+.profile {
+  position: relative;
+
+  .wrapper {
+    padding: 0 15px;
+  }
+
+  .user-logout {
+    text-align: center;
+    margin-top: 15px;
+    position: relative;
+    top: 50px;
+
+    
+    .logout {
+      width: 300px;
+      color: #fff;
+      background: #222;
+      height: 50px;
+      border: 1px solid #ccc;
+      padding: 0;
+    }
+  }
+
+}
+
+

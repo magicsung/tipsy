@@ -4,12 +4,14 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
+  get 'profile/:id' => "tipsy#profile", as: 'profile'
+
+  resources :tipsy
   resources :stores
   resources :dj
   resources :event
   resources :categories
   resources :comments
-  resources :tipsy
   resources :meetups
   resources :meetup_messages
 

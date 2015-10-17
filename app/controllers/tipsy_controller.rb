@@ -4,4 +4,8 @@ class TipsyController < ApplicationController
     
   end
 
+  def profile
+    
+  end
+
 end
