@@ -10,7 +10,12 @@ class Admin::DjController < ApplicationController
   end
 
   def show
-    
+    if params[:pid]
+      @playlist = Playlist.find( params[:pid] )
+    else
+      @playlist = Playlist.new
+    end
+
   end
 
   def new

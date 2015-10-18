@@ -1,13 +1,69 @@
+<div class="row">
+  <div class="col-md-6">
+    <h1><%= @dj.name %></h1>
+    <%= image_tag @dj.photo.url %>
+    <table class="table">
+      <tr>
+        <th>Description</th>
+        <td><%= @dj.description %></td>
+      </tr>
+    </table>
+  </div>
 
-<h1><%= @dj.name %></h1>
-<%= image_tag @dj.photo.url %>
 
-<table class="table">
-  <tr>
-    <th>Description</th>
-    <td><%= @dj.description %></td>
-  </tr>
-</table>
+  <div class="col-md-6">
+
+    <% if params[:pid] %>
+      <h3>EDIT Playlist</h3>
+      <% @url = admin_playlist_path(id:params[:pid], dj:@dj) %>
+    <% else %>
+      <h3>NEW Playlist</h3>
+      <% @url = admin_playlists_path(dj:@dj) %>
+    <% end %>
+
+    
+    <%= form_for @playlist, :url => @url do |n|  %>
+
+    <div class="form-group">
+      <%= n.label :title, "Title" %>
+      <%= n.text_field :title, :class => "form-control", :required => "required" %>
+    </div>
+
+    <div class="form-group">
+      <%= n.label :content, "Content" %>
+      <%= n.text_area :content, :class => "form-control", :required => "required", :rows => 4 %>
+    </div>
+
+    <%= n.submit "Save", :class => "btn btn-primary pull-left" %>
+    <%= link_to 'Cancel', admin_dj_path(@dj), :class => 'btn btn-default pull-right' %>
+    <div class="clearfix"></div>
+
+    <% end %>
+  </div>
+</div>
 
 
-<%= link_to 'Back', admin_dj_index_path, :class => 'btn btn-default' %>
+<h2>Playlist</h2>
+
+<div class="row">
+  <% @dj.playlists.each do |x| %>
+    <div class="col-md-3">
+      <%= x.title %>
+      <div class="pull-right">
+        <%= link_to admin_dj_path(@dj, :pid => x.id), :class => "btn btn-xs" do %>
+          <i class="glyphicon glyphicon-pencil"></i>
+        <% end %>
+        <%= link_to admin_playlist_path(x, dj:@dj), :method => "delete", :data => { :confirm => "Are you sure?" }, :class => "btn btn-xs" do %>
+          <i class="glyphicon glyphicon-trash"></i>
+        <% end %>
+      </div>
+      <div class="clearfix"></div>
+      <%= raw(x.content) %>
+      <div class="empty100px"></div>
+    </div>
+  <% end %>
+</div>
+
+
+
+
