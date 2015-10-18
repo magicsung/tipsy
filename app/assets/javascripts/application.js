@@ -16,3 +16,4 @@
 //= require bootstrap-sprockets
 //= require owl.carousel
 //= require bootstrap-datepicker
+Turbolinks.enableProgressBar();

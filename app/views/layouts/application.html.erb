@@ -6,8 +6,11 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body class="<%= params[:controller] %>">
- 
+<% @controller = params[:controller] %>
+<% @action = params[:action] %>
+
+
+<body class="<%= @controller %>">
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -24,7 +27,7 @@
     <div class="collapse navbar-collapse" id="menu">
       <ul class="nav navbar-nav">
         <li class=""></li>
-        <li class="dropdown active">
+        <li class="dropdown <%= @controller == "categories" ? "active" : "" %>">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><%= link_to 'All', stores_path %></li> 
@@ -34,12 +37,13 @@
             <li><a href="#">Other</a></li>
           </ul>
         </li>
-        <li><%= link_to 'Event', events_path %></li>
+        <li class="<%= @controller == "events" ? "active" : "" %>"><%= link_to 'Event', events_path %></li>
+        <li><a href="#">DJ</a></li>
         <li><a href="#">Meetup</a></li>
         <li><a href="#">Taxi</a></li>
         <li role="separator" class="divider visible-xs-block"></li>
         <% if current_user %>
-          <li><%= link_to 'Setting', profile_path(current_user) %></li>
+          <li class="<%= @action == "profile" ? "active" : "" %>"><%= link_to 'Setting', profile_path(current_user) %></li>
         <% else %>
           <li><%= link_to('Sign up', new_registration_path(:user), :class => "hidden-xs") %></li>
           <li><%= link_to('Log in', new_session_path(:user)) %></li>
