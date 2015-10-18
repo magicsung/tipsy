@@ -14,7 +14,7 @@
   <tr>
     <td>
       <% if x.photo.exists? == false %>
-        <%= image_tag("dj_img.png", :class => "img-rounded dj-list-img") %>
+        <%= image_tag("dj_img.jpg", :class => "img-rounded dj-list-img") %>
       <% else %>
         <%= image_tag x.photo.url(:thumb), :class => "img-rounded dj-list-img" %>
       <% end %>

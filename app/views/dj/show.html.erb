@@ -1,0 +1,18 @@
+
+<div class="col-xs-12">
+  <% if @dj.photo.exists? == false %>
+    <%= image_tag("dj_img.jpg", :class => "") %>
+  <% else %>
+    <%= image_tag @dj.photo.url, :class => "" %>
+  <% end %>
+  <h1><%= @dj.name %></h1>
+</div>
+
+
+<div class="row">
+  <% @dj.playlists.each do |x| %>
+    <div class="col-md-3">
+      <%= raw(x.content) %>
+    </div>
+  <% end %>
+</div>
