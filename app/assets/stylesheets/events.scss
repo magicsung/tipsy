@@ -1,3 +1,7 @@
+.events {
+  // background: #000; 
+}
+
 .container {
   background: #000;
   position: relative;
@@ -5,6 +9,7 @@
   padding: 0;
 
   .owl-carousel {
+    background: #002961;
 
     img {
       width: 100%;

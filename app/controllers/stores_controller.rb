@@ -1,9 +1,26 @@
 class StoresController < ApplicationController
 
-  def index
-    
-    
+  before_action :find_store, :only => [ :show ]
 
+  def index
+    if params[:keyword] 
+      @store = Store.where( [ "name like ?", "%#{params[:keyword]}%" ] )
+    else
+      @store = Store.all
+    end
+
+    @store = @store.page(params[:page]).per(10)
+  end
+
+  def show
+    @store = params[:id]
+  end
+
+
+private
+
+  def find_store
+    @store = Store.find(params[:id])
   end
 
 end

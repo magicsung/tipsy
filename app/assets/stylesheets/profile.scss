@@ -8,6 +8,7 @@ body {
 
   .wrapper {
     padding: 0 15px;
+    margin-top: 30px;
   }
 
   .user-logout {
@@ -20,9 +21,9 @@ body {
     .logout {
       width: 300px;
       color: #fff;
-      background: #222;
+      background: rgba(0,0,0,0);
       height: 50px;
-      border: 1px solid #ccc;
+      border: 1px solid #40a2d1;
       padding: 0;
     }
   }
