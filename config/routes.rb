@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     resources :user
     resources :store
     resources :djs
-    resources :event
+    resources :events
     resources :categories
     resources :comments
     resources :meetups

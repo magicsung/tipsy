@@ -1,7 +1,7 @@
 
 <div class="container">
   <div class="owl-carousel">
-    <% Event.all.each do |x| %>
+    <% Events.all.each do |x| %>
     <div> <%= image_tag(x.edm.url) %> </div>
     <% end %>
   </div>
