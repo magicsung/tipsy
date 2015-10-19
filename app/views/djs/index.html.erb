@@ -1,6 +1,6 @@
 
 <% @dj.each do |x| %>
-  <div class="col-xs-6">
+  <div class="col-xs-6 col-md-3">
     <%= link_to dj_path(x) do %>
       <% if x.photo.exists? == false %>
         <%= image_tag("dj_img.jpg", :class => "") %>
