@@ -17,7 +17,7 @@ class Admin::PlaylistsController < ApplicationController
   def create
     @dj = params[:dj]
     @playlist = Playlist.new( playlist_params )
-    @playlist.dj_id = @dj
+    @playlist.djs_id = @dj
 
     if @playlist.save!
       flash[:notice] = "Playlist was successfully created!"
@@ -34,7 +34,7 @@ class Admin::PlaylistsController < ApplicationController
     if @playlist.update( playlist_params )
       flash[:notice] = "Post was updated!"
     end
-    redirect_to admin_dj_path(@dj)
+    redirect_to admin_dj_url(@dj)
   end
 
   def destroy

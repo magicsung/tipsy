@@ -3,10 +3,10 @@ class CreatePlaylists < ActiveRecord::Migration
     create_table :playlists do |t|
       t.string :title, null: false
       t.text :content, null: false
-      t.integer :dj_id
+      t.integer :djs_id
 
       t.timestamps null: false
     end
-    add_index :playlists, :dj_id
+    add_index :playlists, :djs_id
   end
 end

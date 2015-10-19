@@ -102,12 +102,12 @@ ActiveRecord::Schema.define(version: 20151018074045) do
   create_table "playlists", force: :cascade do |t|
     t.string   "title",      limit: 255,   null: false
     t.text     "content",    limit: 65535, null: false
-    t.integer  "dj_id",      limit: 4
+    t.integer  "djs_id",     limit: 4
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
 
-  add_index "playlists", ["dj_id"], name: "index_playlists_on_dj_id", using: :btree
+  add_index "playlists", ["djs_id"], name: "index_playlists_on_djs_id", using: :btree
 
   create_table "stores", force: :cascade do |t|
     t.string   "name",             limit: 255

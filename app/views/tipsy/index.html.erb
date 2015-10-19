@@ -18,7 +18,7 @@
 </div>
 <div class="container">
 
-  <% Dj.all.limit(5).each do |x| %>
+  <% Djs.all.limit(5).each do |x| %>
     <div>
       <%= image_tag x.photo.url(:medium), :class => "img-circle" %> 
     </div>

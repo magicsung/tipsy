@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :tipsy
   resources :stores
-  resources :dj
+  resources :djs
   resources :events
   resources :categories
   resources :comments
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     root "store#index"
     resources :user
     resources :store
-    resources :dj
+    resources :djs
     resources :event
     resources :categories
     resources :comments

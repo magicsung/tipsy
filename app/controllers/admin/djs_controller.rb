@@ -1,4 +1,4 @@
-class Admin::DjController < ApplicationController
+class Admin::DjsController < ApplicationController
 
   layout "admin"
 
@@ -19,15 +19,15 @@ class Admin::DjController < ApplicationController
   end
 
   def new
-    @dj = Dj.new
+    @dj = Djs.new
   end
 
   def create
-    @dj = Dj.new( dj_params )
+    @dj = Djs.new( dj_params )
 
     if @dj.save
       flash[:notice] = "Store was successfully created!"
-      redirect_to :action => :index 
+      redirect_to admin_djs_path
     else
       flash.now[:alert] = "Please enter something!"
       render "new"
@@ -65,7 +65,7 @@ class Admin::DjController < ApplicationController
   end
 
   def find_dj
-    @dj = Dj.find(params[:id])
+    @dj = Djs.find(params[:id])
   end
 
 end

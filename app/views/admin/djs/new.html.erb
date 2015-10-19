@@ -1,11 +1,11 @@
 <h1>NEW DJ</h1>
 
-<%= form_for @dj, :url => admin_dj_index_path do |n|  %>
+<%= form_for @dj, :url => admin_djs_path do |n|  %>
 
 <%= render :partial => 'form', :locals => { :n => n } %>
 
 <%= n.submit "Create", :class => "btn btn-primary" %>
-<%= link_to "Cancel", admin_dj_index_path, :class => "btn btn-info pull-right" %>
+<%= link_to "Cancel", admin_djs_path, :class => "btn btn-info pull-right" %>
 
 <div class="clearfix"></div>
 
