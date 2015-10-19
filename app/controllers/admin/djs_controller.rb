@@ -61,7 +61,7 @@ class Admin::DjsController < ApplicationController
   private
 
   def dj_params
-    params.require(:dj).permit(:name, :description, :photo)
+    params.require(:djs).permit(:name, :description, :photo)
   end
 
   def find_dj
