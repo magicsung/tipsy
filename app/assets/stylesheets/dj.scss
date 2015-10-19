@@ -1,6 +1,9 @@
 .dj {
-
-  .col-xs-4 {
+  iframe {
+        width: 100%;
+      }
+  
+  .col-xs-6 {
     position: relative;
     overflow: hidden;
     padding: 0;
@@ -40,4 +43,25 @@
     }
   }
 }
+
+@media screen and (max-width: 750px) {
+  .dj {
+
+    .col-xs-6 {
+
+      img {
+        height: 100%;
+      }
+    }
+    
+    .col-md-3 {
+      padding: 0;
+      
+    }
+  }
+}
+
+
+
+
 

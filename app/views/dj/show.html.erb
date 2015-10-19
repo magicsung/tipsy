@@ -9,10 +9,10 @@
 </div>
 
 
-<div class="row">
-  <% @dj.playlists.each do |x| %>
-    <div class="col-md-3">
-      <%= raw(x.content) %>
-    </div>
-  <% end %>
-</div>
+
+
+<% @dj.playlists.each do |x| %>
+  <div class="col-md-3">
+    <%= raw(x.content) %>
+  </div>
+<% end %>
