@@ -1,13 +1,15 @@
 
-<% @dj.each do |x| %>
-  <div class="col-xs-6 col-md-3">
-    <%= link_to dj_path(x) do %>
-      <% if x.photo.exists? == false %>
-        <%= image_tag("dj_img.jpg", :class => "") %>
-      <% else %>
-        <%= image_tag x.photo.url(:medium), :class => "" %>
+<div id="masonry-container" class="transitions-enabled clearfix">
+  <% @dj.each do |x| %>
+    <div class="box dj-image-box">
+      <%= link_to dj_path(x) do %>
+        <% if x.photo.exists? == false %>
+          <%= image_tag("dj_img.jpg", :class => "") %>
+        <% else %>
+          <%= image_tag x.photo.url(:medium), :class => "" %>
+        <% end %>
+        <h3><%= x.name %></h3>
       <% end %>
-      <h3><%= x.name %></h3>
-    <% end %>
-  </div>
-<% end %>
+    </div>
+  <% end %>
+</div>
