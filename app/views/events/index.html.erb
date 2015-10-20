@@ -13,9 +13,20 @@
   $(document).on("page:change", function(){
 
     $(".owl-carousel").owlCarousel({
-      slideSpeed : 300,
+      items: function(items) {
+          if ($(window).width() > 750) {
+            return 3;
+          }
+        },
+      slideSpeed: 300,
       paginationSpeed : 400,
-      singleItem:true
+      singleItem: function(issingle) {
+          if ($(window).width() > 750) {
+            return false;
+          }else {
+            return true;
+          }
+        },
     });
 
   })
