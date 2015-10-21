@@ -8,8 +8,12 @@ class StoresController < ApplicationController
     # else
     #   @store = Store.all
     # end
-    @store = Store.all
     @category = params[:category].to_i
+    if @category > 1
+      @store = Store.where( :category_id => @category )
+    else
+      @store = Store.all
+    end
 
     # @store = @store.page(params[:page]).per(10)
   end
