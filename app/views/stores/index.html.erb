@@ -1,7 +1,8 @@
 
-<div class="store-list">
+
+<div id="masonry-container" class="store-list transitions-enabled clearfix">
   <% @store.each do |y| %>
-    <div class="col-xs-6 col-sm-3 col-md-2">
+    <div class="box">
        <div class="store-showbox-content">
           <%= link_to store_path(y) do %>
             <% if y.yelp_image == nil %>
