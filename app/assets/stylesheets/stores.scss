@@ -54,3 +54,18 @@
   }
 
 }
+
+@media screen and (max-width: 550px) {
+  .stores {
+
+    .box {
+      width: 45%;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+
