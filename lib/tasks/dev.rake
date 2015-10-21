@@ -1,6 +1,6 @@
 namespace :dev do
 
-  task :fetch_yelp => :environment do
+  task :yelp => :environment do
 
     puts "fetching yelp"
 
@@ -15,62 +15,61 @@ namespace :dev do
       config.token_secret = yelp_config["Token_Secret"]
     end
 
-    # count data
+    @category = [
+        [2, "club"],
+        [7, "pub"]
+      ]
+    c = 0
+    while c < @category.count
 
-    params = { term: 'pub', limit: 20 }
-    locale = { lang: 'zh' }
-    kk = Yelp.client.search('taipei', params, locale)
-    round = kk.total / 20 + 1
-    puts "Total round: #{round}"
-
-
-    # business api
-
-    # data = Yelp.client.business( URI.escape( 'relax-jazz-pub-台北市大安區' ) )
-    # puts data.inspect
-
-
-    # get data
-
-    i = 0
-    while i <= round
-      puts "page #{i}"
-      
-      params = { term: 'pub', limit: 20, offset: ( i * 20 ) }
+      puts @category[c][1]
+      # count data
+      params = { term: @category[c][1], limit: 20 } 
       locale = { lang: 'zh' }
-      xx = Yelp.client.search('taipei', params, locale)
+      kk = Yelp.client.search('taipei', params, locale)
+      round = kk.total / 20 + 1
+      puts "Total round: #{round}"
 
-      xx.businesses.each do |b|
-        if s = Store.find_by_name(b.name)
-          puts "update #{b.name}"
-          # update
-          s.location_city = b.try(:location).try(:city)
-          s.location_address = b.try(:location).try(:display_address).join(" ")
-          s.phone = b.try(:display_phone)
-          s.coordinate_lat = b.try(:location).try(:coordinate).try(:latitude)
-          s.coordinate_lon = b.try(:location).try(:coordinate).try(:longitude)
-          s.yelp_id = b.try(:id)
-          s.yelp_image = b.try(:image_url)
-          s.save
-        else
-          puts "create #{b.name}"
-          # create
-          s = Store.new
-          s.name = b.name
-          s.location_city = b.try(:location).try(:city)
-          s.location_address = b.try(:location).try(:display_address).join(" ")
-          s.phone = b.try(:display_phone)
-          s.coordinate_lat = b.try(:location).try(:coordinate).try(:latitude)
-          s.coordinate_lon = b.try(:location).try(:coordinate).try(:longitude)
-          s.yelp_id = b.try(:id)
-          s.yelp_image = b.try(:image_url)
-          s.save!
+      # business api
+      # data = Yelp.client.business( URI.escape( 'relax-jazz-pub-台北市大安區' ) )
+      # puts data.inspect
+
+
+      # get data
+      # page loop start
+        i = 0
+        while i <= round
+          puts "page #{i}"
+          
+          params = { term: 'pub', limit: 20, offset: ( i * 20 ) }
+          locale = { lang: 'zh' }
+          xx = Yelp.client.search('taipei', params, locale)
+
+          xx.businesses.each do |b|
+            if Store.find_by_yelp_id(b.id)
+              # update
+            elsif b.try(:image_url)
+              puts "create #{b.name}"
+              # create
+              s = Store.new
+              s.name = b.name
+              s.category_id = @category[c][0]
+              s.location_city = b.try(:location).try(:city)
+              s.location_address = b.try(:location).try(:display_address).join(" ")
+              s.phone = b.try(:display_phone)
+              s.coordinate_lat = b.try(:location).try(:coordinate).try(:latitude)
+              s.coordinate_lon = b.try(:location).try(:coordinate).try(:longitude)
+              s.yelp_id = b.try(:id)
+              s.yelp_image = b.try(:image_url)
+              s.save!
+            end
+          end
+
+        i += 1
         end
-      end
-
-    i += 1
+      # page loop end
+      c += 1
     end
-
 
   end
 
