@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   resources :meetup_messages
   resources :playlists
 
+  scope :path => '/api/v1/', :defaults => { :format => :json }, :module => "api_v1", :as => 'v1' do
+    resources :stores, only: %i[index show] # ApiV1::StoresController
+  end
+
   namespace :admin do
     root "store#index"
     resources :user
