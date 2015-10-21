@@ -19,6 +19,8 @@
 @import 'general';
 @import 'dj';
 
+$deepblue: #002961;
+$black: #000;
 
 .col-xs-12 {
   padding-left: 0;
@@ -41,10 +43,18 @@
     color: #fff;
   }
 
-  .nav li a{
-    color: #ddd;
+  .dropdown-menu {
+    background: $black;
   }
 
+  .nav {
+    li a{
+      color: #ddd;
+    }
+    li a:hover {
+      background: $deepblue;
+    }
+  }
   .divider {
     background: rgba(255,255,255,0.3);
     width: 96%;
