@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   get 'profile/:id' => "tipsy#profile", as: 'profile'
 
   resources :tipsy
-  resources :stores
+  resources :stores, only: %i[index show]
   resources :djs
   resources :events
   resources :categories
-  resources :comments
+  resources :comments, only: %i[create destroy]
   resources :meetups
   resources :meetup_messages
   resources :playlists

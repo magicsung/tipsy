@@ -8,6 +8,7 @@ class StoresController < ApplicationController
     # else
     #   @store = Store.all
     # end
+
     @category = params[:category].to_i
     if @category > 1
       @store = Store.where( :category_id => @category )
@@ -19,7 +20,7 @@ class StoresController < ApplicationController
   end
 
   def show
-    
+    @comment = Comment.new
   end
 
 

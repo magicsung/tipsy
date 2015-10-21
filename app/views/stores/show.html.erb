@@ -1,45 +1,100 @@
 
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-  
-    <% if @store.yelp_image == nil %>
-      <%= image_tag('store_default.jpg', :class => 'store-show-image') %>
-    <% else %>
-      <%= image_tag(@store.yelp_image, :class => 'store-show-image') %>
-    <% end %>
 
-    <table class="table">
-    <tr>
-      <td>
-        <p><%= @store.name %></p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="tel:<%= @store.phone %>"><%= @store.phone %></a>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><%= @store.location_city %></p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><%= @store.location_address %></p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><%= @store.coordinate_lat %></p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p><%= @store.coordinate_lon %></p>
-      </td>
-    </tr>
-  </table>
-  </div>
+<div class="col-md-6 col-md-offset-3">
+
+  <% if @store.yelp_image == nil %>
+    <%= image_tag('store_default.jpg', :class => 'store-show-image') %>
+  <% else %>
+    <%= image_tag(@store.yelp_image, :class => 'store-show-image') %>
+  <% end %>
+
+  <table class="table">
+  <tr>
+    <td>
+      <p><%= @store.name %></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="tel:<%= @store.phone %>"><%= @store.phone %></a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><%= @store.location_city %></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><%= @store.location_address %></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><%= @store.coordinate_lat %></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><%= @store.coordinate_lon %></p>
+    </td>
+  </tr>
+</table>
 </div>
+
+
+
+
+<div class="col-md-6 col-md-offset-3">
+
+  <h3>User comments:</h3>
+
+  <table class="table">
+    <% @store.comments.each do |x| %>
+      <tr>
+        <td><%= x.rating %></td>
+        <td><%= x.content %> <br> <small> by <%= x.user.name %></small></td>
+        <td>
+        <% if current_user %>
+          <% if x.user == current_user %>  
+            <div class="pull-right">
+              <%= link_to comment_path(x), :method => "delete", :data => { :confirm => "Are you sure?" }, :class => "btn btn-xs" do %>
+                <i class="glyphicon glyphicon-remove"></i>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+        </td> 
+      </tr>
+    <% end %>
+  </table>
+
+
+
+  <%= form_for @comment, :url => comments_path do |n|  %>
+
+  <%= n.hidden_field :store_id, :value => @store.id %>
+
+  <div class="form-group">
+    <%= n.label :rating, "Rating" %>
+    <%= n.number_field :rating, :class => "form-control", :required => "required" %>    
+  </div>
+
+  <div class="form-group">
+    <%= n.label :content, "Content" %>
+    <%= n.text_area :content, :class => "form-control", :required => "required", :rows => 5 %>    
+  </div>
+
+  <%= n.submit "Create", :class => "btn btn-primary" %>
+
+  <% end %>
+
+</div>
+
+
+
+<div class="empty100px"></div>
+
+
+
