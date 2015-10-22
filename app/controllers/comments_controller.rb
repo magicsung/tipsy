@@ -5,6 +5,14 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new( comment_params )
     @comment.user_id = current_user.id
+    @score = params[:score].to_i
+
+    if @score >= 5
+      @score = 5
+    elsif @score <= 0
+      @score = 0
+    end
+    @comment.rating = @score
 
     if @comment.save
       redirect_to store_path( params[:comment][:store_id] )

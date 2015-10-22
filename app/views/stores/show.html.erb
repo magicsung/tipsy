@@ -53,7 +53,9 @@
   <table class="table">
     <% @store.comments.each do |x| %>
       <tr>
-        <td><%= x.rating %></td>
+        <td>
+          <div class="current_score" data-score="<%= x.rating %>"></div>
+        </td>
         <td><%= x.content %> <br> <small> by <%= x.user.name %></small></td>
         <td>
         <% if current_user %>
@@ -76,9 +78,10 @@
 
   <%= n.hidden_field :store_id, :value => @store.id %>
 
-  <div class="form-group">
+  <div id="rating" class="form-group">
     <%= n.label :rating, "Rating" %>
-    <%= n.number_field :rating, :class => "form-control", :required => "required" %>    
+    <%= n.hidden_field :rating, :class => "form-control", :name => "score" %>
+    <div class="star"></div>  
   </div>
 
   <div class="form-group">

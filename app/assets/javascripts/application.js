@@ -22,6 +22,7 @@
 //= require owl.carousel
 //= require bootstrap-datepicker
 //= require dj
+//= require jquery_raty
 Turbolinks.enableProgressBar();
 
 
@@ -35,7 +36,22 @@ $(document).on('page:change', function(){
     });
   });
 
+  $('.star').raty({ 
+    score: '3'
+  });
+
+  $('.current_score').raty({ 
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    }
+  }); 
+
 });
+
+
+
+
 
 
 
