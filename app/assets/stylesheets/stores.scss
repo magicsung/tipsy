@@ -1,7 +1,11 @@
 .stores {
 
   .store-show-image {
-    width: 100%;
+    width: 100%;  
+  }
+
+  .store-image .col-md-6 {
+    padding: 0;
   }
 
   #masonry-container {
