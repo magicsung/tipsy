@@ -34,6 +34,8 @@ gem 'bootstrap-datepicker-rails'
 gem 'rest-client'
 gem 'yelp', require: 'yelp'
 gem 'masonry-rails'
+gem 'capistrano-rails', :group => :development
+gem 'capistrano-passenger', :group => :development
 
 
 # Use ActiveModel has_secure_password
