@@ -5,7 +5,9 @@
     <div class="box">
        <div class="store-showbox-content">
           <%= link_to store_path(y) do %>
-            <% if y.yelp_image == nil %>
+            <% if y.photo %>
+              <%= image_tag(y.photo) %>
+            <% elsif y.yelp_image == nil %>
               <%= image_tag('store_default.jpg', :class => 'def-img') %>
             <% else %>
               <%= image_tag(y.yelp_image) %>

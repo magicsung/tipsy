@@ -35,3 +35,15 @@
   <%= n.label :hours, "Hours" %>
   <%= n.text_area :hours, :class => "form-control", :rows => "7" %>    
 </div>
+
+<% if @store.photo.exists? %>
+  <%= image_tag @store.photo.url(:medium) %>
+  <br>
+    Delete file: <%= check_box_tag "destroy_photo", "1" %>
+  <br><br>
+<% end %>
+
+
+<div class="form-group">
+  <%= n.file_field :photo %>
+</div> 

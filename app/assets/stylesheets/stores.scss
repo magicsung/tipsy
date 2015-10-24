@@ -1,7 +1,11 @@
 .stores {
 
-  .store-show-image {
-    width: 100%;  
+  .store-image {
+    width: 100%;
+
+    img {
+      width: 100%;      
+    }
   }
 
   .store-image .col-md-6 {

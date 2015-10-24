@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151018074045) do
+ActiveRecord::Schema.define(version: 20151024030215) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",               limit: 255, null: false
@@ -110,22 +110,26 @@ ActiveRecord::Schema.define(version: 20151018074045) do
   add_index "playlists", ["djs_id"], name: "index_playlists_on_djs_id", using: :btree
 
   create_table "stores", force: :cascade do |t|
-    t.string   "name",             limit: 255
-    t.string   "image_url",        limit: 255
-    t.string   "phone",            limit: 255
-    t.integer  "rating",           limit: 4
-    t.string   "description",      limit: 255
-    t.string   "hours",            limit: 255
-    t.string   "location_address", limit: 255
-    t.string   "location_city",    limit: 255
-    t.string   "coordinate_lat",   limit: 255
-    t.string   "coordinate_lon",   limit: 255
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.integer  "category_id",      limit: 4
-    t.string   "yelp_id",          limit: 255
-    t.string   "yelp_image",       limit: 255
-    t.integer  "comments_count",   limit: 4
+    t.string   "name",               limit: 255
+    t.string   "image_url",          limit: 255
+    t.string   "phone",              limit: 255
+    t.integer  "rating",             limit: 4
+    t.string   "description",        limit: 255
+    t.string   "hours",              limit: 255
+    t.string   "location_address",   limit: 255
+    t.string   "location_city",      limit: 255
+    t.string   "coordinate_lat",     limit: 255
+    t.string   "coordinate_lon",     limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "category_id",        limit: 4
+    t.string   "yelp_id",            limit: 255
+    t.string   "yelp_image",         limit: 255
+    t.integer  "comments_count",     limit: 4
+    t.string   "photo_file_name",    limit: 255
+    t.string   "photo_content_type", limit: 255
+    t.integer  "photo_file_size",    limit: 4
+    t.datetime "photo_updated_at"
   end
 
   create_table "users", force: :cascade do |t|
