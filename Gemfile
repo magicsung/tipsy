@@ -36,7 +36,7 @@ gem 'yelp', require: 'yelp'
 gem 'masonry-rails'
 gem 'capistrano-rails', :group => :development
 gem 'capistrano-passenger', :group => :development
-
+gem "font-awesome-rails"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
