@@ -6,4 +6,8 @@ json.data @event do |e|
   json.id e.id
   json.title e.title
   json.image e.event_image
+  json.dj e.djs do |x|
+    json.name x.name
+    json.url x.abs_url + dj_path(x)
+  end
 end

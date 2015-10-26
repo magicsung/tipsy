@@ -17,6 +17,10 @@ class Event < ActiveRecord::Base
     return "http://www.pa9.club"
   end
 
+  def dj_url
+
+  end
+
   def dj_list
     self.djs.map{ |x| x.name }
   end
