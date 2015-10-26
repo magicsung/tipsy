@@ -4,6 +4,13 @@
     margin: 0 auto;
     width: 100%;
   }
+  
+  .dj-show-left {
+    .image-edm {
+      width: 100%;
+      margin-top: 15px;
+    }
+  }
 
   iframe {
         width: 100%;
@@ -67,6 +74,24 @@
     }
   }
 }
+
+@media screen and (min-width: 551px) {
+
+  .djs {
+    
+    .dj-show-left {
+      margin-top: 15px;
+    }
+    
+    .dj-show-right {
+      margin-top: 15px;
+    }
+
+  }
+}
+
+
+
 
 
 

@@ -31,6 +31,11 @@
 @media screen and (min-width: 550px) {
   .events {
   
+    .img-responsive {
+      margin-top: 15px;
+      position: fixed;
+    }
+
     #wrap {
 
       img {
@@ -40,3 +45,7 @@
 
   }
 }
+
+
+
+
