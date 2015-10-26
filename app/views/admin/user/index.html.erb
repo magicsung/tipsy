@@ -9,11 +9,13 @@
     <tr>
       <th>User name</th>
       <th>Email</th>
+      <th>Role</th>
     </tr>
       <% User.all.each do |x| %>
       <tr>
         <td><%= x.name %></td>
         <td><%= x.email %></td>
+        <td><%= x.role %></td>
       <% end %>
     </tr>
   </table>
