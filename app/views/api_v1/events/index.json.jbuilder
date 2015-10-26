@@ -8,6 +8,6 @@ json.data @event do |e|
   json.image e.event_image
   json.dj e.djs do |x|
     json.name x.name
-    json.url x.abs_url + dj_path(x)
+    json.url x.abs_url + v1_dj_path(x)
   end
 end
