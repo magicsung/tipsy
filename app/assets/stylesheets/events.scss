@@ -1,20 +1,38 @@
 .events {
-  // background: #000; 
-}
 
-.container {
-  background: #000;
-  position: relative;
-  width: 100%;
-  padding: 0;
+  .container {
+    position: relative;
+    width: 100%;
+    padding: 0;
 
-  .owl-carousel {
-    background: #002961;
+    .owl-carousel {
+      background: #002961;
 
-    img {
-      width: 100%;
+      img {
+        width: 100%;
+      }
+
     }
 
   }
+  
+  .box {
+    padding: 0;
+  }
 
+}
+
+
+
+@media screen and (min-width: 550px) {
+  .events {
+  
+    #wrap {
+
+      img {
+        width: 350px;
+      }
+    }  
+
+  }
 }

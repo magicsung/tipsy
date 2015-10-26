@@ -28,11 +28,9 @@
     <div class="collapse navbar-collapse" id="menu">
       <ul class="nav navbar-nav">
         <li class=""></li>
-        <li class="<%= @controller == "categories" ? "active" : "" %>"><%= link_to 'Category', categories_path %></li>
         <li class="<%= @controller == "events" ? "active" : "" %>"><%= link_to 'Event', events_path %></li>
+        <li class="<%= @controller == "categories" ? "active" : "" %>"><%= link_to 'Category', categories_path %></li>
         <li class="<%= @controller == "djs" ? "active" : "" %>"><%= link_to 'DJ', djs_path %></li>
-        <li class="<%= @controller == "meetups" ? "active" : "" %>"><%= link_to 'Meetup', meetups_path %></li>
-        <li><a href="#">Taxi</a></li>
         <li role="separator" class="divider visible-xs-block"></li>
         <% if current_user %>
           <li class="<%= @action == "profile" ? "active" : "" %>"><%= link_to 'Setting', profile_path(current_user) %></li>

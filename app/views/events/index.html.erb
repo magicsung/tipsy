@@ -1,8 +1,10 @@
 
-<div class="container">
-  <div class="owl-carousel">
-    <% Events.all.each do |x| %>
-    <div> <%= image_tag(x.edm.url) %> </div>
+<div class="container event-container">
+  <div id="wrap" class="">
+    <% @event.each do |x| %>
+      <div class="box">
+        <%= link_to image_tag(x.edm.url), event_path(x) %>
+      </div>
     <% end %>
   </div>
 </div>
@@ -12,22 +14,39 @@
 <script>
   $(document).on("page:change", function(){
 
-    $(".owl-carousel").owlCarousel({
-      items: function(items) {
-          if ($(window).width() > 750) {
-            return 3;
-          }
-        },
-      slideSpeed: 300,
-      paginationSpeed : 400,
-      singleItem: function(issingle) {
-          if ($(window).width() > 750) {
-            return false;
-          }else {
-            return true;
-          }
-        },
-    });
+    if ($(window).width() < 750) {
+
+      $("#wrap").addClass("owl-carousel");
+      $(".owl-carousel").owlCarousel({
+        items: function(items) {
+            if ($(window).width() > 750) {
+              return 3;
+            }
+          },
+        slideSpeed: 300,
+        paginationSpeed : 400,
+        singleItem: function(issingle) {
+            if ($(window).width() > 750) {
+              return false;
+            }else {
+              return true;
+            }
+          },
+      });  
+
+    }else {
+
+      $("#wrap").removeClass("owl-carousel");
+      $(function() {
+        return $('.event-container').imagesLoaded(function() {
+          return $('.event-container').masonry({
+            itemSelector: '.box',
+            isFitWidth: true
+          });
+        });
+      });
+
+    }
 
   })
 </script>

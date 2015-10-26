@@ -1,19 +1,19 @@
 Rails.application.routes.draw do
 
-  root "categories#index"
+  root "events#index"
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   get 'profile/:id' => "tipsy#profile", as: 'profile'
 
-  resources :tipsy
+  resources :tipsy, only: [:index]
   resources :stores, only: %i[index show]
-  resources :djs
-  resources :events
-  resources :categories
+  resources :djs, only: %i[index show]
+  resources :events, only: %i[index show]
+  resources :categories, only: [:index]
   resources :comments, only: %i[create destroy]
   resources :meetups
-  resources :meetup_messages
+  # resources :meetup_messages
   resources :playlists
 
   scope :path => '/api/v1/', :defaults => { :format => :json }, :module => "api_v1", :as => 'v1' do
