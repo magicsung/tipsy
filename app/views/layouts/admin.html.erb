@@ -52,11 +52,11 @@
   <% if current_user.admin? %>
     <% @where = params[:controller] %>
     <ul class="nav nav-tabs">
-      <li role="presentation" class="<%= @where == "admin/store" ? "active" : "" %>"><%= link_to 'Store', admin_root_path %></li>
-      <li role="presentation" class="<%= @where == "admin/user" ? "active" : "" %>" ><%= link_to 'User', admin_user_index_path %></li>
       <li role="presentation" class="<%= @where == "admin/events" ? "active" : "" %>" ><%= link_to 'Events', admin_events_path %></li>
-      <li role="presentation" class="<%= @where == "admin/djs" ? "active" : "" %>" ><%= link_to 'DJ', admin_djs_path %></li>
       <li role="presentation" class="<%= @where == "admin/categories" ? "active" : "" %>" ><%= link_to 'Category', admin_categories_path %></li>
+      <li role="presentation" class="<%= @where == "admin/store" ? "active" : "" %>"><%= link_to 'Store', admin_root_path %></li>
+      <li role="presentation" class="<%= @where == "admin/djs" ? "active" : "" %>" ><%= link_to 'DJ', admin_djs_path %></li>
+      <li role="presentation" class="<%= @where == "admin/user" ? "active" : "" %>" ><%= link_to 'User', admin_user_index_path %></li>
     </ul>
   <% end %>
 <% end %>

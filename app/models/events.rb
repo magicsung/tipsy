@@ -5,4 +5,13 @@ class Events < ActiveRecord::Base
 
   validates_presence_of :title
   
+
+  def event_image
+    abs_url + self.edm.url
+  end
+
+  def abs_url
+    return "http://www.pa9.club"
+  end
+
 end

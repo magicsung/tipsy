@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   scope :path => '/api/v1/', :defaults => { :format => :json }, :module => "api_v1", :as => 'v1' do
     resources :stores, only: %i[index show] # ApiV1::StoresController
+    resources :events, only: %i[index show] # ApiV1::EventsController
   end
 
   namespace :admin do
