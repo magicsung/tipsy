@@ -23,6 +23,7 @@
 //= require bootstrap-datepicker
 //= require dj
 //= require jquery_raty
+//= require select2
 Turbolinks.enableProgressBar();
 
 

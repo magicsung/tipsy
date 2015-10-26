@@ -13,7 +13,7 @@
   <th>Due_at</th>
   <th></th>
 </tr>
-<% Events.all.each do |x| %>
+<% Event.all.each do |x| %>
   <tr>
     <td><%= x.status %></td>
     <td><%= link_to x.title, admin_event_path(x) %></td>

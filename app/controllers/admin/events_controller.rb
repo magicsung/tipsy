@@ -14,11 +14,11 @@ class Admin::EventsController < ApplicationController
   end
 
   def new
-    @event = Events.new
+    @event = Event.new
   end
 
   def create
-    @event = Events.new( event_params )
+    @event = Event.new( event_params )
 
     if @event.save
       flash[:notice] = "Event was successfully created!"
@@ -58,11 +58,11 @@ class Admin::EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:events).permit(:title, :status, :description, :contact, :phone, :city, :address, :start_date, :start_time, :due_date, :due_time, :edm)
+    params.require(:event).permit(:title, :status, :description, :contact, :phone, :city, :address, :start_date, :start_time, :due_date, :due_time, :edm, :dj_list => [])
   end
 
   def find_event
-    @event = Events.find(params[:id])
+    @event = Event.find(params[:id])
   end
 
 end

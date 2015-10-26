@@ -1,3 +1,41 @@
-<h1>SHOW EVENT</h1>
+<div class="col-xs-12 col-md-6 col-md-offset-3">
+  <h1><%= @event.title %></h1>
+  <table class='table'>
+    <tr>
+      <th><p>Address:</p></th>
+      <td><p><%= @event.address %></p></td>
+    </tr>
+    <tr>
+      <th><p>Start_at:</p></th>
+      <td><p>
+        <%= @event.start_date %> |
+        <%= @event.start_time.strftime("%H:%M") %>
+      </p></td>
+    </tr>
+    <tr>
+      <th><p>Due_at:</p></th>
+      <td><p>
+        <%= @event.due_date %> |
+        <%= @event.due_time.strftime("%H:%M") %>
+      </td></p>
+    </tr>
+    <tr>
+      <th><p>DJ:</p></th>
+      <td><p>
+        <% @event.djs.each do |x| %>
+          <%= link_to x.name, dj_path(x), :class => "btn btn-default btn-xs" %>
+        <% end %>
+      </p></td>
+    </tr>
+    <tr>
+      <th><p>Address:</p></th>
+      <td><p><%= @event.address %></p></td>
+    </tr>
+    <tr>
+      <td COLSPAN=2 >
+        <%= raw(@event.description) %>
+      </td>
+    </tr>
 
-<%= @event.title %>
+  </table>
+</div>

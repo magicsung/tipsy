@@ -13,6 +13,11 @@
       <%= n.label :description, "Description" %>
       <%= n.text_area :description, :class => "form-control", :rows => 8 %>    
     </div>
+
+    <div class="form-group">
+      <%= n.label :dj_list, "DJ" %>
+      <%= n.select :dj_list, Djs.all.map{ |x| [x.name, x.id] }, {}, :multiple => true, :class => "form-control", :id => "dj-select" %>
+    </div>
     
     <div class="row">
     <div class="col-md-3">
@@ -93,4 +98,18 @@
   </div>
 </div>
 </div>
+
+
+
+<script>
+$(document).on('page:change', function(){
+  
+  $( "#dj-select" ).select2({
+    tags: true,
+    tokenSeparators: [',', ' ']
+  }).select2('val', <%= @event.djs.map{ |x| x.id } %>);
+
+});
+</script>
+
 

@@ -1,5 +1,5 @@
 json.metadata do
-  json.total Events.count
+  json.total Event.count
 end
 
 json.data @event do |e|

@@ -1,7 +1,7 @@
 class ApiV1::EventsController < ApiController
 
   def index
-    @event = Events.all
+    @event = Event.all
   end
 
   def show
