@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    root "store#index"
+    root "events#index"
     resources :user
     resources :store
     resources :djs
