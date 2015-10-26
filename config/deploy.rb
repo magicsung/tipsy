@@ -1,4 +1,4 @@
-'ssh-add'
+`ssh-add`
 
 set :application, 'tipsy'
 set :repo_url, 'git@github.com:magicsung/tipsy.git'
