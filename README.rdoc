@@ -1,28 +1,12 @@
-== README
+README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##API v1
 
-Things you may want to cover:
+All Events:
+>/api/v1/events
 
-* Ruby version
+Show Events:
+>/api/v1/events/:id
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Show Dj :
+>/api/v1/djs/:id
