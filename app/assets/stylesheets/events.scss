@@ -28,12 +28,13 @@
 
 
 
-@media screen and (min-width: 550px) {
+@media screen and (min-width: 991px) {
   .events {
   
-    .img-responsive {
+    .event-show-edm {
       margin-top: 15px;
       position: fixed;
+
     }
 
     #wrap {
@@ -48,4 +49,16 @@
 
 
 
+@media screen and (max-width: 990px) {
+  .events {
+    
+    .event-show-edm {
+      position: relative;
+      top: 15px;
+      display: block;
+      margin: 0 auto;
+    }
+
+  }
+}
 

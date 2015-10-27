@@ -1,5 +1,11 @@
-<div class="col-xs-12 col-md-6 col-md-offset-2">
-  <h1><%= @event.title %></h1>
+
+<div class="col-xs-12 col-md-3 col-md-offset-1">
+  <%= image_tag(@event.edm(:medium), :class => "event-show-edm") %>
+</div>
+
+
+<div class="col-xs-12 col-md-6">
+  <h3 class="text-center" ><%= @event.title %></h3>
   <table class='table'>
     <tr>
       <th><p>Address:</p></th>
@@ -38,8 +44,4 @@
     </tr>
 
   </table>
-</div>
-
-<div class="col-md-4">
-  <%= image_tag(@event.edm(:medium), :class => "img-responsive") %>
 </div>
