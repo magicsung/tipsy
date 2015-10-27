@@ -6,7 +6,8 @@ class Admin::EventsController < ApplicationController
   before_action :find_event, :only => [:show, :edit, :update, :destroy]
 
   def index
-    
+    @event = Event.all
+    @event = @event.page(params[:page]).per(10)
   end
 
   def show

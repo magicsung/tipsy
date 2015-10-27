@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
   def index
-    @event = Event.all
+    @event = Event.all.public_event
   end
 
   def show

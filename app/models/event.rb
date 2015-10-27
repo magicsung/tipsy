@@ -7,19 +7,8 @@ class Event < ActiveRecord::Base
   validates_attachment_content_type :edm, content_type: /\Aimage\/.*\Z/
 
   validates_presence_of :title
-  
 
-  def event_image
-    abs_url + self.edm.url
-  end
-
-  def abs_url
-    return "http://www.pa9.club"
-  end
-
-  def dj_url
-
-  end
+  scope :public_event, -> { where("due_date > (?)", Time.now) }
 
   def dj_list
     self.djs.map{ |x| x.name }

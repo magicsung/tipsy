@@ -28,21 +28,20 @@
     <div class="collapse navbar-collapse" id="menu">
       <ul class="nav navbar-nav">
         <li class=""></li>
-        <li class="<%= @controller == "events" ? "active" : "" %>"><%= link_to 'Event', events_path %></li>
-        <li class="<%= @controller == "categories" ? "active" : "" %>"><%= link_to 'Category', categories_path %></li>
-        <li class="<%= @controller == "djs" ? "active" : "" %>"><%= link_to 'DJ', djs_path %></li>
+        <li class="<%= current_page?(events_path) ? "active" : "" %>"><%= link_to 'Event', events_path %></li>
+        <li class="<%= current_page?(categories_path) ? "active" : "" %>"><%= link_to 'Category', categories_path %></li>
+        <li class="<%= current_page?(djs_path) ? "active" : "" %>"><%= link_to 'DJ', djs_path %></li>
         <li role="separator" class="divider visible-xs-block"></li>
         <% if current_user %>
-          <li class="<%= @action == "profile" ? "active" : "" %>"><%= link_to 'Setting', profile_path(current_user) %></li>
+          <li class="<%= current_page?(profile_path(current_user)) ? "active" : "" %>"><%= link_to 'Setting', profile_path(current_user) %></li>
         <% else %>
           <li><%= link_to('Sign up', new_registration_path(:user), :class => "hidden-xs") %></li>
           <li><%= link_to('Log in', new_session_path(:user)) %></li>
           <li><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></li>
         <% end %>
-        <% if current_user %>
-          <% if current_user.admin? %>
+        
+        <% if current_user && current_user.admin? %>
             <li><%= link_to 'Admin', admin_root_path %></li>
-          <% end %>
         <% end %>
       </ul>
     </div>

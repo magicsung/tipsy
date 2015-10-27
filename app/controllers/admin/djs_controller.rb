@@ -6,7 +6,8 @@ class Admin::DjsController < ApplicationController
   before_action :find_dj, :only => [:show, :edit, :update, :destroy]
 
   def index
-    
+    @dj = Djs.all
+    @dj = @dj.page(params[:page]).per(10)
   end
 
   def show

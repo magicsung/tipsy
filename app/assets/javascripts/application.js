@@ -24,18 +24,11 @@
 //= require dj
 //= require jquery_raty
 //= require select2
+
 Turbolinks.enableProgressBar();
 
 
 $(document).on('page:change', function(){
-  $(function() {
-    return $('#masonry-container').imagesLoaded(function() {
-      return $('#masonry-container').masonry({
-        itemSelector: '.box',
-        isFitWidth: true
-      });
-    });
-  });
 
   $('.star').raty({ 
     score: '3'
@@ -47,12 +40,4 @@ $(document).on('page:change', function(){
       return $(this).attr('data-score');
     }
   }); 
-
 });
-
-
-
-
-
-
-

@@ -10,22 +10,18 @@
     <th>Description</th>
     <th></th>
   </tr>
-  <% Djs.all.each do |x| %>
+  <% @dj.each do |x| %>
   <tr>
     <td>
-      <% if x.photo.exists? == false %>
-        <%= image_tag("dj_img.jpg", :class => "img-rounded dj-list-img") %>
-      <% else %>
+      <% if x.photo.exists? %>
         <%= image_tag x.photo.url(:thumb), :class => "img-rounded dj-list-img" %>
+      <% else %>
+        <%= image_tag("dj_img.jpg", :class => "img-rounded dj-list-img") %>
       <% end %>
     </td>
     <td><%= link_to x.name, admin_dj_path(x) %></td>
     <td>
-      <% if x.description.length >100 %>
-        <%= x.description.first(100) %>...
-      <% else %>
-        <%= x.description %>
-      <% end %>
+        <%= truncate( x.description, :length => 100 ) %>
     </td>
     <td>
       <%= link_to edit_admin_dj_path(x), :class => "btn btn-xs" do %>
@@ -42,4 +38,4 @@
 
 
 
-<%= link_to 'New DJ', new_admin_dj_path, :class => 'btn btn-default' %>
+<%= paginate @dj, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-sm" %>

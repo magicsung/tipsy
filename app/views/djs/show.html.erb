@@ -1,10 +1,11 @@
 
 <div class="col-md-6 dj-show-left">
   <div class="col-xs-12">
-    <% if @dj.photo.exists? == false %>
-      <%= image_tag("dj_img.jpg", :class => "") %>
-    <% else %>
+    <% if @dj.photo.exists? %>
       <%= image_tag @dj.photo.url, :class => "" %>
+      
+    <% else %>
+      <%= image_tag("dj_img.jpg", :class => "") %>
     <% end %>
     <h1><%= @dj.name %></h1>
   </div>

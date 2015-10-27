@@ -3,13 +3,38 @@
   <% @dj.each do |x| %>
     <div class="box dj-image-box">
       <%= link_to dj_path(x) do %>
-        <% if x.photo.exists? == false %>
-          <%= image_tag("dj_img.jpg", :class => "") %>
-        <% else %>
+        <% if x.photo.exists? %>
           <%= image_tag x.photo.url(:medium), :class => "" %>
+        <% else %>
+          <%= image_tag("dj_img.jpg", :class => "") %>
         <% end %>
         <h3><%= x.name %></h3>
       <% end %>
     </div>
   <% end %>
 </div>
+
+<script>
+$(document).on('page:change', function(){
+  $(function() {
+    return $('#masonry-container').imagesLoaded(function() {
+      return $('#masonry-container').masonry({
+        itemSelector: '.box',
+        isFitWidth: true
+      });
+    });
+  });
+
+  $('.star').raty({ 
+    score: '3'
+  });
+
+  $('.current_score').raty({ 
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    }
+  }); 
+
+});
+</script>
