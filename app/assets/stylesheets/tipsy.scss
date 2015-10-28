@@ -213,6 +213,13 @@ $lightblue: #40a2d1;
 
 @media screen and (max-width: 750px) {
   .tipsy {
+    .banner {
+      .jumbotron {
+        h1 {
+          font-size: 2em;
+        }
+      }
+    }
     .wrap {
       .col-l1 {
         z-index: 101;

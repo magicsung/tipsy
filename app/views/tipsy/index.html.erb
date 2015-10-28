@@ -66,10 +66,10 @@
 <div class="col-xs-12">
   <footer>
     <div class="container">
-      <div class="col-md-4 foot1">
+      <div class="col-md-4 foot1 hidden-xs">
         <h3>INFO</h3>
       </div>
-      <div class="col-md-4 foot2">
+      <div class="col-md-4 foot2 hidden-xs">
         <h3>SERVICE</h3>
       </div>
       <div class="col-md-4 foot3">
@@ -82,11 +82,11 @@
           </div>
           <div class="form-group">
             <%= f.label :phone, "Phone number" %>
-            <%= f.text_field :phone, :class => "form-control", :required => "required" %>
+            <%= f.text_field :phone, :class => "form-control", :required => "required", :"input type" => 'tel' %>
           </div>
           <div class="form-group">
             <%= f.label :email, "Email address" %>
-            <%= f.text_field :email, :class => "form-control", :required => "required" %>
+            <%= f.text_field :email, :class => "form-control", :required => "required", :"input type" => 'email' %>
           </div>
           <div class="form-group">
             <%= f.label :message, "Message" %>
