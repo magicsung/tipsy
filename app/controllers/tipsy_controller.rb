@@ -1,7 +1,7 @@
 class TipsyController < ApplicationController
 
   def index
-    @contact = Djs.new
+    @contact = Contact.new
   end
 
   def profile

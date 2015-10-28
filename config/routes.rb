@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root "events#index"
+  root "tipsy#index"
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :meetups
   # resources :meetup_messages
   resources :playlists
+  resources :contacts, only: [:create]
 
   scope :path => '/api/v1/', :defaults => { :format => :json }, :module => "api_v1", :as => 'v1' do
     resources :stores, only: %i[index show] # ApiV1::StoresController

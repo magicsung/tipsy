@@ -43,8 +43,7 @@
       <div class="container">
         <h2>特別精選，<br>給特別的你</h2>
         <p>TIPSY團隊不定期推出特別精選，<br>
-        每次主題都經過細心規劃，<br>
-        告訴你關於店家和酒的故事。</p>
+        每次主題都經過細心規劃。</p>
       </div>
     </div>
     <div class="col-md-5 rb2 hidden-xs"></div>
@@ -58,7 +57,7 @@
     <div class="container">
       <h1>VIP SERVICE</h1>
       <p>去夜店還在排隊？ 現在就預定VIP服務，成為別人羨慕的對象！</p><br><br>
-      <p><a class="vip-btn" href="#" data-toggle="modal" data-target="#vip-modal">立刻預約</a></p>
+      <p><a class="vip-btn" href="#" data-toggle="modal" data-title="" data-target="#vip-modal">立刻預約</a></p>
     </div>
   </div>
 </div>
@@ -71,22 +70,29 @@
         <h3>INFO</h3>
       </div>
       <div class="col-md-4 foot2">
-        <h3>SERVIVE</h3>
+        <h3>SERVICE</h3>
       </div>
       <div class="col-md-4 foot3">
         <h3>CONTACT US</h3>
         <br>
-        <%= form_for @contact, :url => admin_djs_path do |f|  %>
+        <%= form_for @contact, :url => contacts_path do |f|  %>
           <div class="form-group">
             <%= f.label :name, "Name" %>
             <%= f.text_field :name, :class => "form-control", :required => "required" %>
           </div>
-
           <div class="form-group">
-            <%= f.label :description, "Description" %>
-            <%= f.text_area :description, :class => "form-control", :required => "required" %>    
+            <%= f.label :phone, "Phone number" %>
+            <%= f.text_field :phone, :class => "form-control", :required => "required" %>
           </div>
-          <%= f.submit "SUBMIT", :class => "btn btn-default" %>
+          <div class="form-group">
+            <%= f.label :email, "Email address" %>
+            <%= f.text_field :email, :class => "form-control", :required => "required" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :message, "Message" %>
+            <%= f.text_area :message, :class => "form-control", :required => "required" %>    
+          </div>
+          <%= f.submit "SUBMIT", :class => "btn btn-default btn-contact" %>
         <% end %>
       </div>
     </div>
@@ -115,6 +121,18 @@
   </div>
 </div>
 
+<!-- alert -->
+<div id="show_alert" style="display:none;"></div>
+
+<% if flash[:notice].present? %>
+  <script>
+    // alert("<%= flash[:notice] %>");
+    $('#vip-modal').modal('show');
+    $('#vip-modal .modal-title').text("感謝您的來信！");
+    $('#vip-modal .modal-body').text("專人將在24小時內與您聯絡。");
+  </script>  
+<% end %>
+
 
 <script>
   // $(document).on("page:change", function(){
@@ -129,6 +147,8 @@
   // })
 
 $(function() {
+
+  // scroll smooth
   $('a[href*=#]:not([href=#])').click(function() {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
       var target = $(this.hash);
@@ -142,7 +162,7 @@ $(function() {
     }
   });
 
-
+  // resize content element
   if ($(window).width() > 750) {
     var $window = $(window).on('resize', function(){
        var height = $('.col-l1').width() * 2;
@@ -158,6 +178,15 @@ $(function() {
   }else {
     $(".rb1").insertBefore(".rm1");
   }
+
+  // vip modal info
+  $(document).on('click', ".vip-btn", function(){
+    var content = (
+      "<p>請撥打專線： <span><a href='tel:+886912345678'>0912-345-678</a></span></p><p>Line: lineme</p><p>QQ: qqqqqq</p><p>Skype: sksksk</p>");
+    $('#vip-modal .modal-title').append().text("VIP 貴賓尊榮服務");
+    $('#vip-modal .modal-body').text(content);
+  });
+
 
 });
 
