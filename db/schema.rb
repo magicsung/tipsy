@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151028040527) do
+ActiveRecord::Schema.define(version: 20151028121811) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",               limit: 255, null: false
@@ -134,7 +134,6 @@ ActiveRecord::Schema.define(version: 20151028040527) do
     t.string   "phone",              limit: 255
     t.integer  "rating",             limit: 4
     t.string   "description",        limit: 255
-    t.string   "hours",              limit: 255
     t.string   "location_address",   limit: 255
     t.string   "location_city",      limit: 255
     t.string   "coordinate_lat",     limit: 255
@@ -149,6 +148,13 @@ ActiveRecord::Schema.define(version: 20151028040527) do
     t.string   "photo_content_type", limit: 255
     t.integer  "photo_file_size",    limit: 4
     t.datetime "photo_updated_at"
+    t.string   "hours_monday",       limit: 255
+    t.string   "hours_tuesday",      limit: 255
+    t.string   "hours_wensday",      limit: 255
+    t.string   "hours_thursday",     limit: 255
+    t.string   "hours_friday",       limit: 255
+    t.string   "hours_saturday",     limit: 255
+    t.string   "hours_sunday",       limit: 255
   end
 
   create_table "users", force: :cascade do |t|
