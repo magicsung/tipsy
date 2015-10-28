@@ -204,7 +204,7 @@ $(function() {
     validateEmail($email);
   });
   function validateEmail(email) {
-    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,6})?$/;
+    var emailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/;
     if (!emailReg.test(email)) {
       // error
       $('.email-val').html("<span class='glyphicon glyphicon-remove form-control-feedback' aria-hidden='true'></span>");
