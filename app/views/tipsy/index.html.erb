@@ -63,94 +63,12 @@
 </div>
 </div>
 
-<div class="col-xs-12">
-  <footer>
-    <div class="container">
-      <div class="col-md-4 foot1 hidden-xs">
-        <h3>INFO</h3>
-      </div>
-      <div class="col-md-4 foot2">
-        <h3>SERVICE</h3>
-        <ul>
-          <li><a href="#"><p>消費資詢</p></a></li>
-          <li><a href="#"><p>包廂訂位</p></a></li>
-          <li><a href="#"><p>包場服務</p></a></li>
-          <li><a href="#"><p>活動企劃</p></a></li>
-          <li><a href="#"><p>私人派對</p></a></li>
-          <li><a href="#"><p>校際聯誼</p></a></li>
-        </ul> 
-      </div>
-      <div class="col-md-4 foot3">
-        <h3>CONTACT US</h3>
-        <br>
-        <%= form_for @contact, :url => contacts_path do |f|  %>
-          <div class="form-group">
-            <%= f.label :name, "Name" %>
-            <%= f.text_field :name, :class => "form-control", :required => "required" %>
-          </div>
-          <div class="form-group">
-            <%= f.label :phone, "Phone number" %>
-            <%= f.text_field :phone, :class => "form-control", :required => "required", :"input type" => 'tel' %>
-          </div>
-          <div class="form-group has-feedback">
-            <%= f.label :email, "Email address" %>
-            <div class="email-val"></div>
-            <%= f.text_field :email, :class => "form-control", :required => "required", :"input type" => 'email', :id => "email-input" %>
-          </div>
-          <div class="form-group">
-            <%= f.label :message, "Message" %>
-            <%= f.text_area :message, :class => "form-control", :required => "required" %>    
-          </div>
-          <%= f.submit "SUBMIT", :class => "btn btn-default btn-contact" %>
-        <% end %>
-      </div>
-    </div>
-  </footer>
-</div>
 
 
-<!-- Modal -->
-<div class="modal fade" id="vip-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"></h4>
-      </div>
-      <div class="modal-body">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- alert -->
-<div id="show_alert" style="display:none;"></div>
-
-<% if flash[:success].present? %>
-  <script>
-    $('#vip-modal').modal('show');
-    $('#vip-modal .modal-title').html("");
-    $('#vip-modal .modal-body').html("");
-    $('#vip-modal .modal-title').append("感謝您的來信！");
-    $('#vip-modal .modal-body').append('<%=flash[:success]%>');
-  </script>  
-<% end %>
-<% if flash.now[:wrong].present? %>
-  <script>
-    $('#vip-modal').modal('show');
-    $('#vip-modal .modal-title').html("");
-    $('#vip-modal .modal-body').html("");
-    $('#vip-modal .modal-title').append("ERROR!!!");
-    $('#vip-modal .modal-body').append('<%=flash.now[:wrong]%>');
-  </script>  
-<% end %>
 
 
 <script>
-  // $(document).on("page:change", function(){
+  // $(document).ready(function(e){
 
   //   $(".owl-carousel").owlCarousel({
   //     autoPlay: 3000,
@@ -204,23 +122,7 @@ $(function() {
     $('#vip-modal .modal-body').append(content);
   });
 
-  // check email
-  $(document).on('keyup', "#email-input", function(){
-    var $email = this.value;
-    validateEmail($email);
-  });
-  function validateEmail(email) {
-    var emailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/;
-    if (!emailReg.test(email)) {
-      // error
-      $('.email-val').html("<span class='glyphicon glyphicon-remove form-control-feedback' aria-hidden='true'></span>");
-      $('.email-val').parent(".form-group").addClass("has-error");
-    } else {
-      // ok
-      $('.email-val').html("<span class='glyphicon glyphicon-ok form-control-feedback' aria-hidden='true'></span>");
-      $('.email-val').parent(".form-group").removeClass("has-error").addClass("has-success");
-    }
-}
+
 
 
 });

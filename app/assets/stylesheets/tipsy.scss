@@ -1,5 +1,4 @@
 
-$lightblue: #40a2d1;
 
 .tipsy {
 
@@ -176,7 +175,7 @@ $lightblue: #40a2d1;
       border-radius: 25px;
     }
     .vip-btn:hover {
-      background: #eee;
+      background: #888;
       color: $lightblue;
     }
 
@@ -186,49 +185,7 @@ $lightblue: #40a2d1;
     color: #000;
   }
 
-  footer {
-    background: #111;
-    .container {
-      height: 600px;  
-
-      .col-md-4 {
-        height: 100%;
-        padding: 30px;
-      }
-      .foot2 {
-        ul {
-          padding-left: 0;
-          padding-top:30px;
-          li {
-            list-style: none;
-            margin-bottom: 15px;
-            a {
-              color: #fff;
-            }
-            p {
-              font-size: 1.2em;
-            }
-          }
-        }
-      }
-      .foot3 {
-        input, textarea {
-          background: #161616;
-          border: 1px solid #666;
-          color: #fff;
-        }
-        .btn {
-          color: #fff;
-        }
-        .email-val {
-          display: block;
-          text-align: right;
-
-        }
-      }
-    }
-
-  }
+  
 
 }
 
@@ -294,12 +251,6 @@ $lightblue: #40a2d1;
           margin-top: 50px;
         }
       }
-    }
-  }
-  footer {
-    background: #111;
-    .container {
-      height: 600px;  
     }
   }
 }

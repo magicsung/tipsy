@@ -17,7 +17,6 @@
 //= require masonry/jquery.imagesloaded.min
 //= require masonry/jquery.infinitescroll.min
 //= require masonry/modernizr-transitions
-//= require turbolinks
 //= require bootstrap-sprockets
 //= require owl.carousel
 //= require bootstrap-datepicker
@@ -25,10 +24,7 @@
 //= require jquery_raty
 //= require select2
 
-Turbolinks.enableProgressBar();
-
-
-$(document).on('page:change', function(){
+$(document).ready(function(e){
 
   $('.star').raty({ 
     score: '3'

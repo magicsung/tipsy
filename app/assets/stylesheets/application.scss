@@ -6,6 +6,7 @@
 @import 'masonry/right-to-left';
 @import 'masonry/transitions';
 
+@import 'general';
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "tipsy";
@@ -16,19 +17,13 @@
 @import 'profile';
 @import 'events';
 @import 'stores';
-@import 'general';
 @import 'dj';
 @import 'font-awesome';
 
 
 
-$deepblue: #002961;
-$black: #000;
-$light: rgba(255,255,255,0.3);
-
-
 body {
-  background: #ddd;
+  background: #111;
 }
 
 .col-xs-12 {

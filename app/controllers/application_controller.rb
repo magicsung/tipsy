@@ -6,10 +6,13 @@ class ApplicationController < ActionController::Base
   layout :layout_by_resource
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-
-
+  before_action :set_contact_form
 
   protected
+
+  def set_contact_form
+    @contact = Contact.new
+  end
 
   def layout_by_resource
     if devise_controller?
