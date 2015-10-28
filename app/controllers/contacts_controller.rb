@@ -5,8 +5,10 @@ class ContactsController < ApplicationController
 
     if @contact.save
       flash[:notice] = "Hi #{@contact.name}, #{'\n'}您的訊息已送出，專人將在24小時內與您聯絡。"
-      redirect_to  tipsy_index_path
+    else
+      flash[:alert] = "資料格式錯誤!"
     end
+    redirect_to  tipsy_index_path
   end
 
 

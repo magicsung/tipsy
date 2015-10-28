@@ -84,9 +84,10 @@
             <%= f.label :phone, "Phone number" %>
             <%= f.text_field :phone, :class => "form-control", :required => "required", :"input type" => 'tel' %>
           </div>
-          <div class="form-group">
+          <div class="form-group has-feedback">
             <%= f.label :email, "Email address" %>
-            <%= f.text_field :email, :class => "form-control", :required => "required", :"input type" => 'email' %>
+            <div class="email-val"></div>
+            <%= f.text_field :email, :class => "form-control", :required => "required", :"input type" => 'email', :id => "email-input" %>
           </div>
           <div class="form-group">
             <%= f.label :message, "Message" %>
@@ -124,8 +125,20 @@
   <script>
     // alert("<%= flash[:notice] %>");
     $('#vip-modal').modal('show');
+    $('#vip-modal .modal-title').html("");
+    $('#vip-modal .modal-body').html("");
     $('#vip-modal .modal-title').append("感謝您的來信！");
-    $('#vip-modal .modal-body').append("專人將在24小時內與您聯絡。");
+    $('#vip-modal .modal-body').append('<%=flash[:notice]%>');
+  </script>  
+<% end %>
+<% if flash.now[:alert].present? %>
+  <script>
+    // alert("<%= flash[:notice] %>");
+    $('#vip-modal').modal('show');
+    $('#vip-modal .modal-title').html("");
+    $('#vip-modal .modal-body').html("");
+    $('#vip-modal .modal-title').append("ERROR!!!");
+    $('#vip-modal .modal-body').append('<%=flash.now[:alert]%>');
   </script>  
 <% end %>
 
@@ -184,6 +197,24 @@ $(function() {
     $('#vip-modal .modal-title').append("VIP 貴賓尊榮服務");
     $('#vip-modal .modal-body').append(content);
   });
+
+  // check email
+  $(document).on('keyup', "#email-input", function(){
+    var $email = this.value;
+    validateEmail($email);
+  });
+  function validateEmail(email) {
+    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,6})?$/;
+    if (!emailReg.test(email)) {
+      // error
+      $('.email-val').html("<span class='glyphicon glyphicon-remove form-control-feedback' aria-hidden='true'></span>");
+      $('.email-val').parent(".form-group").addClass("has-error");
+    } else {
+      // ok
+      $('.email-val').html("<span class='glyphicon glyphicon-ok form-control-feedback' aria-hidden='true'></span>");
+      $('.email-val').parent(".form-group").removeClass("has-error").addClass("has-success");
+    }
+}
 
 
 });
