@@ -106,13 +106,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">VIP 貴賓尊榮服務</h4>
+        <h4 class="modal-title" id="myModalLabel"></h4>
       </div>
       <div class="modal-body">
-        <p>請撥打專線： <span><a href="tel:+886912345678">0912-345-678</a></span></p>
-        <p>Line: lineme</p>
-        <p>QQ: qqqqqq</p>
-        <p>Skype: sksksk</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -128,8 +124,8 @@
   <script>
     // alert("<%= flash[:notice] %>");
     $('#vip-modal').modal('show');
-    $('#vip-modal .modal-title').text("感謝您的來信！");
-    $('#vip-modal .modal-body').text("專人將在24小時內與您聯絡。");
+    $('#vip-modal .modal-title').append("感謝您的來信！");
+    $('#vip-modal .modal-body').append("專人將在24小時內與您聯絡。");
   </script>  
 <% end %>
 
@@ -183,8 +179,10 @@ $(function() {
   $(document).on('click', ".vip-btn", function(){
     var content = (
       "<p>請撥打專線： <span><a href='tel:+886912345678'>0912-345-678</a></span></p><p>Line: lineme</p><p>QQ: qqqqqq</p><p>Skype: sksksk</p>");
-    $('#vip-modal .modal-title').append().text("VIP 貴賓尊榮服務");
-    $('#vip-modal .modal-body').text(content);
+    $('#vip-modal .modal-title').html("");
+    $('#vip-modal .modal-body').html("");
+    $('#vip-modal .modal-title').append("VIP 貴賓尊榮服務");
+    $('#vip-modal .modal-body').append(content);
   });
 
 
