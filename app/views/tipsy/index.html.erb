@@ -1,43 +1,169 @@
 <div class="banner">
-  <!-- <video autoplay id="bgvid" loop poster="" preload="auto" loop="" autoplay="" muted="">
-    <source src="http://reservelounge.com/wp-content/uploads/2015/06/Video-Header1.m4v" type="video/mp4">
-  </video> -->
-  <div id="bgvid"></div>
-  <div class="empty200px"></div>
-  <h1>TipsyAsia</h1>
-  <div class="empty300px"></div>
-</div>
-<div class="container">
-  <div class="owl-carousel">
-    <div> <%= image_tag("img1.jpg") %> </div>
-    <div> <%= image_tag("img2.jpg") %> </div>
-    <div> <%= image_tag("img3.jpg") %> </div>
-    <div> <%= image_tag("img4.jpg") %> </div>
-    <div> <%= image_tag("img5.jpg") %> </div>
+  <div id="banner-bg"></div>
+  <div class="black-wrap"></div>
+  <div class="jumbotron text-center">
+    <div class="container">
+      <div class="empty200px"></div>
+      <h1>探索台北夜晚新生活</h1>
+      <h3>放鬆 x 狂歡</h3>
+      <div class="empty100px"></div>
+      <p>
+        <a href="#content1" class="banner-btn">EXPLORE<br><i class="fa fa-chevron-down"></i></a>
+      </p>
+    </div>
   </div>
 </div>
-<div class="container">
 
-  <% Djs.all.limit(5).each do |x| %>
-    <div>
-      <%= image_tag x.photo.url(:medium), :class => "img-circle" %> 
+
+<div id="content1" class="wrap">
+  <div class="col-md-5 col-l1">
+    <h2>別人錯過的<br>你不會錯過</h2>
+    <p>Ladies’ Night 、Happy Hour、<br> 
+    暢飲日、知名DJ表演，主題派對<br>
+    讓你過著大家羨慕的夜晚生活！</p>
+  </div>
+  <div class="col-md-7 col-r1">
+    <div class="col-xs-6 col-md-6 rt1">
+      <%= image_tag("rt1.jpg") %>
     </div>
-  <% end %>
+    <div class="col-xs-6 col-md-6 rt2">
+      <%= image_tag("rt2.jpg") %>
+    </div>
+    <div class="col-xs-4 col-md-4 rm1">
+      <%= image_tag("rm1.jpg") %>
+    </div>
+    <div class="col-xs-4 col-md-4 rm2">
+      <%= image_tag("rm2.jpg") %>
+    </div>
+    <div class="col-xs-4 col-md-4 rm3">
+      <%= image_tag("rm3.jpg") %>
+    </div>
+    <div class="col-xs-12 col-md-7 rb1">
+      <div class="black-wrap"></div>
+      <div class="container">
+        <h2>特別精選，<br>給特別的你</h2>
+        <p>TIPSY團隊不定期推出特別精選，<br>
+        每次主題都經過細心規劃，<br>
+        告訴你關於店家和酒的故事。</p>
+      </div>
+    </div>
+    <div class="col-md-5 rb2 hidden-xs"></div>
+  </div>
+</div>
 
+<div class="col-xs-12">
+<div id="content2" class="wrap2 text-center">
+  <div class="black-wrap"></div>
+  <div class="jumbotron">
+    <div class="container">
+      <h1>VIP SERVICE</h1>
+      <p>去夜店還在排隊？ 現在就預定VIP服務，成為別人羨慕的對象！</p><br><br>
+      <p><a class="vip-btn" href="#" data-toggle="modal" data-target="#vip-modal">立刻預約</a></p>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="col-xs-12">
+  <footer>
+    <div class="container">
+      <div class="col-md-4 foot1">
+        <h3>INFO</h3>
+      </div>
+      <div class="col-md-4 foot2">
+        <h3>SERVIVE</h3>
+      </div>
+      <div class="col-md-4 foot3">
+        <h3>CONTACT US</h3>
+        <br>
+        <%= form_for @contact, :url => admin_djs_path do |f|  %>
+          <div class="form-group">
+            <%= f.label :name, "Name" %>
+            <%= f.text_field :name, :class => "form-control", :required => "required" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :description, "Description" %>
+            <%= f.text_area :description, :class => "form-control", :required => "required" %>    
+          </div>
+          <%= f.submit "SUBMIT", :class => "btn btn-default" %>
+        <% end %>
+      </div>
+    </div>
+  </footer>
 </div>
 
 
+<!-- Modal -->
+<div class="modal fade" id="vip-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">VIP 貴賓尊榮服務</h4>
+      </div>
+      <div class="modal-body">
+        <p>請撥打專線： <span><a href="tel:+886912345678">0912-345-678</a></span></p>
+        <p>Line: lineme</p>
+        <p>QQ: qqqqqq</p>
+        <p>Skype: sksksk</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <script>
-  $(document).on("page:change", function(){
+  // $(document).on("page:change", function(){
 
-    $(".owl-carousel").owlCarousel({
-      autoPlay: 3000,
-      items : 3,
-      itemsDesktop : [1199,3],
-      itemsDesktopSmall : [979,3]
-    });
+  //   $(".owl-carousel").owlCarousel({
+  //     autoPlay: 3000,
+  //     items : 3,
+  //     itemsDesktop : [1199,3],
+  //     itemsDesktopSmall : [979,3]
+  //   });
 
-  })
+  // })
+
+$(function() {
+  $('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top
+        }, 600);
+        return false;
+      }
+    }
+  });
+
+
+  if ($(window).width() > 750) {
+    var $window = $(window).on('resize', function(){
+       var height = $('.col-l1').width() * 2;
+       var height3 = $('.col-l1').width() * 0.6;
+       var height2 = $('.col-l1').width() * 0.4;
+       var height5 = $('.col-l1').width();
+       $('.col-l1, .col-r1').height(height);
+       $('.rt1, .rt2').height(height3);
+       $('.rm1, .rm2, .rm3').height(height2);
+       $('.rb1, .rb2').height(height5);
+       $('.rb1 p').css("margin-top", height5 / 3);
+    }).trigger('resize'); //on page load
+  }else {
+    $(".rb1").insertBefore(".rm1");
+  }
+
+});
+
+
 </script>
+
+
+
+

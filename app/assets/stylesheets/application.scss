@@ -24,6 +24,12 @@
 
 $deepblue: #002961;
 $black: #000;
+$light: rgba(255,255,255,0.3);
+
+
+body {
+  background: #ddd;
+}
 
 .col-xs-12 {
   padding-left: 0;
@@ -40,7 +46,7 @@ $black: #000;
   top: 0;
   left: 0;
   width: 100%;
-  background: rgba(0,0,0,0.5);
+  background: $black;
 
   .navbar-brand {
     color: #fff;
@@ -55,11 +61,11 @@ $black: #000;
       color: #ddd;
     }
     li a:hover {
-      background: $deepblue;
+      background: $light;
     }
   }
   .divider {
-    background: rgba(255,255,255,0.3);
+    background: $light;
     width: 96%;
     height: 1px;
     margin-left: 2%;
