@@ -211,7 +211,7 @@ $lightblue: #40a2d1;
 
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (min-width: 350px) and (max-width: 750px) {
   .tipsy {
     .banner {
       .jumbotron {
@@ -240,6 +240,45 @@ $lightblue: #40a2d1;
     
   }
 }
+
+@media screen and (max-width: 350px) {
+  .tipsy {
+    .banner {
+      .jumbotron {
+        h1 {
+          font-size: 1.6em;
+        }
+        h3 {
+          font-size: 1.3em;
+        }
+      }
+    }
+    .wrap {
+      .col-l1 {
+        z-index: 101;
+        height: 500px;
+        h2 {
+          font-size: 3em;
+          margin-top: 80px;
+          padding-top: 60px;
+        }
+      }
+      .rb1 {
+        height: 400px;
+        h2 {
+          font-size: 3em;
+        }
+        p {
+          font-size: 1.2em;
+          margin-top: 50px;
+        }
+      }
+    }
+  }
+}
+
+
+
 
 
 
