@@ -8,10 +8,61 @@ $light: rgba(255,255,255,0.3);
 .empty300px{height:300px;}
 
 
+
+body {
+
+  .col-xs-12 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  #menu {
+    color: #fff;
+  }
+
+  .navbar {
+    margin-bottom: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: $black;
+    z-index: 500;
+
+    .navbar-brand {
+      color: #fff;
+    }
+
+    .dropdown-menu {
+      background: $black;
+    }
+
+    .nav {
+      li a{
+        color: #ddd;
+      }
+      li a:hover {
+        background: $light;
+      }
+    }
+    .divider {
+      background: $light;
+      width: 96%;
+      height: 1px;
+      margin-left: 2%;
+    }
+
+    .collapse .open .dropdown-menu li a {
+      color: #ddd;
+    }
+  }
+}
+
+
+
 footer {
-  margin-top: 150px;
+  padding-top: 150px;
   background: #111;
-  // border-top: 1px solid #aaa;
   .foot-line {
     border-top: 1px solid #aaa;
     width: 50%;

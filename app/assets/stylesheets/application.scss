@@ -20,53 +20,7 @@
 @import 'dj';
 @import 'font-awesome';
 
-
-
 body {
-  background: #111;
-}
-
-.col-xs-12 {
-  padding-left: 0;
-  padding-right: 0;
-}
-
-#menu {
-  color: #fff;
-}
-
-.navbar {
-  margin-bottom: 0;
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: $black;
-
-  .navbar-brand {
-    color: #fff;
-  }
-
-  .dropdown-menu {
-    background: $black;
-  }
-
-  .nav {
-    li a{
-      color: #ddd;
-    }
-    li a:hover {
-      background: $light;
-    }
-  }
-  .divider {
-    background: $light;
-    width: 96%;
-    height: 1px;
-    margin-left: 2%;
-  }
-
-  .collapse .open .dropdown-menu li a {
-    color: #ddd;
-  }
+  background: #111;  
+  padding-top: 50px;
 }
