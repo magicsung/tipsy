@@ -22,24 +22,12 @@
     <td><%= simple_format(@store.description) %></td>
   </tr>
   <tr>
-    <td>Hours</td>
-    <td><%= simple_format(@store.hours) %></td>
-  </tr>
-  <tr>
     <td>coordinate_lat</td>
     <td><%= @store.coordinate_lat %></td>
   </tr>
   <tr>
     <td>coordinate_lon</td>
     <td><%= @store.coordinate_lon %></td>
-  </tr>
-  <tr>
-    <td>yelp_id</td>
-    <td><%= @store.yelp_id %></td>
-  </tr>
-  <tr>
-    <td>yelp_image</td>
-    <td><%= image_tag(@store.try(:yelp_image)) %></td>
   </tr>
 </table>
 
