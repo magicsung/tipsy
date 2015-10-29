@@ -1,35 +1,91 @@
 <h1><%= @store.name %></h1>
 
-<table class="table table-striped">
-  <tr>
-    <td>Category:</td>
-    <td><%= @store.category.name %></td>
-  </tr>
-  <tr>
-    <td>Phone:</td>
-    <td><%= @store.phone %></td>
-  </tr>
-  <tr>
-    <td>City:</td>
-    <td><%= @store.location_city %></td>
-  </tr>
-  <tr>
-    <td>Address:</td>
-    <td><%= @store.location_address %></td>
-  </tr>
-  <tr>
-    <td>Description</td>
-    <td><%= simple_format(@store.description) %></td>
-  </tr>
-  <tr>
-    <td>coordinate_lat</td>
-    <td><%= @store.coordinate_lat %></td>
-  </tr>
-  <tr>
-    <td>coordinate_lon</td>
-    <td><%= @store.coordinate_lon %></td>
-  </tr>
-</table>
 
+<div class="row">
+  <div class="col-md-7">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Store info</h3>
+      </div>
+      <div class="panel-body">
+
+        <table class="table table-striped">
+          <tr>
+            <td>Category:</td>
+            <td><%= @store.category.name %></td>
+          </tr>
+          <tr>
+            <td>Phone:</td>
+            <td><%= @store.phone %></td>
+          </tr>
+          <tr>
+            <td>City:</td>
+            <td><%= @store.location_city %></td>
+          </tr>
+          <tr>
+            <td>Address:</td>
+            <td><%= @store.location_address %></td>
+          </tr>
+          <tr>
+            <td>Description</td>
+            <td><%= simple_format(@store.description) %></td>
+          </tr>
+          <tr>
+            <td>coordinate_lat</td>
+            <td><%= @store.coordinate_lat %></td>
+          </tr>
+          <tr>
+            <td>coordinate_lon</td>
+            <td><%= @store.coordinate_lon %></td>
+          </tr>
+        </table>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-5">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Hours</h3>
+      </div>
+      <div class="panel-body">
+
+        <table class="table table-striped">
+          <tr>
+            <th>星期一</th>
+            <td><%= @store.hours_monday %></td>
+          </tr>
+          <tr>
+            <th>星期二</th>
+            <td><%= @store.hours_tuesday %></td>
+          </tr>  
+          <tr>
+            <th>星期三</th>
+            <td><%= @store.hours_wensday %></td>
+          </tr>
+          <tr>
+            <th>星期四</th>
+            <td><%= @store.hours_thursday %></td>
+          </tr>
+          <tr>
+            <th>星期五</th>
+            <td><%= @store.hours_friday %></td>
+          </tr>
+          <tr>
+            <th>星期六</th>
+            <td><%= @store.hours_saturday %></td>
+          </tr>
+          <tr>
+            <th>星期日</th>
+            <td><%= @store.hours_sunday %></td>
+          </tr>
+
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>
 
 <%= link_to "Back", admin_store_index_path, :class => "btn btn-default" %>
