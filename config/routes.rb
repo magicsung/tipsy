@@ -18,9 +18,10 @@ Rails.application.routes.draw do
   resources :contacts, only: [:create]
 
   scope :path => '/api/v1/', :defaults => { :format => :json }, :module => "api_v1", :as => 'v1' do
-    resources :stores, only: %i[index show] # ApiV1::StoresController
-    resources :events, only: %i[index show] # ApiV1::EventsController
-    resources :djs, only: %i[index show] # ApiV1::DjsController
+    resources :categories, only: [:index]
+    resources :stores, only: %i[index show]
+    resources :events, only: %i[index show]
+    resources :djs, only: %i[index show]
   end
 
   namespace :admin do
