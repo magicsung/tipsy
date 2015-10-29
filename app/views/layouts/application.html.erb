@@ -28,8 +28,8 @@
     <div class="collapse navbar-collapse" id="menu">
       <ul class="nav navbar-nav">
         <li class=""></li>
-        <li class="<%= current_page?(events_path) ? "active" : "" %>"><%= link_to 'Event', events_path %></li>
-        <li class="<%= current_page?(categories_path) ? "active" : "" %>"><%= link_to 'Category', categories_path %></li>
+        <li class="<%= current_page?(events_path) ? "active" : "" %>"><%= link_to '熱門活動', events_path %></li>
+        <li class="<%= current_page?(stores_path) ? "active" : "" %>"><%= link_to '精選夜店', stores_path %></li>
         <li class="<%= current_page?(djs_path) ? "active" : "" %>"><%= link_to 'DJ', djs_path %></li>
         <li role="separator" class="divider visible-xs-block"></li>
         <% if current_user %>

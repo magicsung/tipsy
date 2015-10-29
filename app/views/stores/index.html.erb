@@ -26,3 +26,29 @@
 <div class="text-center">
 <%#= paginate @store, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-sm" %>
 </div>
+
+
+<script>
+$(document).ready(function(e){
+  $(function() {
+    return $('#masonry-container').imagesLoaded(function() {
+      return $('#masonry-container').masonry({
+        itemSelector: '.box',
+        isFitWidth: true
+      });
+    });
+  });
+
+  $('.star').raty({ 
+    score: '3'
+  });
+
+  $('.current_score').raty({ 
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    }
+  }); 
+
+});
+</script>
