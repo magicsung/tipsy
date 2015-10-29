@@ -5,6 +5,7 @@ class ContactsController < ApplicationController
 
     if @contact.save
       flash[:success] = "Hi #{@contact.name}, #{'\n'}您的訊息已送出，專人將在24小時內與您聯絡。"
+      ContactMailer.notify_contact(@contact).deliver_later!
     else
       flash[:wrong] = "資料格式錯誤!"
     end
