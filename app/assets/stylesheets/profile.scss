@@ -23,8 +23,11 @@ body {
       color: #fff;
       background: rgba(0,0,0,0);
       height: 50px;
-      border: 1px solid #40a2d1;
+      border: 1px solid $lightblue;
       padding: 0;
+    }
+    .logout:hover {
+      background: #333;
     }
   }
 
