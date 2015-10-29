@@ -11,6 +11,10 @@ $light: rgba(255,255,255,0.3);
 footer {
   background: #111;
   // border-top: 1px solid #aaa;
+  .foot-line {
+    border-top: 1px solid #aaa;
+    width: 50%;
+  }
 
   ul {
     padding-left: 0;
