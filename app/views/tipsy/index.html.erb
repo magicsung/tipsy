@@ -50,7 +50,7 @@
   </div>
 </div>
 
-<div class="col-xs-12">
+<div id="vip" class="col-xs-12">
 <div id="content2" class="wrap2 text-center">
   <div class="black-wrap"></div>
   <div class="jumbotron">
@@ -88,7 +88,7 @@ $(function() {
       target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
       if (target.length) {
         $('html,body').animate({
-          scrollTop: target.offset().top
+          scrollTop: target.offset().top - 50
         }, 600);
         return false;
       }

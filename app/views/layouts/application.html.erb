@@ -31,6 +31,7 @@
         <li class="<%= current_page?(events_path) ? "active" : "" %>"><%= link_to '熱門活動', events_path %></li>
         <li class="<%= current_page?(stores_path) ? "active" : "" %>"><%= link_to '精選夜店', stores_path %></li>
         <li class="<%= current_page?(djs_path) ? "active" : "" %>"><%= link_to 'DJ', djs_path %></li>
+        <li ><a href="<%= root_path %>#vip">VIP</a></li>
         <li role="separator" class="divider visible-xs-block"></li>
         <% if current_user %>
           <li class="<%= current_page?(profile_path(current_user)) ? "active" : "" %>"><%= link_to 'Setting', profile_path(current_user) %></li>
