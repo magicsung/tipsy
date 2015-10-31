@@ -119,8 +119,7 @@ $(function() {
   e.preventDefault();
 
     if ($(window).width() > 750) {    
-      $('#black-board').show();
-
+      $('#black-board').fadeIn(300);
       $.ajax({
         url: '<%= v1_events_url %>',
         type: 'GET',
@@ -134,11 +133,9 @@ $(function() {
           for (i = 0; i < len; i++) { 
             var img = data.data[i].image
             var url = data.data[i].url
-            
-            info += "<a href='" + url + "'><img class='event-img' src='" + img + "''></a>" ;
+            info += "<a href='" + url + "'><img class='event-img' src='" + img + "''></a>"
+            $('#black-board .content').html(info).hide().fadeIn(200);
           }
-          $('#black-board .content').html(info);
-          // $('#black-board .content').slideDown(400);
         },
       });
       
@@ -161,11 +158,11 @@ $(function() {
   // hide events
   $(".close-board").click(function(e){
     e.preventDefault();
-    $('#black-board').hide();
+    $('#black-board').fadeOut(200);
   });
   $(document).keydown( function( event ) {
     if ( event.which == 27 ) {
-      $('#black-board').hide();
+      $('#black-board').fadeOut(200);
     }
   });
 
