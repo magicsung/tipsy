@@ -17,10 +17,13 @@
 
 <div id="content1" class="wrap">
   <div class="col-md-5 col-l1">
-    <h2>別人錯過的<br>你不會錯過</h2>
-    <p>Ladies’ Night 、Happy Hour、<br> 
-    暢飲日、知名DJ表演，主題派對<br>
-    讓你過著大家羨慕的夜晚生活！</p>
+    <div class="event-info">
+      <h2>別人錯過的<br>你不會錯過</h2>
+      <p>Ladies’ Night 、Happy Hour、<br> 
+      暢飲日、知名DJ表演，主題派對<br>
+      讓你過著大家羨慕的夜晚生活！</p>
+      <a id="event-button" href="#" >查看熱門活動</a>
+    </div>
   </div>
   <div class="col-md-7 col-r1">
     <div class="col-xs-6 col-md-6 rt1">
@@ -63,21 +66,18 @@
 </div>
 </div>
 
-
+<div id="black-board">
+  <div class="container">
+    <a class="close-board pull-right" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+    <div class="content"></div>
+    <div class="clearfix"></div>
+  </div>
+</div>
 
 
 
 <script>
-  // $(document).ready(function(e){
 
-  //   $(".owl-carousel").owlCarousel({
-  //     autoPlay: 3000,
-  //     items : 3,
-  //     itemsDesktop : [1199,3],
-  //     itemsDesktopSmall : [979,3]
-  //   });
-
-  // })
 
 $(function() {
 
@@ -94,6 +94,66 @@ $(function() {
       }
     }
   });
+  
+
+  
+
+  // event-button
+  $("#event-button").click(function(e){
+  e.preventDefault();
+
+    if ($(window).width() > 750) {    
+      $('#black-board').show();
+
+      $.ajax({
+        url: '<%= v1_events_url %>',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+          format: 'json',
+        },
+        success: function(data) {
+          var len = data.data.length;
+          var info = ""
+          for (i = 0; i < len; i++) { 
+            var img = data.data[i].image
+            var url = data.data[i].url
+            
+            info += "<a href='" + url + "'><img class='event-img' src='" + img + "''></a>" ;
+          }
+          $('#black-board .content').html(info);
+          // $('#black-board .content').slideDown(400);
+        },
+      });
+      
+    }else {
+      window.location.href = '<%= events_url %>';
+    }
+
+  });
+
+  // $(document).ready(function() {
+  //   $("#black-board .content").owlCarousel({
+  //     autoPlay: 3000,
+  //     items : 3,
+  //     itemsDesktop : [1199,3],
+  //     itemsDesktopSmall : [979,3]
+  //   });
+  // });
+
+
+  // hide events
+  $(".close-board").click(function(e){
+    e.preventDefault();
+    $('#black-board').hide();
+  });
+  $(document).keydown( function( event ) {
+    if ( event.which == 27 ) {
+      $('#black-board').hide();
+    }
+  });
+
+
 
   // resize content element
   if ($(window).width() > 750) {
@@ -121,8 +181,6 @@ $(function() {
     $('#vip-modal .modal-title').append("VIP 貴賓尊榮服務");
     $('#vip-modal .modal-body').append(content);
   });
-
-
 
 
 });

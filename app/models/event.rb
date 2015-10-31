@@ -8,7 +8,7 @@ class Event < ActiveRecord::Base
 
   validates_presence_of :title
 
-  scope :public_event, -> { where("due_date > (?)", Time.now) }
+  scope :public_event, -> { where("due_date > (?)", Time.now + 1.day ) }
 
   def dj_list
     self.djs.map{ |x| x.name }
