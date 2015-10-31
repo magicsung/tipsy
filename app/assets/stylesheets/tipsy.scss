@@ -160,13 +160,48 @@
 
   }
 
+// DJ block
+  #dj-block {
+    .jumbotron {
+      background: image-url("dj-block.jpg") #000 ;
+      background-repeat: no-repeat;
+      background-position: left center; 
+      background-size: auto;
+      margin-bottom: 0;
+      height: 600px;
+      padding-top: 200px;
+      padding-left: 15%;
+      padding-right: 0;
+    }
+    .container {
+      position: absolute;
+      display: block;
+      margin: 0 auto;
+      width: 100%;
+      z-index: 100;
+    }
+    .dj-btn {
+      color: #333;
+      text-decoration: none;
+      background: #fff;
+      padding: 10px 25px 10px 25px;
+      border-radius: 25px;
+    }
+    .dj-btn:hover {
+      background: rgba(0,0,0,0.8);
+      color: $lightblue;
+    }
+
+  }
+
+
 // VIP block
   #vip {
     .black-wrap{
       position: absolute;
       background: rgba(0,0,0,0.6);
       width: 100%;
-      height: 400px;
+      height: 600px;
       z-index: 10;
     }
     .jumbotron {
@@ -175,8 +210,8 @@
       background-position: 30% center; 
       background-size: cover;
       margin-bottom: 0;
-      height: 400px;
-      padding-top: 100px;
+      height: 600px;
+      padding-top: 200px;
       padding-left: 0;
       padding-right: 0;
     }
@@ -238,6 +273,17 @@
 
   
 
+}
+
+@media screen and (max-width: 750px) {
+  
+  .tipsy {
+    #dj-block {
+      .jumbotron {
+        padding-left: 0;
+      }
+    }
+  }
 }
 
 @media screen and (min-width: 350px) and (max-width: 750px) {
