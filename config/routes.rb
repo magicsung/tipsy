@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     resources :stores, only: %i[index show]
     resources :events, only: %i[index show]
     resources :djs, only: %i[index show]
+    post "/login" => "auth#login"
+    post "/logout" => "auth#logout"
   end
 
   namespace :admin do

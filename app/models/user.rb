@@ -11,6 +11,18 @@ class User < ActiveRecord::Base
   has_many :meetup, :through => :participates
   has_many :participates
 
+  before_create :generate_authentication_token
+
+  def self.get_fb_data(access_token)
+    res = RestClient.get "https://graph.facebook.com/v2.4/me",  { :params => { :access_token => access_token } }
+
+    if res.code == 200
+      JSON.parse( res.to_str )
+    else
+      Rails.logger.warn(res.body)
+      nil
+    end
+  end
 
   def admin?
     self.role == "admin"
@@ -44,6 +56,10 @@ class User < ActiveRecord::Base
     user.image = auth.info.image
     user.save!
     return user
+  end
+
+  def generate_authentication_token
+    self.authentication_token = Devise.friendly_token
   end
 
 end

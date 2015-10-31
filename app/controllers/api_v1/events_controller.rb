@@ -1,7 +1,9 @@
 class ApiV1::EventsController < ApiController
 
   def index
-    @event = Event.all.public_event
+    if :authenticate_api_token?
+      @event = Event.all.public_event
+    end
   end
 
   def show
