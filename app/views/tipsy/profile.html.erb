@@ -1,13 +1,11 @@
 
-<div class="profile col-xs-12">
+<div class="profile col-xs-12 col-md-4 col-md-offset-4">
   
   <div class="wrapper">
+    <div class="user-image">
+      <%= image_tag(current_user.image, :class => "img-circle", :id => "user-photo") %>
+    </div>
     <table class="table">
-
-    <tr>
-      <th>Photo:</th>
-      <td><%= image_tag(current_user.image, :class => "img-circle", :id => "user-photo") %></td>
-    </tr>
     <tr>
       <th>Name:</th>
       <td><%= current_user.name %></td>

@@ -9,6 +9,10 @@ body {
   .wrapper {
     padding: 0 15px;
     margin-top: 30px;
+    .user-image {
+      text-align: center;
+      margin-bottom: 30px;
+    }
   }
 
   .user-logout {
