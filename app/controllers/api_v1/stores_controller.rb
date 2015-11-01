@@ -5,7 +5,7 @@ class ApiV1::StoresController < ApiController
   end
 
   def show
-    
+    @store = Store.find( params[:id] )
   end
 
 end

@@ -4,17 +4,12 @@
   <% @store.each do |y| %>
     <div class="box">
        <div class="store-showbox-content">
-          <%= link_to store_path(y) do %>
+          <%= link_to store_path(y), :'data-id' => y.id do %>
             <% if y.photo %>
               <%= image_tag(y.photo) %>
-            <% elsif y.yelp_image == nil %>
-              <%= image_tag('store_default.jpg', :class => 'def-img') %>
             <% else %>
-              <%= image_tag(y.yelp_image) %>
+                <%= image_tag('store_default.jpg', :class => 'def-img') %>
             <% end %>
-            <div class="store-name">
-              <p><%= y.name %></p>
-            </div>
           <% end %>
        </div>
     </div>
@@ -22,14 +17,43 @@
 </div>
 
 
-
 <div class="text-center">
 <%#= paginate @store, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-sm" %>
 </div>
 
 
+<div id="black-board">
+  <div class="container">
+    <a class="close-board pull-right" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+    <div class="content col-md-6 col-md-offset-3">
+
+      <div class="store-img"></div>
+      <table class="table">
+        <tr>
+          <th>Name:</th>
+          <td class="store-name"></td>
+        </tr>
+        <tr>
+          <th>phone:</th>
+          <td class="store-phone"></td>
+        </tr>
+        <tr>
+          <th>address:</th>
+          <td class="store-address"></td>
+        </tr>
+      </table>
+
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+
+
+
 <script>
 $(document).ready(function(e){
+
   $(function() {
     return $('#masonry-container').imagesLoaded(function() {
       return $('#masonry-container').masonry({
@@ -39,16 +63,70 @@ $(document).ready(function(e){
     });
   });
 
-  $('.star').raty({ 
-    score: '3'
+  $('#masonry-container').on('click', 'a', function(e){
+    e.preventDefault();
+    $('#black-board').fadeIn(300);
+    var store_id = $(this).data('id');
+
+    $.ajax({
+        url: '<%= v1_stores_url %>/'+ store_id,
+        type: 'GET',
+        dataType: 'json',
+        data: {
+          format: 'json',
+        },
+        success: function(data) {
+          console.log(data)
+
+          var info = ""
+          var img = data.photo
+          info = "<img class='event-img' src='" + img + "''>"
+          name = '<p>' + data.name + '</p>'
+          phone = '<p>' + data.phone + '</p>'
+          address = '<p>' + data.address + '</p>'
+          $('#black-board .content .store-img').html(info);
+          $('#black-board .content .store-name').html(name);
+          $('#black-board .content .store-phone').html(phone);
+          $('#black-board .content .store-address').html(address);
+          // $('#black-board .content').html(data);
+
+        },
+    });
   });
 
-  $('.current_score').raty({ 
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
+
+  // hide black-board
+  // $("#black-board").click(function(e){
+  //   e.preventDefault();
+  //   $('#black-board').fadeOut(200);
+  // });
+  $(".close-board").click(function(e){
+    e.preventDefault();
+    $('#black-board').fadeOut(200);
+  });
+  $(document).keydown( function( event ) {
+    if ( event.which == 27 ) {
+      $('#black-board').fadeOut(200);
     }
-  }); 
+  });
+
+
+  // $('.star').raty({ 
+  //   score: '3'
+  // });
+
+  // $('.current_score').raty({ 
+  //   readOnly: true,
+  //   score: function() {
+  //     return $(this).attr('data-score');
+  //   }
+  // }); 
 
 });
 </script>
+
+
+
+
+
+

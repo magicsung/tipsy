@@ -23,17 +23,3 @@
 //= require dj
 //= require jquery_raty
 //= require select2
-
-$(document).ready(function(e){
-
-  $('.star').raty({ 
-    score: '3'
-  });
-
-  $('.current_score').raty({ 
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    }
-  }); 
-});

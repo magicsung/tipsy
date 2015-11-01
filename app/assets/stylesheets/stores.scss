@@ -21,6 +21,39 @@
     width: 200px;
   }
 
+  #black-board {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: none;
+    .container {
+    padding-top: 3%; 
+    padding-bottom: 3%;
+    height: 100%;
+      .content {
+        padding: 3%;
+        height: 100%;
+        background: #111;
+        overflow-y: scroll; 
+        overflow-x: hidden;
+        text-align: center;
+        img {
+          width: 90%;
+        }
+      }
+    }
+    .close-board {
+      color: #fff;
+      font-size: 2em
+    }
+    .close-board:hover {
+      color: $lightblue;
+    }
+  }
+
 }
 
 
@@ -34,31 +67,12 @@
   img {
     position: relative;
     width: 100%;
+    transition: transform .3s ease-out; 
   }
-
-  .def-img {
-    // -webkit-filter: blur(5px);
-    // filter: blur(5px);
-  }
-
-  .store-name {
-    display: block;
-    background: rgba(0,0,0,0.1);
-    box-sizing : border-box;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    text-align: center;
-
-    p {
-      position: relative;
-      font-size: 25px;
-      top: 50px;
-      color: #fff;
-      
-    }
-
+  img:hover {
+    transform: scale(1.1);
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
   }
 
 }
