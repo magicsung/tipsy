@@ -1,5 +1,10 @@
 #README
 
+
+##Link
+[Link to pa9.club](http://www.pa9.club/)
+
+
 ##API v1
 
 #####All Events:
@@ -33,7 +38,7 @@
 #####Categories :
 >/api/v1/categories
 
-#####stores :
+#####Stores :
 >/api/v1/stores
 
 
@@ -67,3 +72,34 @@
 
 #####Show Dj :
 >/api/v1/djs/:id
+
+#####Api login :
+>/api/v1/login
+>
+>Facebook access_token
+
+#####Api logout :
+>/api/v1/logout
+
+#####Create comment :
+>/api/v1/comments
+
+```
+# method => post
+params{
+	"auth_token": string,
+	"rating": integer, # 1 to 5 
+	"content": string, 
+	"store_id": integer
+}
+```
+
+#####Delete comment :
+>/api/v1/comments/:id
+
+```
+method => delete
+params{
+	"auth_token": string,
+}
+```

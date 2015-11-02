@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :stores, only: %i[index show]
     resources :events, only: %i[index show]
     resources :djs, only: %i[index show]
+    resources :comments, only: %i[index create destroy]
     post "/login" => "auth#login"
     post "/logout" => "auth#logout"
   end
