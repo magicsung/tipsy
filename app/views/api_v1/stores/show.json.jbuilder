@@ -13,3 +13,10 @@ json.hours_thursday @store.hours_thursday
 json.hours_friday  @store.hours_friday 
 json.hours_saturday @store.hours_saturday
 json.hours_sunday  @store.hours_sunday 
+
+json.comment @store.comments do |e|
+  json.rating e.rating 
+  json.content e.content
+  json.user e.user.name
+  json.time time_ago_in_words(e.created_at)+" ago"
+end

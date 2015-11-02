@@ -42,6 +42,11 @@
           <td class="store-address"></td>
         </tr>
       </table>
+      <div class="comment">
+        <table class="table">
+          
+        </table>
+      </div>
 
     </div>
     <div class="clearfix"></div>
@@ -76,7 +81,7 @@ $(document).ready(function(e){
           format: 'json',
         },
         success: function(data) {
-          console.log(data)
+          // console.log(data)
 
           var info = ""
           var img = data.photo
@@ -84,11 +89,34 @@ $(document).ready(function(e){
           name = '<p>' + data.name + '</p>'
           phone = '<p>' + data.phone + '</p>'
           address = '<p>' + data.address + '</p>'
+          comment = data.comment
+          var comments = ""
           $('#black-board .content .store-img').html(info);
           $('#black-board .content .store-name').html(name);
           $('#black-board .content .store-phone').html(phone);
           $('#black-board .content .store-address').html(address);
+
+
+          for (i=0; i<comment.length; i++) {
+            // console.log(comment[i]);
+            comments += '<tr><td>'+'<div class="current_score" data-score="'+comment[i].rating+'"></div>'+'</td><td>'+comment[i].content+'<br><small>by '+comment[i].user+'  '+comment[i].time+'</small></td></tr>'
+          }
+
+          $('#black-board .container .comment table').html(comments);
+
           // $('#black-board .content').html(data);
+
+
+          $('.star').raty({ 
+            score: '3'
+          });
+
+          $('.current_score').raty({ 
+            readOnly: true,
+            score: function() {
+              return $(this).attr('data-score');
+            }
+          }); 
 
         },
     });
@@ -110,17 +138,6 @@ $(document).ready(function(e){
     }
   });
 
-
-  // $('.star').raty({ 
-  //   score: '3'
-  // });
-
-  // $('.current_score').raty({ 
-  //   readOnly: true,
-  //   score: function() {
-  //     return $(this).attr('data-score');
-  //   }
-  // }); 
 
 });
 </script>

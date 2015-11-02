@@ -63,7 +63,7 @@
         <td>
           <div class="current_score" data-score="<%= x.rating %>"></div>
         </td>
-        <td><%= x.content %> <br> <small> by <%= x.user.name %></small></td>
+        <td><%= x.content %> <br> <small> by <%= x.user.name %> - <%= time_ago_in_words(x.created_at) %> ago</small></td>
         <td>
         <% if current_user %>
           <% if x.user == current_user %>  
