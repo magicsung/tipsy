@@ -20,3 +20,4 @@
 /config/yelp.yml
 /config/fb.yml
 /config/email.yml
+/config/s3.yml
