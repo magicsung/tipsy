@@ -23,7 +23,7 @@
       position: absolute;
       background: rgba(0,0,0,0.5);
       width: 100%;
-      height: 645px;
+      height: 100%;
       z-index: 10;
     }
 
@@ -31,38 +31,45 @@
       background: none;
       position: relative;
       z-index: 100;
+      
+      // padding: 0;
+      // margin: 0;
+
+      .container {
+        // position:absolute;
+        // z-index: 200;
+
+        h1 {
+          color: #fff;
+          display: block;
+          text-align: center;
+        }
+        a {
+          color: #fff;
+          text-decoration: none;
+        }
+        a:hover {
+          color: $lightblue;
+        }
+        .fa {
+          position:relative;
+          animation: shrink 0.8s infinite;
+        }
+        @keyframes shrink {
+          0% {
+            top: 5px;
+          }
+          50% {
+            top: 20px;
+          }
+          100% {
+            top: 5px;
+          }
+        }
+
+      }
     }
     
-    h1 {
-      color: #fff;
-      display: block;
-      text-align: center;
-    }
-
-    a {
-      color: #fff;
-      text-decoration: none;
-    }
-    a:hover {
-      color: $lightblue;
-    }
-
-    .fa {
-      position:relative;
-      animation: shrink 0.8s infinite;
-    }
-
-    @keyframes shrink {
-      0% {
-        top: 5px;
-      }
-      50% {
-        top: 20px;
-      }
-      100% {
-        top: 5px;
-      }
-    }
 
 
   }
@@ -160,7 +167,7 @@
 
   }
 
-// DJ block
+
   #dj-block {
     .jumbotron {
       background: image-url("dj-block.jpg") #000 ;
@@ -180,6 +187,9 @@
       padding-left: 40%;
       width: 100%;
       z-index: 100;
+      p {
+        font-size: 1.6em; 
+      }
     }
     .dj-btn {
       color: #333;
@@ -196,7 +206,7 @@
   }
 
 
-// VIP block
+
   #vip {
     .black-wrap{
       position: absolute;
@@ -222,6 +232,9 @@
       margin: 0 auto;
       width: 100%;
       z-index: 100;
+      p {
+        font-size: 1.6em; 
+      }
     }
     .vip-btn {
       color: #333;
@@ -279,10 +292,17 @@
 @media screen and (max-width: 750px) {
   
   .tipsy {
+
     #dj-block {
       .jumbotron {
+        padding-top: 200px;
+        background-repeat: no-repeat;
+        background-position: top center; 
+      }
+      .container {
         padding-left: 0;
       }
+
     }
   }
 }
