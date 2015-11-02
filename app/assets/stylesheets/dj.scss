@@ -6,10 +6,7 @@
   }
   
   .dj-show-left {
-    .image-edm {
-      width: 100%;
-      margin-top: 15px;
-    }
+    
   }
 
   iframe {
@@ -52,6 +49,17 @@
       z-index: 100;
       background: rgba(0,0,0,0.2);
       width: 100%;
+    }
+  }
+  .dj-show-right {
+    margin-top: 30px;
+  }
+
+  .dj-events {
+    margin-top: 30px;  
+    .image-edm {
+      width: 100%;
+      margin-top: 15px;
     }
   }
 }

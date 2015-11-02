@@ -1,5 +1,5 @@
 
-<div class="col-md-6 dj-show-left">
+<div class="col-md-6 col-md-offset-3 dj-show-left">
   <div class="col-xs-12">
     <% if @dj.photo.exists? %>
       <%= image_tag @dj.photo.url, :class => "" %>
@@ -9,19 +9,25 @@
     <% end %>
     <h1><%= @dj.name %></h1>
   </div>
-  <div class="row">
-  <% @dj.events.each do |x| %>
-    <div class="col-md-6">
-      <%= link_to image_tag(x.edm, :class => "image-edm"), event_path(x) %>
-    </div>
-  <% end %>
-  </div>
+  
 </div>
 
-<div class="col-md-6 dj-show-right">
+<div class="col-md-6 col-md-offset-3 dj-show-right">
+  <h3>播放清單：</h3>
   <% @dj.playlists.each do |x| %>
     <div class="col-xs-12">
       <%= raw(x.content) %>
     </div>
   <% end %>
+</div>
+
+<div class="col-md-6 col-md-offset-3 dj-events">
+  <h3>演出活動：</h3>
+  <div class="row">
+  <% @dj.events.public_event.each do |x| %>
+    <div class="col-md-6">
+      <%= link_to image_tag(x.edm, :class => "image-edm"), event_path(x) %>
+    </div>
+  <% end %>
+  </div>
 </div>
