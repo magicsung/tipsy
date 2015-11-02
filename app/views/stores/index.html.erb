@@ -43,9 +43,8 @@
         </tr>
       </table>
       <div class="comment">
-        <table class="table">
-          
-        </table>
+        <table class="table"></table>
+        <div class="show-link text-center"></div>
       </div>
 
     </div>
@@ -101,16 +100,15 @@ $(document).ready(function(e){
             // console.log(comment[i]);
             comments += '<tr><td>'+'<div class="current_score" data-score="'+comment[i].rating+'"></div>'+'</td><td>'+comment[i].content+'<br><small>by '+comment[i].user+'  '+comment[i].time+'</small></td></tr>'
           }
-
           $('#black-board .container .comment table').html(comments);
 
-          // $('#black-board .content').html(data);
+          var ShowLink = '<a class="btn btn-sm btn-default" href="'+'<%= stores_url %>/'+data.id+'">Show detail</a>'
+          $('#black-board .container .comment .show-link').html(ShowLink);
 
-
+          // show star
           $('.star').raty({ 
             score: '3'
           });
-
           $('.current_score').raty({ 
             readOnly: true,
             score: function() {
