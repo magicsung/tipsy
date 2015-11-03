@@ -44,6 +44,7 @@ Rails.application.routes.draw do
     resources :comments
     resources :playlists
     resources :tickets
+    resources :vips
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,9 +1,13 @@
 class Admin::VipsController < ApplicationController
 
+  layout "admin"
+
   before_action :find_event, :only => [:show, :edit, :update, :destroy]
 
   def index
     @vip = Vip.all
+
+    @ticket = Ticket.new
   end
 
   def new
