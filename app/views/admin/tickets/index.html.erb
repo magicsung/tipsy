@@ -1,0 +1,19 @@
+<div class="page-header">
+  <h1>Tickets</h1>
+</div>
+  
+
+<div class="list-ticket">
+  <% @ticket.each do |x| %>
+    <div class="col-md-3">
+      <div>
+        <%= image_tag(RQRCode::QRCode.new(x.qrcode).to_img.resize(200, 200).to_data_url) %>
+        <p>Code: <%= x.qrcode %></p>
+        <p>User: <%= x.user.name %></p>
+        <p>Due_time: <%= x.due_time %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
