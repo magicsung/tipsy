@@ -37,6 +37,7 @@ gem 'masonry-rails'
 gem 'capistrano-rails', :group => :development
 gem 'capistrano-passenger', :group => :development
 gem "font-awesome-rails"
+gem 'rqrcode_png' 
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

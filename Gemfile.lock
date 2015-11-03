@@ -61,6 +61,7 @@ GEM
     capistrano-rails (1.1.5)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
+    chunky_png (1.3.5)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.7)
@@ -188,6 +189,11 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
+    rqrcode (0.7.0)
+      chunky_png
+    rqrcode_png (0.1.5)
+      chunky_png
+      rqrcode
     rspec-core (3.3.2)
       rspec-support (~> 3.3.0)
     rspec-expectations (3.3.1)
@@ -275,6 +281,7 @@ DEPENDENCIES
   paperclip
   rails (= 4.2.3)
   rest-client
+  rqrcode_png
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
