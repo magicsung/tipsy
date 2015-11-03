@@ -65,7 +65,8 @@
 	      hours_friday: "string",
 	      hours_saturday: "string",
 	      hours_sunday: "string",
-	      comments_count: integer
+	      comments_count: integer,
+	      updated_at: "2015-11-01T10:10:10.000+08:00"
 		}
 	]
 }
