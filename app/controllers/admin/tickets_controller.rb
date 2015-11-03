@@ -6,6 +6,8 @@ class Admin::TicketsController < ApplicationController
 
   def index
     @ticket = Ticket.all.valid_ticket
+
+    @ticket_new = Ticket.new
   end
 
   def show
@@ -25,7 +27,7 @@ class Admin::TicketsController < ApplicationController
   end
 
   def ticket_params
-    params.require(:ticket).permit(:user_id, :qrcode, :due_time)
+    params.require(:ticket).permit(:user_id, :qrcode, :due_time, :order_id)
   end
 
 end

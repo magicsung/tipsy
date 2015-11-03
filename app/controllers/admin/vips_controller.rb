@@ -6,8 +6,6 @@ class Admin::VipsController < ApplicationController
 
   def index
     @vip = Vip.all
-
-    @ticket = Ticket.new
   end
 
   def new

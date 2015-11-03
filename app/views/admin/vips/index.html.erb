@@ -3,34 +3,4 @@
   <h1>Vip order</h1>
 </div>
 
-<div class="row">
-  <div class="col-md-4">
-
-    <h2>Ticket generate.</h2>
-    
-    <% user = User.all.map{ |x| [x.name, x.id] } %>
-    <% user %>
-
-    <%= form_for @ticket, :url => admin_tickets_path do |n|  %>
-
-      <div class="form-group">
-        <%= n.label :user_id, "User" %>
-        <%= n.select :user_id, user, {} ,:class => "form-control", :required => "required" %>
-      </div>
-
-      <div class="form-group">
-        <%= n.hidden_field :qrcode, :class => "form-control", :required => "required", :value => SecureRandom.hex(20) %>
-      </div>
-
-      <div class="form-group">
-        <%= n.label :due_time, "Time_due" %>
-        <%= n.datetime_select :due_time, :class => "form-control", :required => "required" %>
-      </div>
-
-      <%= n.submit "Create", :class => "btn btn-primary" %>
-
-    <% end %>
-
-  </div>
-</div>
 
