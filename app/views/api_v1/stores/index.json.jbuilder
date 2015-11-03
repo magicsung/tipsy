@@ -20,5 +20,5 @@ json.data @store do |e|
   json.hours_friday  e.hours_friday 
   json.hours_saturday e.hours_saturday
   json.hours_sunday  e.hours_sunday 
-
+  json.comments_count e.comments.size
 end
