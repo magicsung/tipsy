@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :meetup_messages
   has_many :meetup, :through => :participates
   has_many :participates
+  has_many :tickets
 
   before_create :generate_authentication_token
 
