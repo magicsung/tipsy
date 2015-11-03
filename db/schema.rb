@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103031204) do
+ActiveRecord::Schema.define(version: 20151103080107) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",               limit: 255, null: false
@@ -147,8 +147,10 @@ ActiveRecord::Schema.define(version: 20151103031204) do
     t.datetime "due_time",               null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "order_id",   limit: 4,   null: false
   end
 
+  add_index "tickets", ["order_id"], name: "index_tickets_on_order_id", using: :btree
   add_index "tickets", ["user_id"], name: "index_tickets_on_user_id", using: :btree
 
   create_table "trades", force: :cascade do |t|

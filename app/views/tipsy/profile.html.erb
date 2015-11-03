@@ -27,11 +27,13 @@
 
   <div class="empty100px"></div>
 
-
-  <div class="qrcode">
-    <h3>Your VIP code:</h3>
-    <%= image_tag @qr %>
-  </div>
+  <% if current_user.tickets.exists? %>
+    <div class="qrcode">
+      <h3>Your VIP code:</h3>
+      <%= image_tag @qr %>
+    </div>
+  <% end %>
+  
 
 </div>
 
