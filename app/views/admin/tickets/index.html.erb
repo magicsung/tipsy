@@ -9,7 +9,6 @@
     <h2>Ticket generate.</h2>
     
     <% user = User.all.map{ |x| [x.name, x.id] } %>
-    <% user %>
 
     <%= form_for @ticket_new, :url => admin_tickets_path do |n|  %>
 

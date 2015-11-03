@@ -4,3 +4,67 @@
 </div>
 
 
+<h3>Service list</h3>
+<div>
+  <% @vip.each do |x| %>
+    <table class="table">
+      <tr>
+        <th>Name:</th>
+        <th>Price(NT$):</th>
+        <th>Store:</th>
+        <th>Stock:</th>
+        <th>Datetime:</th>
+      </tr>
+      <tr>
+        <td><%= x.name %></td>
+        <td><%= x.price %></td>
+        <td><%= x.store.name %></td>
+        <td><%= x.stock %></td>
+        <td><%= x.datetime %></td>
+      </tr>
+    </table>
+  
+  <% end %>
+</div>
+
+
+<h3>New_serivce</h3>
+
+<div class="row">
+  <div class="col-md-4">
+
+    <% store = Store.all.map{ |x| [x.name, x.id] } %>
+
+    <%= form_for @vip_new, :url => admin_vips_path do |n|  %>
+
+      <div class="form-group">
+        <%= n.label :name, "Name" %>
+        <%= n.text_field :name, :class => "form-control", :required => "required" %>
+      </div>
+
+      <div class="form-group">
+        <%= n.label :price, "Price" %>
+        <%= n.number_field :price, :class => "form-control", :required => "required" %>
+      </div>
+
+      <div class="form-group">
+        <%= n.label :store_id, "Store" %>
+        <%= n.select :store_id, store, {} ,:class => "form-control", :required => "required" %>
+      </div>
+
+      <div class="form-group">
+        <%= n.label :stock, "Stock" %>
+        <%= n.number_field :stock, :class => "form-control", :required => "required" %>
+      </div>
+
+      <div class="form-group">
+        <%= n.label :datetime, "Start time" %>
+        <%= n.datetime_select :datetime, :class => "form-control", :required => "required" %>
+      </div>
+
+      <%= n.submit "Create", :class => "btn btn-primary" %>
+
+    <% end %>
+
+  </div>
+</div>

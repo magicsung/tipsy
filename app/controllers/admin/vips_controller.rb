@@ -6,10 +6,8 @@ class Admin::VipsController < ApplicationController
 
   def index
     @vip = Vip.all
-  end
 
-  def new
-    @vip = Vip.new
+    @vip_new = Vip.new
   end
 
   def create
