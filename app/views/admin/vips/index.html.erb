@@ -6,25 +6,24 @@
 
 <h3>Service list</h3>
 <div>
-  <% @vip.each do |x| %>
-    <table class="table">
-      <tr>
-        <th>Name:</th>
-        <th>Price(NT$):</th>
-        <th>Store:</th>
-        <th>Stock:</th>
-        <th>Datetime:</th>
-      </tr>
-      <tr>
-        <td><%= x.name %></td>
-        <td><%= x.price %></td>
-        <td><%= x.store.name %></td>
-        <td><%= x.stock %></td>
-        <td><%= x.datetime %></td>
-      </tr>
-    </table>
-  
-  <% end %>
+  <table class="table">
+    <tr>
+      <th>Name:</th>
+      <th>Price(NT$):</th>
+      <th>Store:</th>
+      <th>Stock:</th>
+      <th>Datetime:</th>
+    </tr>
+    <% @vip.each do |x| %>
+    <tr>
+      <td><%= x.name %></td>
+      <td><%= x.price %></td>
+      <td><%= x.store.name %></td>
+      <td><%= x.stock %></td>
+      <td><%= x.datetime %></td>
+    </tr>
+    <% end %>
+  </table>
 </div>
 
 
