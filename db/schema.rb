@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103012406) do
+ActiveRecord::Schema.define(version: 20151103031204) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",               limit: 255, null: false
@@ -87,6 +87,21 @@ ActiveRecord::Schema.define(version: 20151103012406) do
     t.datetime "edm_updated_at"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.integer  "user_id",        limit: 4
+    t.integer  "store_id",       limit: 4
+    t.integer  "vip_id",         limit: 4
+    t.integer  "price",          limit: 4,                         null: false
+    t.integer  "quantity",       limit: 4,   default: 1,           null: false
+    t.string   "payment_method", limit: 255, default: "new order", null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+  end
+
+  add_index "orders", ["store_id"], name: "index_orders_on_store_id", using: :btree
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
+  add_index "orders", ["vip_id"], name: "index_orders_on_vip_id", using: :btree
+
   create_table "playlists", force: :cascade do |t|
     t.string   "title",      limit: 255,   null: false
     t.text     "content",    limit: 65535, null: false
@@ -126,6 +141,28 @@ ActiveRecord::Schema.define(version: 20151103012406) do
     t.string   "hours_sunday",       limit: 255
   end
 
+  create_table "tickets", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4,   null: false
+    t.string   "qrcode",     limit: 255, null: false
+    t.datetime "due_time",               null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "tickets", ["user_id"], name: "index_tickets_on_user_id", using: :btree
+
+  create_table "trades", force: :cascade do |t|
+    t.integer  "order_id",     limit: 4,                     null: false
+    t.string   "trade_number", limit: 255,                   null: false
+    t.boolean  "paid",                       default: false, null: false
+    t.text     "params",       limit: 65535
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+  end
+
+  add_index "trades", ["order_id"], name: "index_trades_on_order_id", using: :btree
+  add_index "trades", ["trade_number"], name: "index_trades_on_trade_number", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "name",                   limit: 255,                  null: false
     t.string   "email",                  limit: 255, default: "",     null: false
@@ -155,4 +192,19 @@ ActiveRecord::Schema.define(version: 20151103012406) do
   add_index "users", ["token"], name: "index_users_on_token", using: :btree
   add_index "users", ["uid"], name: "index_users_on_uid", using: :btree
 
+  create_table "vips", force: :cascade do |t|
+    t.string   "name",       limit: 255,                null: false
+    t.decimal  "price",                  precision: 10, null: false
+    t.integer  "store_id",   limit: 4,                  null: false
+    t.integer  "stock",      limit: 4,                  null: false
+    t.datetime "datetime",                              null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_foreign_key "orders", "stores"
+  add_foreign_key "orders", "users"
+  add_foreign_key "orders", "vips"
+  add_foreign_key "tickets", "users"
+  add_foreign_key "trades", "orders"
 end

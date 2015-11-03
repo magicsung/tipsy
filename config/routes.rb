@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   root "tipsy#index"
 
+  post 'allpay/result'
+  post 'allpay/return'
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   get 'profile/:id' => "tipsy#profile", as: 'profile'
@@ -12,10 +15,14 @@ Rails.application.routes.draw do
   resources :events, only: %i[index show]
   resources :categories, only: [:index]
   resources :comments, only: %i[create destroy]
-  resources :meetups
-  # resources :meetup_messages
   resources :playlists
   resources :contacts, only: [:create]
+  resources :vips, only: [:show]
+  resources :tickets, only: [:show]
+  resources :orders, only: %i[new create show] do
+    get :checkout, on: :member
+  end
+
 
   scope :path => '/api/v1/', :defaults => { :format => :json }, :module => "api_v1", :as => 'v1' do
     resources :categories, only: [:index]
@@ -35,8 +42,6 @@ Rails.application.routes.draw do
     resources :events
     resources :categories
     resources :comments
-    resources :meetups
-    resources :meetup_messages
     resources :playlists
   end
 

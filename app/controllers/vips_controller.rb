@@ -1,0 +1,2 @@
+class VipsController < ApplicationController
+end
