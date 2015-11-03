@@ -64,7 +64,8 @@
 	      hours_thursday: "string",
 	      hours_friday: "string",
 	      hours_saturday: "string",
-	      hours_sunday: "string"
+	      hours_sunday: "string",
+	      comments_count: integer
 		}
 	]
 }
