@@ -133,6 +133,18 @@ params{
 ```
 method => delete
 params{
+	"auth_token": string
+}
+```
+
+
+#####Confirm QRcode :
+>/api/v1/confirm
+
+```
+method => post
+params{
 	"auth_token": string,
+	"qrcode": string
 }
 ```

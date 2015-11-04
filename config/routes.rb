@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     resources :comments, only: %i[index create destroy]
     post "/login" => "auth#login"
     post "/logout" => "auth#logout"
+    post "/confirm" => "vips#confirm"
   end
 
   namespace :admin do
