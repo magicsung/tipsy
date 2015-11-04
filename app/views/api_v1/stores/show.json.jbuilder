@@ -6,8 +6,8 @@ json.phone @store.phone
 json.description @store.description
 json.city @store.location_city
 json.address @store.location_address
-json.lat e.coordinate_lat
-json.lon e.coordinate_lon
+json.lat @store.coordinate_lat
+json.lon @store.coordinate_lon
 json.hours_monday @store.hours_monday
 json.hours_tuesday @store.hours_tuesday
 json.hours_wensday @store.hours_wensday
