@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-md-4 col-md-offset-4 text-center"> 
-    <% if current_user && current_user.orders.exists? && current_user.orders.joins(:trades).where('trades.paid = true') %>
+    <% if current_user && current_user.orders.exists? && current_user.orders.joins(:trades).where('trades.paid = true').exists? %>
       <div class="empty100px"></div>
       <%= image_tag @qrcode %>
       <br><br>
