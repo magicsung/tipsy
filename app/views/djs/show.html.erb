@@ -1,5 +1,5 @@
 
-<div class="col-md-6 col-md-offset-3 dj-show-left">
+<div class="col-md-4 col-md-offset-4 dj-show-left">
   <div class="col-xs-12">
     <% if @dj.photo.exists? %>
       <%= image_tag @dj.photo.url, :class => "" %>
@@ -12,7 +12,7 @@
   
 </div>
 
-<div class="col-md-6 col-md-offset-3 dj-show-right">
+<div class="col-md-4 col-md-offset-4 dj-show-right">
   <h3>播放清單：</h3>
   <% @dj.playlists.each do |x| %>
     <div class="col-xs-12">
@@ -21,7 +21,7 @@
   <% end %>
 </div>
 
-<div class="col-md-6 col-md-offset-3 dj-events">
+<div class="col-md-4 col-md-offset-4 dj-events">
   <h3>演出活動：</h3>
   <div class="row">
   <% @dj.events.public_event.each do |x| %>

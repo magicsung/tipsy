@@ -8,8 +8,12 @@
   <h3 class="text-center" ><%= @event.title %></h3>
   <table class='table'>
     <tr>
-      <th><p>Address:</p></th>
-      <td><p><%= @event.address %></p></td>
+      <th><p>Description:</p></th>
+      <td><p><%= @event.description %></p></td>
+    </tr>
+    <tr>
+      <th><p>Price:</p></th>
+      <td><p><%= @event.price %></p></td>
     </tr>
     <tr>
       <th><p>Start_at:</p></th>
@@ -17,13 +21,6 @@
         <%= @event.start_date %> |
         <%= @event.start_time.strftime("%H:%M") %>
       </p></td>
-    </tr>
-    <tr>
-      <th><p>Due_at:</p></th>
-      <td><p>
-        <%= @event.due_date %> |
-        <%= @event.due_time.strftime("%H:%M") %>
-      </td></p>
     </tr>
     <tr>
       <th><p>DJ:</p></th>
@@ -34,13 +31,16 @@
       </p></td>
     </tr>
     <tr>
-      <th><p>Address:</p></th>
-      <td><p><%= @event.address %></p></td>
+      <th><p>Store:</p></th>
+      <td><p><%= link_to @event.store.name, stores_url, :class => "btn btn-default btn-xs" %></p></td>
     </tr>
     <tr>
-      <td COLSPAN=2 >
-        <%= raw(@event.description) %>
-      </td>
+      <th><p>Address:</p></th>
+      <td><p><%= @event.store.location_address %></p></td>
+    </tr>
+    <tr>
+      <th><p>Contact:</p></th>
+      <td><p><%= @event.contact %> <%= @event.phone %></p></td>
     </tr>
 
   </table>
