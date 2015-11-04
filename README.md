@@ -58,19 +58,50 @@
 	      address: "string",
 	      lat: "string",
 	      lon: "string",
-	      hours_monday: "string",
-	      hours_tuesday: "string",
-	      hours_wensday: "string",
-	      hours_thursday: "string",
-	      hours_friday: "string",
-	      hours_saturday: "string",
-	      hours_sunday: "string",
 	      comments_count: integer,
 	      updated_at: "2015-11-01"
 		}
 	]
 }
 ```
+
+#####Stores :
+>/api/v1/stores/:id
+
+```
+
+-	{
+	  id: integer,
+	  category_id: integer,
+	  name: "string",
+	  photo: "photo_url",
+	  phone: "string",
+	  description: "string",
+	  city: "string",
+	  address: "string",
+	  lat: "string",
+	  lon: "string",
+	  hours_monday: "string",
+	  hours_tuesday: "string",
+	  hours_wensday: "string",
+	  hours_thursday: "string",
+	  hours_friday: "string",
+	  hours_saturday: "string",
+	  hours_sunday: "string",
+	  comment: [
+			{
+				"photo": "url",
+				"rating": integer,
+				"content": "string",
+				"user": "string",
+				"time": "string"(tims ago)
+			}
+		]
+	}
+	
+
+```
+
 
 #####Show Dj :
 >/api/v1/djs/:id

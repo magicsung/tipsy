@@ -6,13 +6,15 @@ json.phone @store.phone
 json.description @store.description
 json.city @store.location_city
 json.address @store.location_address
+json.lat e.coordinate_lat
+json.lon e.coordinate_lon
 json.hours_monday @store.hours_monday
 json.hours_tuesday @store.hours_tuesday
 json.hours_wensday @store.hours_wensday
 json.hours_thursday @store.hours_thursday
 json.hours_friday  @store.hours_friday 
 json.hours_saturday @store.hours_saturday
-json.hours_sunday  @store.hours_sunday 
+json.hours_sunday  @store.hours_sunday
 
 json.comment @store.comments do |e|
   json.photo e.user.image
