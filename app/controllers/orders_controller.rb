@@ -2,11 +2,7 @@ require 'allpay'
 class OrdersController < ApplicationController
 
   def show
-    @order = Order.find( params[:id] )
-  end
-
-  def new
-
+    @order = Order.find(params[:id])
   end
 
   def create
@@ -17,8 +13,8 @@ class OrdersController < ApplicationController
     @order.store_id = @vip.store.id
 
     if @order.save
-      # redirect to allpay
-      redirect_to vips_path
+      # redirect to confirm order
+      redirect_to order_path(@order)
     else
       render :new
     end
@@ -26,7 +22,8 @@ class OrdersController < ApplicationController
   end
 
   def checkout
-    order = Order.find params[:id]
+    # raise
+    order = Order.find(params[:id])
     trade = order.trades.create!
     allpay = Allpay.new
     @checkout_params = {
@@ -34,9 +31,9 @@ class OrdersController < ApplicationController
       MerchantTradeNo: trade.trade_number,
       MerchantTradeDate: Time.now.strftime('%Y/%m/%d %H:%M:%S'),
       PaymentType: :aio,
-      TotalAmount: order.total.round,
+      TotalAmount: order.price,
       TradeDesc: :'My Cart',
-      ItemName: order.line_items.map{ |i| "#{i.product.name} x #{i.quantity}" }.join('#'),
+      ItemName: order.vip.name,
       ChoosePayment: order.payment_method,
       ReturnURL: root_url,
       OrderResultURL: allpay_result_url

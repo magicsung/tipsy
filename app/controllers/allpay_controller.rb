@@ -7,7 +7,12 @@ class AllpayController < ApplicationController
 
   def result
     if @trade.save
-      redirect_to @trade.order, alert: '交易成功'
+      redirect_to vips_path, alert: '交易成功'
+      
+      # generate QRcode
+      @order = @trade.order
+      @order.qrcode = SecureRandom.hex(15)
+      @order.save
     else
       redirect_to @trade.order, alert: '交易失敗'
     end
