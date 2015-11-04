@@ -6,17 +6,23 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @order = Order.new
+
   end
 
   def create
-    @order = Order.new_from_cart(current_cart, order_params)
+
+    @order = current_user.orders.new(order_params)
+    @vip = Vip.find( params[:order][:vip_id] )
+    @order.price = params[:order][:quantity].to_i * @vip.price.to_i
+    @order.store_id = @vip.store.id
+
     if @order.save
-      current_cart.clear
-      redirect_to @order
+      # redirect to allpay
+      redirect_to vips_path
     else
       render :new
     end
+
   end
 
   def checkout
@@ -41,7 +47,8 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit( :name, :address, :payment_method )
+    params.require(:order).permit( :store_id, :vip_id, :quantity, :payment_method )
   end
+
 
 end

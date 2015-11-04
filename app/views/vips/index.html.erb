@@ -1,0 +1,69 @@
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    
+    <h1>Vip order</h1>
+
+    <div id="order">
+      <%= form_for @order, :url => orders_path do |n|  %>
+
+        <div class="form-group select">
+          <%= n.label :vip_id, "Service" %>
+          <%= n.select :vip_id, Vip.all.map{ |x| [x.name, x.id, {'data-price' => x.price}] }, {}, :class => "form-control", :id => "vip-select" %>
+        </div>
+
+        <div class="form-group">
+          <%= n.label :quantity, "Quantity" %>
+          <%= n.number_field :quantity, :class => "form-control", :id => "quantity" %>
+        </div>
+
+        <div class="form-group">
+          <%= n.label :price, "Price" %>
+          <%= n.label :price, :class => "form-control", :id => "price" %>
+        </div>
+
+        <div class="form-group">
+          <%= n.label :payment_method, "Payment method" %>
+          <%= n.select :payment_method, ["Credit","ATM"], :class => "form-control", :id => "price" %>
+        </div>
+
+        <%= n.submit "確認", :class => "btn btn-primary" %>
+
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
+
+
+<script>
+$(document).ready(function(e){
+
+  var quantity = 0;
+  var total = 0;
+  var price = $('#vip-select').children('option:selected').data("price");
+  $('#price').text(price);
+
+  var sum = function(price, quantity){
+    quantity = $('#quantity').val();
+    total = parseInt(price) * parseInt(quantity);
+  };
+
+  $( "#vip-select" ).change(function(){
+    price = $('#vip-select').children('option:selected').data("price");;
+    sum(price, quantity)
+    $('#price').text(total);
+  });
+
+  $('body').on('keyup', '#quantity', function(){
+    sum(price, quantity)
+    $('#price').text(total);
+  });
+
+  // $( "#vip-select" ).select2({
+  //   placeholder: "Select a service"
+  // });
+  
+});
+</script>
