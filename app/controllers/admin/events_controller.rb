@@ -19,6 +19,7 @@ class Admin::EventsController < ApplicationController
   end
 
   def create
+
     @event = Event.new( event_params )
 
     if @event.save
@@ -60,7 +61,7 @@ class Admin::EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:title, :status, :description, :contact, :phone, :city, :address, :start_date, 
-                                  :start_time, :due_date, :due_time, :edm, :price, :popular, :dj_list => [])
+                                  :start_time, :due_date, :due_time, :edm, :price, :popular, :store_id, :dj_list => [])
   end
 
   def find_event

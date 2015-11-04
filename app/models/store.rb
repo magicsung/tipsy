@@ -3,6 +3,7 @@ class Store < ActiveRecord::Base
   belongs_to :category
   has_many :comments, :dependent => :destroy
   has_many :vips
+  has_many :events
 
   validates_presence_of :name
 

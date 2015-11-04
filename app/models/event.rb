@@ -25,5 +25,13 @@ class Event < ActiveRecord::Base
 
   end
 
+  def store_address
+    store.location_address
+  end
+
+  def store_name
+    store.name
+  end
+
 
 end
