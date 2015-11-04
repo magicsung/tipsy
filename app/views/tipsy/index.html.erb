@@ -76,7 +76,10 @@
     <div class="container">
       <h1>VIP SERVICE</h1>
       <p>去夜店還在排隊？ 現在就預定VIP服務，成為別人羨慕的對象！</p><br><br>
-      <p><a class="vip-btn" href="#" data-toggle="modal" data-title="" data-target="#vip-modal">立刻預約</a></p>
+      <p>
+        <!-- <a class="vip-btn" href="#" data-toggle="modal" data-title="" data-target="#vip-modal">立刻預約</a> -->
+        <%= link_to "立刻預約", vips_path, :class => "vip-btn" %>
+      </p>
     </div>
   </div>
 </div>
@@ -187,14 +190,14 @@ $(function() {
   }
 
   // vip modal info
-  $(document).on('click', ".vip-btn", function(){
-    var content = (
-      "<p>請撥打專線： <span><a href='tel:+886912345678'>0912-345-678</a></span></p><p>Line: lineme</p><p>QQ: qqqqqq</p><p>Skype: sksksk</p>");
-    $('#vip-modal .modal-title').html("");
-    $('#vip-modal .modal-body').html("");
-    $('#vip-modal .modal-title').append("VIP 貴賓尊榮服務");
-    $('#vip-modal .modal-body').append(content);
-  });
+  // $(document).on('click', ".vip-btn", function(){
+  //   var content = (
+  //     "<p>請撥打專線： <span><a href='tel:+886912345678'>0912-345-678</a></span></p><p>Line: lineme</p><p>QQ: qqqqqq</p><p>Skype: sksksk</p>");
+  //   $('#vip-modal .modal-title').html("");
+  //   $('#vip-modal .modal-body').html("");
+  //   $('#vip-modal .modal-title').append("VIP 貴賓尊榮服務");
+  //   $('#vip-modal .modal-body').append(content);
+  // });
 
 
 });
