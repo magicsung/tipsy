@@ -21,35 +21,34 @@
 <%#= paginate @store, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-sm" %>
 </div>
 
+<div id="board">
+</div>
 
 <div id="black-board">
-  <div class="container">
+  <div class="content col-md-4 col-md-offset-4">
     <a class="close-board pull-right" href="#"><i class="glyphicon glyphicon-remove"></i></a>
-    <div class="content col-md-6 col-md-offset-3">
-
-      <div class="store-img"></div>
-      <table class="table">
-        <tr>
-          <th>Name:</th>
-          <td class="store-name"></td>
-        </tr>
-        <tr>
-          <th>phone:</th>
-          <td class="store-phone"></td>
-        </tr>
-        <tr>
-          <th>address:</th>
-          <td class="store-address"></td>
-        </tr>
-      </table>
-      <div class="comment">
-        <table class="table"></table>
-        <div class="show-link text-center"></div>
-      </div>
-
+    <div class="store-img"></div>
+    <table class="table">
+      <tr>
+        <th>Name:</th>
+        <td class="store-name"></td>
+      </tr>
+      <tr>
+        <th>phone:</th>
+        <td class="store-phone"></td>
+      </tr>
+      <tr>
+        <th>address:</th>
+        <td class="store-address"></td>
+      </tr>
+    </table>
+    <div class="comment">
+      <table class="table"></table>
+      <div class="show-link text-center"></div>
     </div>
-    <div class="clearfix"></div>
+
   </div>
+  <div class="clearfix"></div>
 </div>
 
 
@@ -70,6 +69,7 @@ $(document).ready(function(e){
   $('#masonry-container').on('click', 'a', function(e){
     e.preventDefault();
     $('#black-board').fadeIn(300);
+    $('#board').fadeIn(300);
     var store_id = $(this).data('id');
 
     $.ajax({
@@ -100,10 +100,10 @@ $(document).ready(function(e){
             // console.log(comment[i]);
             comments += '<tr><td>'+'<div class="current_score" data-score="'+comment[i].rating+'"></div>'+'</td><td>'+comment[i].content+'<br><small>by '+comment[i].user+'  '+comment[i].time+'</small></td></tr>'
           }
-          $('#black-board .container .comment table').html(comments);
+          $('#black-board .comment table').html(comments);
 
           var ShowLink = '<a class="btn btn-sm btn-default" href="'+'<%= stores_url %>/'+data.id+'">Show detail</a>'
-          $('#black-board .container .comment .show-link').html(ShowLink);
+          $('#black-board .comment .show-link').html(ShowLink);
 
           // show star
           $('.star').raty({ 
@@ -122,17 +122,20 @@ $(document).ready(function(e){
 
 
   // hide black-board
-  // $("#black-board").click(function(e){
-  //   e.preventDefault();
-  //   $('#black-board').fadeOut(200);
-  // });
+  $("#board").click(function(e){
+    e.preventDefault();
+    $('#black-board').fadeOut(200);
+    $('#board').fadeOut(200);
+  });
   $(".close-board").click(function(e){
     e.preventDefault();
     $('#black-board').fadeOut(200);
+    $('#board').fadeOut(200);
   });
   $(document).keydown( function( event ) {
     if ( event.which == 27 ) {
       $('#black-board').fadeOut(200);
+      $('#board').fadeOut(200);
     }
   });
 
