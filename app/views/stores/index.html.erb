@@ -1,19 +1,20 @@
 
-
-<div id="masonry-container" class="store-list transitions-enabled clearfix">
-  <% @store.each do |y| %>
-    <div class="box">
-       <div class="store-showbox-content">
-          <%= link_to store_path(y), :'data-id' => y.id do %>
-            <% if y.photo %>
-              <%= image_tag(y.photo) %>
-            <% else %>
-                <%= image_tag('store_default.jpg', :class => 'def-img') %>
+<div class="container">
+  <div id="masonry-container" class="store-list transitions-enabled clearfix">
+    <% @store.each do |y| %>
+      <div class="box">
+         <div class="store-showbox-content">
+            <%= link_to store_path(y), :'data-id' => y.id do %>
+              <% if y.photo %>
+                <%= image_tag(y.photo) %>
+              <% else %>
+                  <%= image_tag('store_default.jpg', :class => 'def-img') %>
+              <% end %>
             <% end %>
-          <% end %>
-       </div>
-    </div>
-  <% end %>
+         </div>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 
