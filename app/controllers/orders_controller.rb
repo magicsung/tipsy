@@ -7,17 +7,21 @@ class OrdersController < ApplicationController
 
   def create
 
-    @order = current_user.orders.new(order_params)
-    @vip = Vip.find( params[:order][:vip_id] )
-    @order.price = params[:order][:quantity].to_i * @vip.price.to_i
-    @order.store_id = @vip.store.id
-
-    if @order.save
-      # redirect to confirm order
-      redirect_to order_path(@order)
+    if current_user
+      @order = current_user.orders.new(order_params)
+      @vip = Vip.find( params[:order][:vip_id] )
+      @order.price = params[:order][:quantity].to_i * @vip.price.to_i
+      @order.store_id = @vip.store.id
+      if @order.save
+        redirect_to order_path(@order)
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to user_session_path
     end
+    
+
 
   end
 
