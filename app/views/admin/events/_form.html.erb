@@ -11,45 +11,40 @@
 
     <div class="form-group">
       <%= n.label :description, "Description" %>
-      <%= n.text_area :description, :class => "form-control", :rows => 8 %>    
+      <%= n.text_area :description, :class => "form-control", :rows => 4 %>    
+    </div>
+
+    <div class="form-group">
+      <%= n.label :price, "Price" %>
+      <%= n.text_area :price, :class => "form-control", :rows => 4 %>    
     </div>
 
     <div class="form-group">
       <%= n.label :dj_list, "DJ" %>
       <%= n.select :dj_list, Djs.all.map{ |x| [x.name, x.id] }, {}, :multiple => true, :class => "form-control", :id => "dj-select" %>
     </div>
-    
-    <div class="row">
-    <div class="col-md-3">
-      <div class="form-group">
-        <%= n.label :city, "City" %>
-        <%= n.text_field :city, :class => "form-control" %>    
-      </div>
-    </div>
-    <div class="col-md-9">
-      <div class="form-group">
-        <%= n.label :address, "Address" %>
-        <%= n.text_field :address, :class => "form-control" %>    
-      </div>
-    </div>
+
+    <div class="form-group">
+      <%= n.label :store, "store" %>
+      <%= n.select :store, Store.all.map{ |x| [x.name, x.id] }, {}, :class => "form-control", :id => "store-select", :required => "required" %> 
     </div>
 
     <div class="row">
-    <div class="col-md-6">
-    <div class="form-group">
+      <div class="col-md-6">
+        <div class="form-group">
           <%= n.label :start_date, "Start_at:" %>
           <%= n.text_field :start_date , :class => "form-control datepicker", :"data-provide" => "datepicker" %>    
           <%= n.time_select :start_time, :default => {:hour => '08', :minute => '00'} %>
-    </div>
-    </div>
+        </div>
+      </div>
 
-    <div class="col-md-6">
-    <div class="form-group">
-      <%= n.label :due_date, "Due_to:" %>
-      <%= n.text_field :due_date, :class => "form-control datepicker", :"data-provide" => "datepicker" %>    
-      <%= n.time_select :due_time, :default => {:hour => '12', :minute => '00'} %>    
-    </div>
-    </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= n.label :due_date, "Due_to:" %>
+          <%= n.text_field :due_date, :class => "form-control datepicker", :"data-provide" => "datepicker" %>    
+          <%= n.time_select :due_time, :default => {:hour => '12', :minute => '00'} %>    
+        </div>
+      </div>
     </div>
 
     <br>
@@ -103,8 +98,12 @@
 
 <script>
 $(document).ready(function(e){
-  
+
+  $( "#store-select" ).select2({
+    placeholder: "Select a store"
+  });
   $( "#dj-select" ).select2({
+    placeholder: "Add some dj.",
     tags: true,
     tokenSeparators: [',', ' ']
   }).select2('val', <%= @event.djs.map{ |x| x.id } %>);

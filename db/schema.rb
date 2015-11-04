@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103080107) do
+ActiveRecord::Schema.define(version: 20151103130337) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",               limit: 255, null: false
@@ -79,13 +79,18 @@ ActiveRecord::Schema.define(version: 20151103080107) do
     t.time     "start_time"
     t.date     "due_date"
     t.time     "due_time"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
     t.string   "edm_file_name",    limit: 255
     t.string   "edm_content_type", limit: 255
     t.integer  "edm_file_size",    limit: 4
     t.datetime "edm_updated_at"
+    t.string   "price",            limit: 255
+    t.boolean  "popular",                        default: false
+    t.integer  "store_id",         limit: 4,                     null: false
   end
+
+  add_index "events", ["store_id"], name: "index_events_on_store_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id",        limit: 4
