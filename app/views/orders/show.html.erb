@@ -3,8 +3,9 @@
   <div class="col-md-4 col-md-offset-4 text-center">
     <h1>確認訂單</h1><br>
     <p>name : <%= @order.vip.name %></p>
+    <p>時間 : <%= @order.vip.datetime %></p>
     <p>store : <%= @order.vip.store.name %></p>
-    <p>數量 : <%= @order.id %></p>
+    <p>數量 : <%= @order.quantity %></p>
     <p>總金額 : <%= @order.price %></p>
     <p>付款方式 : <%= @order.payment_method %></p>
 

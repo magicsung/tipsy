@@ -5,6 +5,10 @@
     <% if current_user.orders.exists? && current_user.orders.joins(:trades).where('trades.paid = true') %>
       <div class="empty100px"></div>
       <%= image_tag @qrcode %>
+      <br><br>
+      <h3><%= @order_info.vip.name %></h3>
+      <h4><%= @order_info.vip.store.name %></h4>
+      <h5><%= @order_info.vip.datetime.strftime("%m/%d/%Y %I:%M%p") %></h5>
       <div class="empty100px"></div>
     <% end %>
   </div>
@@ -20,7 +24,8 @@
 
         <div class="form-group select">
           <%= n.label :vip_id, "Service" %>
-          <%= n.select :vip_id, Vip.all.map{ |x| [x.name, x.id, {'data-price' => x.price}] }, {}, :class => "form-control", :id => "vip-select" %>
+          <%= n.select :vip_id, Vip.all.map{ |x| [x.name, x.id, {'data-price' => x.price}, {'data-date' => x.datetime}] }, {}, :class => "form-control", :id => "vip-select" %>
+          <div class="service-date">123</div>
         </div>
 
         <div class="form-group">
@@ -54,6 +59,7 @@ $(document).ready(function(e){
   var quantity = 0;
   var total = 0;
   var price = $('#vip-select').children('option:selected').data("price");
+  $('.service-date').text($('#vip-select').children('option:selected').data("date"));
   $('#price').text(price);
 
   var sum = function(price, quantity){
@@ -62,7 +68,8 @@ $(document).ready(function(e){
   };
 
   $( "#vip-select" ).change(function(){
-    price = $('#vip-select').children('option:selected').data("price");;
+    $('.service-date').text($('#vip-select').children('option:selected').data("date"));
+    price = $('#vip-select').children('option:selected').data("price");
     sum(price, quantity)
     $('#price').text(total);
   });
