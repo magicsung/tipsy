@@ -11,6 +11,8 @@ class ApiV1::VipsController < ApiController
         render :json => { :message => "confirm faild!" },  :status => 500
       end
 
+    else
+      render :json => { :message => "can not find user!" },  :status => 500
     end
 
   end
