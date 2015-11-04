@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   resources :playlists
   resources :contacts, only: [:create]
   resources :vips, only: [:index]
-  resources :tickets, only: [:show]
   resources :orders, only: %i[new create show] do
     get :checkout, on: :member
   end
@@ -43,7 +42,6 @@ Rails.application.routes.draw do
     resources :categories
     resources :comments
     resources :playlists
-    resources :tickets
     resources :vips
   end
 

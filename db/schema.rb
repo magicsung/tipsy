@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103130337) do
+ActiveRecord::Schema.define(version: 20151104074233) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",               limit: 255, null: false
@@ -101,8 +101,10 @@ ActiveRecord::Schema.define(version: 20151103130337) do
     t.string   "payment_method", limit: 255, default: "new order", null: false
     t.datetime "created_at",                                       null: false
     t.datetime "updated_at",                                       null: false
+    t.string   "qrcode",         limit: 255
   end
 
+  add_index "orders", ["qrcode"], name: "index_orders_on_qrcode", using: :btree
   add_index "orders", ["store_id"], name: "index_orders_on_store_id", using: :btree
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
   add_index "orders", ["vip_id"], name: "index_orders_on_vip_id", using: :btree
@@ -145,18 +147,6 @@ ActiveRecord::Schema.define(version: 20151103130337) do
     t.string   "hours_saturday",     limit: 255
     t.string   "hours_sunday",       limit: 255
   end
-
-  create_table "tickets", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4,   null: false
-    t.string   "qrcode",     limit: 255, null: false
-    t.datetime "due_time",               null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "order_id",   limit: 4,   null: false
-  end
-
-  add_index "tickets", ["order_id"], name: "index_tickets_on_order_id", using: :btree
-  add_index "tickets", ["user_id"], name: "index_tickets_on_user_id", using: :btree
 
   create_table "trades", force: :cascade do |t|
     t.integer  "order_id",     limit: 4,                     null: false
@@ -212,6 +202,5 @@ ActiveRecord::Schema.define(version: 20151103130337) do
   add_foreign_key "orders", "stores"
   add_foreign_key "orders", "users"
   add_foreign_key "orders", "vips"
-  add_foreign_key "tickets", "users"
   add_foreign_key "trades", "orders"
 end
