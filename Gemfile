@@ -39,6 +39,7 @@ gem 'capistrano-passenger', :group => :development
 gem "font-awesome-rails"
 gem 'rqrcode_png' 
 gem 'aws-sdk-v1' # If using paperclip <= v4.3.1 
+gem 'sidekiq'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

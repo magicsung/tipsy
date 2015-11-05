@@ -6,6 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+config.eager_load_paths += %W( #{config.root}/app/jobs )
+
 module FinalProject
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

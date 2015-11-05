@@ -81,5 +81,5 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: "http://www.pa9.club" }
   config.action_mailer.smtp_settings = config_for(:email).symbolize_keys
 
-  
+  config.active_job.queue_adapter = :sidekiq
 end
