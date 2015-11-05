@@ -117,7 +117,7 @@ $(document).ready(function(e){
                       '<div class="star"></div>'+
                       '<br>'+
                       'Content:<br>'+
-                      '<input type="textarea" id="content" name="content" class="form-control">'+
+                      '<textarea id="content" name="content" class="form-control" rows="4" ></textarea>'+
                       '<br>'+
                       '<input type="hidden" id="store_id" name="store_id" value="' + data.id + '" >'+
                       '<input type="hidden" id="auth_token" name="auth_token" value="' + token + '" >'+
@@ -136,7 +136,7 @@ $(document).ready(function(e){
 
             /* Send the data using post */
             var rating = $(".star input").val();
-            var content = $("input#content").val();
+            var content = $("#content").val();
             var store_id = $("input#store_id").val();
             var auth_token = $("input#auth_token").val();
             var dataString = 'rating='+ rating + '&content=' + content + '&store_id=' + store_id + '&auth_token=' + auth_token
