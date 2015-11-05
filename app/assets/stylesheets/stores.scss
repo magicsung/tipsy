@@ -51,6 +51,16 @@
           width: 90%;
         }
       }
+      .info-table {
+        td, th {
+          border-top: none;
+        }
+      }
+      .comment-table {
+        tr:hover {
+          background: #222;
+        }
+      }
     }
     
     .close-board {
