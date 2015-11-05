@@ -45,7 +45,8 @@
     </table>
     <div class="comment">
       <table class="table"></table>
-      <div class="show-link text-center"></div>
+      <div class="show-link text-center"></div><br>
+      <div class="comment-form"></div>
     </div>
 
   </div>
@@ -103,14 +104,65 @@ $(document).ready(function(e){
           }
           $('#black-board .comment table').html(comments);
 
-          var ShowLink = '<a class="btn btn-sm btn-default" href="'+'<%= stores_url %>/'+data.id+'">Show detail</a>'
-          $('#black-board .comment .show-link').html(ShowLink);
+          // var ShowLink = '<a class="btn btn-sm btn-default" href="'+'<%= stores_url %>/'+data.id+'">Show detail</a>'
+          // $('#black-board .comment .show-link').html(ShowLink);
+          var form = '<form id="post-comment" action="<%= v1_comments_url %>" method="post">'+
+                      'Rating:<br>'+
+                      '<div class="star"></div>'+
+                      '<br>'+
+                      'Content:<br>'+
+                      '<input type="textarea" id="content" name="content" class="form-control">'+
+                      '<br>'+
+                      '<input type="hidden" id="store_id" name="store_id" value="' + data.id + '" >'+
+                      '<input type="hidden" id="auth_token" name="auth_token" value="<%=current_user.authentication_token%>" >'+
+                      '<input type="submit" value="Submit" class="btn btn-primary">'+
+                      '</form>'
+          $('#black-board .comment .comment-form').html(form);
+
+          $("#post-comment").submit(function(event) {
+
+            /* stop form from submitting normally */
+            event.preventDefault();
+
+            /* get some values from elements on the page: */
+            var $form = $( this ),
+                url = $form.attr( 'action' );
+
+            /* Send the data using post */
+            var rating = $(".star input").val();
+            var content = $("input#content").val();
+            var store_id = $("input#store_id").val();
+            var auth_token = $("input#auth_token").val();
+            var dataString = 'rating='+ rating + '&content=' + content + '&store_id=' + store_id + '&auth_token=' + auth_token
+            var posting = $.post( url, dataString );
+
+            // before posting
+            $("input#content").val("");
+            var newComment = '<tr><td><div class="current_score" data-score="' + rating + '"></div></td>'+
+                             '<td>' + content + '<br><small>by ' + '<%= current_user.name %>' + '  less than a minute ago</small></td></tr>'
+            $('#black-board .comment table tbody').append(newComment);
+            $('#black-board .comment table tbody tr').last().hide();
+            $('#black-board .comment table tbody tr').last().fadeIn(3000);
+
+            $('.current_score').on().raty({ 
+              readOnly: true,
+              score: function() {
+                return $(this).attr('data-score');
+              }
+            }); 
+
+            /* Alerts the results */
+            posting.done(function( data ) {
+              console.log('comment success');
+            });
+          });
 
           // show star
           $('.star').raty({ 
-            score: '3'
+            score: '3',
+            scoreName: 'rating'
           });
-          $('.current_score').raty({ 
+          $('.current_score').on().raty({ 
             readOnly: true,
             score: function() {
               return $(this).attr('data-score');
