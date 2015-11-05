@@ -107,6 +107,11 @@ $(document).ready(function(e){
 
           // var ShowLink = '<a class="btn btn-sm btn-default" href="'+'<%= stores_url %>/'+data.id+'">Show detail</a>'
           // $('#black-board .comment .show-link').html(ShowLink);
+          var token = '';
+        <% if current_user %>
+            token = '<%= current_user.authentication_token %>';
+          
+
           var form = '<form id="post-comment" action="<%= v1_comments_url %>" method="post">'+
                       'Rating:<br>'+
                       '<div class="star"></div>'+
@@ -115,7 +120,7 @@ $(document).ready(function(e){
                       '<input type="textarea" id="content" name="content" class="form-control">'+
                       '<br>'+
                       '<input type="hidden" id="store_id" name="store_id" value="' + data.id + '" >'+
-                      '<input type="hidden" id="auth_token" name="auth_token" value="<%=current_user.authentication_token%>" >'+
+                      '<input type="hidden" id="auth_token" name="auth_token" value="' + token + '" >'+
                       '<input type="submit" value="Submit" class="btn btn-primary">'+
                       '</form>'
           $('#black-board .comment .comment-form').html(form);
@@ -157,6 +162,7 @@ $(document).ready(function(e){
               console.log('comment success');
             });
           });
+        <% end %>
 
           // show star
           $('.star').raty({ 
