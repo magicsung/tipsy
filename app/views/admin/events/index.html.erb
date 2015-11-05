@@ -8,21 +8,21 @@
 <tr>
   <th>Status</th>
   <th>Title</th>
-  <th>Description</th>
+  <th class="hidden-xs">Description</th>
   <th>Start_at</th>
-  <th>Due_at</th>
+  <th class="hidden-xs">Due_at</th>
   <th></th>
 </tr>
 <% @event.each do |x| %>
   <tr>
     <td><%= x.status %></td>
     <td><%= link_to x.title, admin_event_path(x) %></td>
-    <td><%= simple_format(x.description) %></td>
+    <td class="hidden-xs"><%= truncate( x.description, :length => 30 ) %></td>
     <td>
       <%= x.start_date %> |
       <%= x.start_time.strftime("%H:%M") %>
     </td>
-    <td>
+    <td class="hidden-xs">
       <%= x.due_date %> |
       <%= x.due_time.strftime("%H:%M") %>
     </td>

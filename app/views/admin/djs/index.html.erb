@@ -7,7 +7,7 @@
   <tr>
     <th>Photo</th>
     <th>Name</th>
-    <th>Description</th>
+    <th class="hidden-xs">Description</th>
     <th></th>
   </tr>
   <% @dj.each do |x| %>
@@ -20,7 +20,7 @@
       <% end %>
     </td>
     <td><%= link_to x.name, admin_dj_path(x) %></td>
-    <td>
+    <td class="hidden-xs">
         <%= truncate( x.description, :length => 100 ) %>
     </td>
     <td>

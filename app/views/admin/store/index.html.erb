@@ -19,19 +19,19 @@
       <th>image</th>
       <th>Name</th>
       <th>Phone</th>
-      <th>City</th>
-      <th>Address</th>
-      <th>Description</th>
+      <th class="hidden-xs">City</th>
+      <th class="hidden-xs">Address</th>
+      <th class="hidden-xs">Description</th>
       <th></th>
     </tr>
       <% @store.each do |x| %>
       <tr>
-        <td><%= image_tag(x.try(:yelp_image)) %></td>
+        <td><%= image_tag(x.photo.url(:thumb), :id => "store-thumb") %></td>
         <td><%= link_to x.name,admin_store_path(x) %></td>
         <td><%= x.phone %></td>
-        <td><%= x.location_city %></td>
-        <td><%= x.location_address %></td>
-        <td>
+        <td class="hidden-xs"><%= x.location_city %></td>
+        <td class="hidden-xs"><%= x.location_address %></td>
+        <td class="hidden-xs">
         <% if false %>
           <% if x.description.length > 30 %>
             <%= x.description.first(30) %>...

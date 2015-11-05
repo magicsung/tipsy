@@ -26,40 +26,21 @@
     </button> 
   </div>
 <% end %>
-<!-- Flash message -->
 
-<!-- User message -->
-<div class="pull-right">
-  <% if current_user %>
-    <%= link_to('Log out', destroy_user_session_path, :method => :delete) %> |
-    <%= link_to('Edit', edit_registration_path(:user)) %>
-  <% else %>
-    <%= link_to('Sign up', new_registration_path(:user)) %> |
-    <%= link_to('Log in', new_session_path(:user)) %> |
-    <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-  <% end %>
-  <% if current_user %>
-    <% if current_user.admin? %>
-      | <%= link_to 'Admin', admin_root_path %>
-      | <%= link_to 'Home', root_path %>
-    <% end %>
-  <% end %>
-</div>
-<div class="clearfix"></div>
-<!-- User message -->
 
-<% if current_user %>
-  <% if current_user.admin? %>
-    <% @where = params[:controller] %>
-    <ul class="nav nav-tabs">
-      <li role="presentation" class="<%= @where == "admin/events" ? "active" : "" %>" ><%= link_to 'Events', admin_events_path %></li>
-      <li role="presentation" class="<%= @where == "admin/categories" ? "active" : "" %>" ><%= link_to 'Category', admin_categories_path %></li>
-      <li role="presentation" class="<%= @where == "admin/store" ? "active" : "" %>"><%= link_to 'Store', admin_store_index_path %></li>
-      <li role="presentation" class="<%= @where == "admin/djs" ? "active" : "" %>" ><%= link_to 'DJ', admin_djs_path %></li>
-      <li role="presentation" class="<%= @where == "admin/user" ? "active" : "" %>" ><%= link_to 'User', admin_user_index_path %></li>
-      <li role="presentation" class="<%= @where == "admin/vips" ? "active" : "" %>" ><%= link_to 'VIPs', admin_vips_path %></li>
-    </ul>
-  <% end %>
+<% if current_user && current_user.admin? %>
+  <% @where = params[:controller] %>
+  <ul class="nav nav-tabs">
+    <li role="presentation" class="<%= @where == "admin/events" ? "active" : "" %>" ><%= link_to 'Events', admin_events_path %></li>
+    <li role="presentation" class="<%= @where == "admin/categories" ? "active" : "" %>" ><%= link_to 'Category', admin_categories_path %></li>
+    <li role="presentation" class="<%= @where == "admin/store" ? "active" : "" %>"><%= link_to 'Store', admin_store_index_path %></li>
+    <li role="presentation" class="<%= @where == "admin/djs" ? "active" : "" %>" ><%= link_to 'DJ', admin_djs_path %></li>
+    <li role="presentation" class="<%= @where == "admin/user" ? "active" : "" %>" ><%= link_to 'User', admin_user_index_path %></li>
+    <li role="presentation" class="<%= @where == "admin/vips" ? "active" : "" %>" ><%= link_to 'VIPs', admin_vips_path %></li>
+    <li role="presentation" class="pull-right" ><%= link_to 'Home', root_path %></li>
+    <li role="presentation" class="pull-right" > <%= link_to('Log out', destroy_user_session_path, :method => :delete) %></li>
+  </ul>
+  <div class="clearfix"></div>
 <% end %>
 
 
