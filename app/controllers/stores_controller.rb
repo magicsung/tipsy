@@ -20,6 +20,7 @@ class StoresController < ApplicationController
   end
 
   def show
+    @list_comments = @store.comments.includes(:user)
     @comment = Comment.new
   end
 

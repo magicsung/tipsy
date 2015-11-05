@@ -16,7 +16,7 @@ json.hours_friday  @store.hours_friday
 json.hours_saturday @store.hours_saturday
 json.hours_sunday  @store.hours_sunday
 
-json.comment @store.comments do |e|
+json.comment @list_comments do |e|
   json.photo e.user.image
   json.rating e.rating
   json.content e.content

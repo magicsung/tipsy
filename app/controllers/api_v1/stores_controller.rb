@@ -6,6 +6,7 @@ class ApiV1::StoresController < ApiController
 
   def show
     @store = Store.find( params[:id] )
+    @list_comments = @store.comments.includes(:user)
   end
 
 end
