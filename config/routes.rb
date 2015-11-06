@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   post 'allpay/result'
   post 'allpay/return'
 
+  require 'sidekiq/web'
+  authenticate :user, lambda { |u| u.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   get 'profile/:id' => "tipsy#profile", as: 'profile'

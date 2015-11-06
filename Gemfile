@@ -40,6 +40,7 @@ gem "font-awesome-rails"
 gem 'rqrcode_png' 
 gem 'aws-sdk-v1' # If using paperclip <= v4.3.1 
 gem 'sidekiq'
+gem 'sinatra'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -54,6 +55,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'rspec-rails'
+  gem 'capistrano-sidekiq'
   # gem 'rack-mini-profiler'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
