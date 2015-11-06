@@ -38,6 +38,8 @@ lock '3.4.0'
  set :keep_releases, 5
  set :passenger_restart_with_touch, true
 
+ set :sidekiq_options_per_process, ["-q mailers", "-q default"]
+
 namespace :deploy do
 
   after :restart, :clear_cache do
