@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     post "/login" => "auth#login"
     post "/logout" => "auth#logout"
     post "/confirm" => "vips#confirm"
+    get "/getvip" => "vips#getvip"
   end
 
   namespace :admin do

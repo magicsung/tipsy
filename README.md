@@ -148,3 +148,19 @@ params{
 	"qrcode": string
 }
 ```
+
+#####Get QRcode :
+>/api/v1/getvip
+
+```
+method => get
+params{
+	"auth_token": string
+}
+
+result:
+{
+message: "confirm successfully!",
+code: "string"
+}
+```
