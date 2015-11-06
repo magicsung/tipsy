@@ -4,10 +4,6 @@
     margin: 0 auto;
     width: 100%;
   }
-  
-  .dj-show-left {
-    
-  }
 
   iframe {
         width: 100%;
@@ -53,10 +49,16 @@
   }
   .dj-show-right {
     margin-top: 30px;
+    h3 {
+      display: inline;
+    }
   }
 
   .dj-events {
-    margin-top: 30px;  
+    margin-top: 30px;
+    h3 {
+      display: inline;
+    }
     .image-edm {
       width: 100%;
       margin-top: 15px;
@@ -70,7 +72,6 @@
 
     .col-md-3 {
       padding: 0;
-      
     }
 
     .dj-image-box {
