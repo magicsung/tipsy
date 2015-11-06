@@ -1,5 +1,27 @@
 
 .vips {
+  
+  .vip-pass {
+    margin: 0 auto;
+    margin-top: 50px;
+    background-image: image-url("vip_pass.png");;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: center;
+    height: 740px;
+    width: 100%;
+    padding-top: 400px;
+  }
+  #qr-code {
+    margin: 0 auto;
+  }
+  
+}
 
-
+@media screen and (max-width: 550px) {
+  .vips {
+    .vip-info {
+      margin-bottom: 50px;
+    }
+  }
 }
