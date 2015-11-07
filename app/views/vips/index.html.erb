@@ -27,8 +27,8 @@
 
         <div class="form-group select">
           <%= n.label :vip_id, "Service" %>
-          <%= n.select :vip_id, Vip.all.map{ |x| [x.name, x.id, {'data-price' => x.price}, {'data-date' => x.datetime}] }, {}, :class => "form-control", :id => "vip-select" %>
-          <div class="service-date">123</div>
+          <%= n.select :vip_id, Vip.all.map{ |x| [x.name, x.id, {'data-price' => x.price}, {'data-date' => x.datetime}, {'data-store' => x.store.name}] }, {}, :class => "form-control", :id => "vip-select" %>
+          <div class="service"><span class="store"></span> - <span class="date"></span></div>
         </div>
 
         <div class="form-group">
@@ -82,7 +82,8 @@ $(document).ready(function(e){
   var quantity = 0;
   var total = 0;
   var price = $('#vip-select').children('option:selected').data("price");
-  $('.service-date').text($('#vip-select').children('option:selected').data("date"));
+  $('.service .store').text($('#vip-select').children('option:selected').data("store"));
+  $('.service .date').text($('#vip-select').children('option:selected').data("date"));
   $('#price').text(price);
 
   var sum = function(price, quantity){
@@ -91,7 +92,8 @@ $(document).ready(function(e){
   };
 
   $( "#vip-select" ).change(function(){
-    $('.service-date').text($('#vip-select').children('option:selected').data("date"));
+    $('.service .store').text($('#vip-select').children('option:selected').data("store"));
+    $('.service .date').text($('#vip-select').children('option:selected').data("date"));
     price = $('#vip-select').children('option:selected').data("price");
     sum(price, quantity)
     $('#price').text(total);
