@@ -1,6 +1,11 @@
 <div class="banner">
   <div id="banner-bg">
-    <div class="black-wrap"></div>  
+    <div class="banner-video hidden-sm hidden-xs">
+      <video src="http://reservelounge.com/wp-content/uploads/2015/06/Video-Header1.m4v" poster="" preload="auto" loop="" autoplay="">
+
+      </video>
+    </div>
+    <div class="black-wrap"></div>
   </div>
   <div class="jumbotron text-center">
     <div class="container">
@@ -20,7 +25,7 @@
   <div class="col-md-5 col-l1">
     <div class="event-info">
       <h2>別人錯過的<br>你不會錯過</h2>
-      <p>Ladies’ Night 、Happy Hour、<br> 
+      <p>Ladies’ Night 、Happy Hour、<br>
       暢飲日、知名DJ表演，主題派對<br>
       讓你過著大家羨慕的夜晚生活！</p>
       <a id="event-button" href="#" >查看熱門活動</a>
@@ -117,7 +122,7 @@
           <li><p>活動企劃</p></li>
           <li><p>私人派對</p></li>
           <li><p>校際聯誼</p></li>
-        </ul> 
+        </ul>
       </div>
       <div class="col-xs-12 col-md-4 foot3">
         <h3>CONTACT US</h3>
@@ -139,7 +144,7 @@
           </div>
           <div class="form-group">
             <%= f.label :message, "Message" %>
-            <%= f.text_area :message, :class => "form-control", :required => "required" %>    
+            <%= f.text_area :message, :class => "form-control", :required => "required" %>
           </div>
           <%= f.submit "SUBMIT", :class => "btn btn-default btn-contact" %>
         <% end %>
@@ -169,15 +174,15 @@ $(function() {
       }
     }
   });
-  
 
-  
+
+
 
   // event-button
   $("#event-button").click(function(e){
   e.preventDefault();
 
-    if ($(window).width() > 750) {    
+    if ($(window).width() > 750) {
       $('#black-board').fadeIn(300);
       $.ajax({
         url: '<%= v1_events_url %>',
@@ -189,7 +194,7 @@ $(function() {
         success: function(data) {
           var len = data.data.length;
           var info = ""
-          for (i = 0; i < len; i++) { 
+          for (i = 0; i < len; i++) {
             var img = data.data[i].image
             var url = data.data[i].url
             info += "<a href='" + url + "'><img class='event-img' src='" + img + "''></a>"
@@ -197,7 +202,7 @@ $(function() {
           }
         },
       });
-      
+
     }else {
       window.location.href = '<%= events_url %>';
     }
@@ -225,7 +230,13 @@ $(function() {
     }
   });
 
-
+  var $window = $(window).on('resize', function(){
+    if ($(window).width() < 1260) {
+      $('.banner-video video').css("height", '800px');
+    }else{
+      $('.banner-video video').css("height", '');
+    }
+  }).trigger('resize');
 
   // resize content element
   if ($(window).width() > 750) {
@@ -242,7 +253,7 @@ $(function() {
     }).trigger('resize'); //on page load
   }else {
     $(".rb1").insertBefore(".rm1");
-  }
+  };
 
   // check email
   $(document).on('keyup', "#email-input", function(){
@@ -277,7 +288,3 @@ $(function() {
 
 
 </script>
-
-
-
-
