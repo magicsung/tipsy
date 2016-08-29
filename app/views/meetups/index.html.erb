@@ -1,1 +1,44 @@
-<h1>meetup</h1>
+<style>
+.avatar > img {
+  width: 50px; height: 50px;
+  padding: 5px;
+}
+</style>
+
+<div class="container">
+  <div style="margin-top:35px;">
+
+    <div class="col-md-8 text-center">
+      <img src="http://dummyimage.com/600x900/cccccc/ffffff.png&text=Event" alt="" style="max-width:100%">
+    </div>
+
+    <div class="col-md-4">
+      <div class="text-center">
+        <h1>Join the party!!</h1>
+      </div>
+
+      <div style="margin-top:50px;">
+        <h4>
+          主辦人：
+        </h4>
+        <div class="avatar">
+          <img src="http://dummyimage.com/100x100/cccccc/ffffff.png&text=Avatar" alt="">
+        </div>
+        <% members = 26 %>
+        <h4 style="margin-top:25px;">
+          <%= members %>人想參加：
+        </h4>
+        <div class="avatar">
+          <% members.times do %>
+            <img src="http://dummyimage.com/100x100/cccccc/ffffff.png&text=Avatar" alt="">
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-xs-12 text-center" style="margin-top:50px;margin-bottom:50px;">
+        <a href="#" class="btn btn-default btn-lg">JOIN US!!</a>
+      </div>
+    </div>
+
+  </div>
+</div>

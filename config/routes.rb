@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :playlists
   resources :contacts, only: [:create]
   resources :vips, only: [:index]
+  resources :meetups, only: [:index]
   resources :orders, only: %i[new create show] do
     get :checkout, on: :member
   end
